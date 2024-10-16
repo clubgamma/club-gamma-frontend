@@ -274,57 +274,61 @@ const LeaderBoard = () => {
                             </tr>
                             </thead>
                             <tbody className="divide-y divide-[#3A3A3A]">
-                            {loading ? (
-                                <tr>
-                                    <td colSpan="4" className="px-6 py-4 text-center text-gray-400">
-                                        <l-infinity
-                                            size="55"
-                                            stroke="4"
-                                            stroke-length="0.15"
-                                            bg-opacity="0.1"
-                                            speed="1.3"
-                                            color="white"
-                                        ></l-infinity>
-                                    </td>
-                                </tr>
-                            ) : contributors.map((contributor, index) => (
-                                <tr key={contributor.githubId} className={`hover:bg-[#3A3A3A] transition-colors ${index % 2 === 0 ? 'bg-[#2A2A2A]' : 'bg-[#333333]'}`}>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            {contributor.rank <= 3 ? (
-                                                <TrophyIcon className={`h-6 w-6 ${contributor.rank === 1 ? 'text-[#FFD700]' :
-                                                    contributor.rank === 2 ? 'text-[#C0C0C0]' :
-                                                        'text-[#CD7F32]'
-                                                }`} />
-                                            ) : (
-                                                <span className="text-gray-400 font-medium">#{contributor.rank}</span>
-                                            )}
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-3 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            {/* <img className="h-10 w-10 rounded-full border-2 border-[#FF4545]" src={contributor.avatarUrl || "https://github.com/identicons/jasonlong.png"} alt="" /> */}
-                                            <img
-                                                className="h-12 w-12 rounded-full border-2 border-[#FF4545]"
-                                                src={contributor.githubId ? `https://avatars.githubusercontent.com/${contributor.githubId}` : "https://github.com/identicons/jasonlong.png"}
-                                                alt="Contributor's avatar"
-                                            />
-                                            <div className="ml-4">
-                                                <div className="text-sm font-medium text-white">{contributor.githubId}</div>
+                                {loading ? (
+                                    <tr>
+                                        <td colSpan="4" className="px-6 py-4 text-center text-gray-400">
+                                            <l-infinity
+                                                size="55"
+                                                stroke="4"
+                                                stroke-length="0.15"
+                                                bg-opacity="0.1"
+                                                speed="1.3"
+                                                color="white"
+                                            ></l-infinity>
+                                        </td>
+                                    </tr>
+                                ) : contributors.map((contributor, index) => (
+                                    <tr
+                                        key={contributor.githubId}
+                                        className={`hover:bg-[#3A3A3A] transition-colors ${index % 2 === 0 ? 'bg-[#2A2A2A]' : 'bg-[#333333]'}`}
+                                        onClick={() => window.open(`https://github.com/${contributor.githubId}`, '_blank')}
+                                        style={{ cursor: 'pointer' }} // Makes the row look clickable
+                                    >
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <div className="flex items-center">
+                                                {contributor.rank <= 3 ? (
+                                                    <TrophyIcon className={`h-6 w-6 ${contributor.rank === 1 ? 'text-[#FFD700]' :
+                                                        contributor.rank === 2 ? 'text-[#C0C0C0]' :
+                                                            'text-[#CD7F32]'
+                                                    }`} />
+                                                ) : (
+                                                    <span className="text-gray-400 font-medium">#{contributor.rank}</span>
+                                                )}
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                                        <div className="text-[#FF4545] font-bold">{contributor.points}</div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                                        <div className="flex items-center justify-end space-x-2">
-                                            <GitPullRequestIcon className="h-5 w-5 text-[#FFA500]" />
-                                            <span className="text-white font-medium">{contributor.prs.opened + contributor.prs.merged + contributor.prs.closed}</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
+                                        </td>
+                                        <td className="px-6 py-3 whitespace-nowrap">
+                                            <div className="flex items-center">
+                                                <img
+                                                    className="h-12 w-12 rounded-full border-2 border-[#FF4545]"
+                                                    src={contributor.githubId ? `https://avatars.githubusercontent.com/${contributor.githubId}` : "https://github.com/identicons/jasonlong.png"}
+                                                    alt="Contributor's avatar"
+                                                />
+                                                <div className="ml-4">
+                                                    <div className="text-sm font-medium text-white">{contributor.githubId}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
+                                            <div className="text-[#FF4545] font-bold">{contributor.points}</div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
+                                            <div className="flex items-center justify-end space-x-2">
+                                                <GitPullRequestIcon className="h-5 w-5 text-[#FFA500]" />
+                                                <span className="text-white font-medium">{contributor.prs.opened + contributor.prs.merged + contributor.prs.closed}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
