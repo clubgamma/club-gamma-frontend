@@ -1,0 +1,47 @@
+{
+  "2020": [
+    {
+      "date": "2020-08-22T00:00:00Z",
+      "title": "Intro to Git and GitHub",
+      "description": "It was 3 hours hands-on workshop which was conducted by our club for all students to learn Git & GitHub so that they can collaborate on professional projects with other developers.",
+      "filename": "intro_to_git_and_github.md"
+    },
+    {
+      "date": "2020-08-29T00:00:00Z",
+      "title": "Nailing Coding Interviews",
+      "description": "This event will be useful for pre-final and final year students placements are starting. This event will mostly focus on how to crack coding interviews at good product based companies, What care should be taken and how to apply for the interview and getting into it.",
+      "filename": "nailing_coding_interviews.md"
+    },
+    {
+      "date": "2020-09-13T00:00:00Z",
+      "title": "Micro-interactions with CSS Animations",
+      "description": "This workshop mainly focuses on CSS animations and how to use it on your websites, how to make attractive markdown file for the projects. It is mostly intended to the people who have the clear foundation of CSS. we will cover intermediate to advance level topics of CSS animations.",
+      "filename": "micro-interactions-css.md"
+    },
+    {
+      "start_date": "2020-10-01T00:00:00Z",
+      "end_date": "2020-10-31T23:59:59Z",
+      "title": "Hacktoberfest 2020",
+      "description": "Hacktoberfest is a month-long celebration of open source software run by DigitalOcean in partnership with GitHub and Twilio. We will put projects on different fields like Mobile App Development, Web Development, Python, etc. We will initialise some GitHub Repo and will make them open source.",
+      "filename": "hacktoberfest_2020.md"
+    }
+  ],
+  "2021": [
+    {
+      "start_date": "2021-10-01T00:00:00Z",
+      "end_date": "2021-10-31T23:59:59Z",
+      "title": "Hacktoberfest 2021",
+      "description": "Hacktoberfest is a month-long celebration of open source software run by DigitalOcean in partnership with GitHub, Intel, Appwrite & Deepsource. Hacktoberfest encourages participation in the open source community, which grows bigger every year. Complete the 2021 challenge and earn a limited edition T-shirt. We have different projects on our github, check it out!",
+      "filename": "hacktoberfest_2021.md"
+    }
+  ],
+  "2024": [
+    {
+      "start_date": "2024-10-01T00:00:00Z",
+      "end_date": "2024-10-31T23:59:59Z",
+      "title": "Hacktoberfest 2024",
+      "description": "Hacktoberfest 2024 is a month-long celebration of open source software, hosted by DigitalOcean and GitHub. Contribute four quality pull requests during October to earn either a limited edition eco-friendly t-shirt or have a tree planted in your name. Join developers worldwide in supporting open source projects - from beginners to experts, everyone is welcome!",
+      "filename": "hacktoberfest_2024.md"
+    }
+  ]
+}

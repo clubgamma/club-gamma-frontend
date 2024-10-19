@@ -1,0 +1,181 @@
+{
+  "teams": [
+    [
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/jalay_movaliya.png",
+        "position": "Club Lead",
+        "name": "Jalay Movaliya",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/jalaymovaliya/",
+          "instagram": "https://www.instagram.com/jalaym825",
+          "github": "https://github.com/jalaym825",
+          "twitter": "https://x.com/jalaym825"
+        }
+      },
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/clubgamma.github.io/master/client/src/assets/images/team_images/jay-khatri-min.jpg",
+        "position": "Club Founder",
+        "name": "Jay Khatri",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/jayskhatri/",
+          "instagram": "https://www.instagram.com/jay.s.khatri/",
+          "github": "https://github.com/jayskhatri/",
+          "twitter": "https://x.com/jayskhatri"
+        }
+      }
+    ],
+    [
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/pooja_ramani.jpeg",
+        "position": "AI/ML Expert",
+        "name": "Pooja Ramani",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/pooja-ramani-73b603255/",
+          "instagram": "https://www.instagram.com/pooja_ramani_8748/",
+          "github": "https://github.com/pooja8748",
+          "twitter": "https://x.com/club_gamma"
+        }
+      },
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/bhavya_prajapati.png",
+        "position": "Web Expert",
+        "name": "Bhavya Prajapati",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/bhavya-prajapati-a8b001256",
+          "instagram": "https://www.instagram.com/bhavya5.exe",
+          "github": "https://github.com/bhavyaGP",
+          "twitter": "https://x.com/5678_bhavya"
+        }
+      },
+      {
+        "imageUrl": "https://clubgamma.vercel.app/assets/logo-DJb3Nfol.jpeg",
+        "position": "Web Expert",
+        "name": "Jay Rupapara",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/jay_rupapara/",
+          "instagram": "https://www.instagram.com/jayyptll",
+          "github": "https://github.com/JayRupapara",
+          "twitter": "https://x.com/club_gamma"
+        }
+      }
+    ],
+    [
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/dhiraj_bagad.png",
+        "position": "Cloud Expert",
+        "name": "Dhuraj Bagad",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/dhiraj-bagad-398632258",
+          "instagram":"https://www.instagram.com/dhiraj_bagad",
+          "github": "https://github.com/DHIRAJ44",
+          "twitter":"https://x.com/dhiraj650484"
+        }
+      },
+      {
+        "imageUrl": "https://clubgamma.vercel.app/assets/logo-DJb3Nfol.jpeg",
+        "position": "Mobile Expert",
+        "name": "Japan Kachhiya",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/japan-kachhiya-b15b271b4",
+          "instagram": "https://www.instagram.com/japank_07",
+          "github": "https://github.com/japan1907",
+          "twitter": "https://x.com/japank_07"
+        }
+      },
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/dhairya_kanabar.png",
+        "position": "Social Media Manager",
+        "name": "Dhairya Kanabar",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/dhairya-kanabar-411990294",
+          "instagram": "https://www.instagram.com/dhairya__kanabar",
+          "github": "https://github.com/Dhairya7737",
+          "twitter": "https://x.com/DhairyaKanabar"
+        }
+      }
+    ],
+    [
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/kaushal_bhanderi.png",
+        "position": "PR Team",
+        "name": "Kaushal Bhanderi",
+        "social": {
+          "linkedin": "https://linkedin.com/in/kaushal-bhanderi/",
+          "instagram": "https://www.instagram.com/kaushalb_11/",
+          "github": "https://github.com/Kaushal-11",
+          "twitter": "https://x.com/kaushalba11/"
+        }
+      },
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/shrey_lakhtaria.png",
+        "position": "PR Team",
+        "name": "Shrey Lakhtaria",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/jalaymovaliya/",
+          "instagram": "https://www.instagram.com/club_gamma",
+          "github": "https://github.com/clubgamma",
+          "twitter": "https://x.com/club_gamma"
+        }
+      },
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/satyam_charola.png",
+        "position": "Graphics Designer",
+        "name": "Satyam Charola",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/satyam-charola-4b30b3301/",
+          "instagram": "https://www.instagram.com/hu_satyo",
+          "github": "https://github.com/SatyamCharola",
+          "twitter": "https://x.com/SatyamCharola"
+        }
+      }
+    ],
+    [
+      {
+        "imageUrl": "https://clubgamma.vercel.app/assets/logo-DJb3Nfol.jpeg",
+        "position": "Graphics Designer",
+        "name": "Charmi Dodiya",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/charmi-dodiya-150a99287/",
+          "instagram": "https://www.instagram.com/charmi_2285",
+          "github": "https://github.com/charmi2208",
+          "twitter": "https://x.com/charm_2208"
+        }
+      },
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/yug_shah.png",
+        "position": "Volunteer",
+        "name": "Yug Shah",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/jalaymovaliya/",
+          "instagram": "https://www.instagram.com/club_gamma",
+          "github": "https://github.com/clubgamma",
+          "twitter": "https://x.com/club_gamma"
+        }
+      },
+      {
+        "imageUrl": "https://clubgamma.vercel.app/assets/logo-DJb3Nfol.jpeg",
+        "position": "Volunteer",
+        "name": "Krish Bhardwaj",
+        "social": {
+          "linkedin":"https://www.linkedin.com/in/krrish-bhardwaj-621945328/",
+          "instagram": "https://www.instagram.com/club_gamma",
+          "github": "https://github.com/krrish-snippets",
+          "twitter": "https://x.com/club_gamma"
+        }
+      }
+    ],
+    [
+      {
+        "imageUrl": "https://clubgamma.vercel.app/assets/logo-DJb3Nfol.jpeg",
+        "position": "Volunteer",
+        "name": "Jigar Sakhia",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/jalaymovaliya/",
+          "instagram": "https://www.instagram.com/club_gamma",
+          "github": "https://github.com/clubgamma",
+          "twitter": "https://x.com/club_gamma"
+        }
+      }
+    ]
+  ]
+}
