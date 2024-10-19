@@ -31,7 +31,6 @@ export default function GitHubProfile() {
                 setUserData({ ...user, ...stats });
                 document.title = `Profile | ${user.name}`;
             } catch (err) {
-                console.log("hell")
                 setError('Sorry, Profile does not exist');
             }
         })();
