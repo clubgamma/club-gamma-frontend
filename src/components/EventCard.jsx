@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, X } from 'lucide-react';
 import axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
  
 // Backdrop Component
 const Backdrop = ({ onClick }) => (
@@ -117,13 +118,37 @@ const Modal = ({ content, onClose }) => {
 const EventCard = ({ event }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState('');
- 
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        const handleBackButton = (event) => {
+          // Close modal if it's open
+          if (isModalOpen) {
+            event.preventDefault();
+            handleCloseModal();
+            navigate(-1); // Simulate back button press
+          }
+        };
+    
+        // Add the event listener
+        window.addEventListener("popstate", handleBackButton);
+    
+        // Cleanup the event listener when the component unmounts or updates
+        return () => {
+          window.removeEventListener("popstate", handleBackButton);
+        };
+      }, [isModalOpen, navigate]);
+
+
     const handleViewDetails = async () => {
         if (event.markdownUrl) {
             try {
                 const response = await axios.get(event.markdownUrl);
                 setModalContent(response.data);
                 setIsModalOpen(true);
+        
+                navigate(location.pathname, { state: { ...location.state, modal: true } });
                 document.body.style.overflow = 'hidden';
                 // Apply blur to navbar
                 const navbar = document.querySelector('nav');
@@ -136,6 +161,8 @@ const EventCard = ({ event }) => {
         } else {
             setModalContent(event.markdownContent);
             setIsModalOpen(true);
+
+            navigate(location.pathname, { state: { ...location.state, modal: true } }); 
             document.body.style.overflow = 'hidden';
             // Apply blur to navbar
             const navbar = document.querySelector('nav');
@@ -145,8 +172,12 @@ const EventCard = ({ event }) => {
         }
     };
  
+
+ 
+
     const handleCloseModal = () => {
         setIsModalOpen(false);
+        navigate(location.pathname, { state: { ...location.state, modal: false } });
         document.body.style.overflow = '';
         // Remove blur from navbar
         const navbar = document.querySelector('nav');
