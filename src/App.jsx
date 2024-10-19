@@ -10,6 +10,7 @@ import RedirectPage from "@/Pages/Redirect"
 import Events from './Pages/Events'
 import { infinity } from "ldrs";
 import Teams from './Pages/Team'
+import PointSystem from './Pages/PointSystem'
 infinity.register()
 
 
@@ -74,6 +75,7 @@ function App() {
                 <Route path="events/:year" element={<Events />} />
                 <Route path="profile/:username" element={<Profile />} />
                 <Route path='/team' element={<Teams />} />
+                <Route path='/point-system' element={<PointSystem />} />
             </Route>
             <Route path="/redirect" element={<RedirectPage />} />
         </Routes>
