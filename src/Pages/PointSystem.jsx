@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 
 
@@ -15,21 +15,33 @@ const pointSystem = [
   { type: "Level 3 contribution ", points: 8 },
 ]
 
-export default function PointSystem() {
+export default function PointSystem({onProjectClick}) { 
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleNavigation = (section) => {
-    if (window.location.pathname !== '/') {
-      window.history.pushState(null, '', '/')
+  const handleProjectNavigation = () => {
+    // If not on home page, navigate to home
+    if (location.pathname !== '/') {
+      // Using timeout to ensure navigation completes before scrolling
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById('project');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+      return;
     }
-    const element = document.getElementById(section)
+
+    // If already on home page, just scroll
+    const element = document.getElementById('project');
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      console.error(`Element with id "${section}" not found`)
+      element.scrollIntoView({ behavior: 'smooth' });
     }
-  }
+  };
+
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] text-white font-sans">
@@ -112,13 +124,15 @@ export default function PointSystem() {
         </Card>
 
         <div className="flex flex-col items-center justify-center mt-12 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+          
           <Button
             className="w-full sm:w-auto px-6 py-3 bg-[#ff3e3e] text-white font-bold rounded-full hover:bg-[#e63636] transition-colors duration-300 shadow-md hover:shadow-lg"
-            onClick={() => handleNavigation("project")}
+            onClick={handleProjectNavigation}
           >
             Start Contributing
             <ChevronRight className="w-4 h-4 ml-2" />
           </Button>
+          
           <Button
             variant="outline"
             className="w-full sm:w-auto px-6 py-3 border-[#ff3e3e] text-[#ff3e3e] font-bold rounded-full hover:bg-[#ff3e3e] hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
