@@ -22,7 +22,7 @@ const Home = () => {
     }, [location]);
 
     return (
-        <div className='bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]'>
+        <div className='bg-gradient-to-br overflow-x-hidden from-[#1e1e1e] to-[#4e3535]'>
             <div id="hero">
                 <Hero/>
             </div>
