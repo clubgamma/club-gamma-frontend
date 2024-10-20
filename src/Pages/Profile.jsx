@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {GitPullRequest} from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { GitPullRequest } from 'lucide-react';
 import Global from '@/Global';
-import {useParams} from 'react-router-dom';
-import 'ldrs/infinity'
+import { useParams } from 'react-router-dom';
+import 'ldrs/infinity';
 
 const StatusBadge = ({ state }) => {
     const colors = {
@@ -20,18 +20,29 @@ const StatusBadge = ({ state }) => {
 };
 
 export default function GitHubProfile() {
-    const [userData, setUserData] = React.useState();
+    const [userData, setUserData] = useState(null);
+    const [error, setError] = useState(null); // New state for error handling
     const { username } = useParams();
 
     useEffect(() => {
         (async () => {
-            const { user, stats } = await Global.httpGet(`/users/stats/${username}`);
+            try {
+                const { user, stats } = await Global.httpGet(`/users/stats/${username}`);
+                setUserData({ ...user, ...stats });
+                document.title = `Profile | ${user.name}`;
+            } catch (err) {
+                setError('Sorry, Profile does not exist');
+            }
+        })();
+    }, [username]);
 
-            setUserData({ ...user, ...stats });
-
-            document.title = `Profile | ${user.name}`;
-        })()
-    }, [username])
+    if (error) {
+        return (
+            <div className="flex flex-col items-center justify-center h-screen">
+                <p className="text-black text-xl">{error}</p>
+            </div>
+        );
+    }
 
     if (!userData) {
         return (
@@ -45,7 +56,7 @@ export default function GitHubProfile() {
                     color="black"
                 ></l-infinity>
             </div>
-        )
+        );
     }
 
     return (
