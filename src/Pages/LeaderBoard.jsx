@@ -16,7 +16,7 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
-import { GitPullRequestIcon, TrophyIcon, SearchIcon, SlidersHorizontal } from "lucide-react";
+import { GitPullRequestIcon, TrophyIcon, SearchIcon, SlidersHorizontal, Info } from "lucide-react";
 import {
     Sheet,
     SheetContent,
@@ -28,6 +28,8 @@ import {
 import { Slider } from "@/components/ui/slider";
 import Global from "@/Global";
 import 'ldrs/infinity'
+import { useNavigate } from 'react-router-dom';
+
 
 const LeaderBoard = () => {
     const [contributors, setContributors] = useState([]);
@@ -148,15 +150,23 @@ const LeaderBoard = () => {
         };
     }
 
+      // redirect to point-system
+      const navigate = useNavigate(); 
+      const handlePointSystemClick = () => {
+          
+          navigate('/point-system');
+        
+      };
+
     return (
         <div className="min-h-screen font-dm-sans bg-[#1C1C1C] text-white pt-28">
-            <main className="container mx-auto px-4 py-8">
-                {/* <h1 className="text-4xl font-bold mb-8 text-white">Leaderboard</h1> */}
+            <main className="container px-4 py-8 mx-auto">
+                {/* <h1 className="mb-8 text-4xl font-bold text-white">Leaderboard</h1> */}
 
                 {/* User Stats Card */}
                 {currentUser && (
                     <div className="bg-[#2A2A2A] rounded-xl shadow-lg p-6 border border-[#3A3A3A] mb-8">
-                        <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                        <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
                             <div className="flex items-center space-x-4">
                                 <img
                                     // src={currentUser.avatarUrl || "https://github.com/identicons/jasonlong.png"}
@@ -187,7 +197,7 @@ const LeaderBoard = () => {
                                 </div>
                                 <div className="p-4 rounded-lg bg-[#3A3A3A]">
                                     <div className="text-sm font-medium text-gray-300">PRs Status</div>
-                                    <div className="text-xs mt-1">
+                                    <div className="mt-1 text-xs">
                                         <span className="text-green-400">{currentUser.openPRs} Open</span> |
                                         <span className="text-blue-400"> {currentUser.mergedPRs} Merged</span> |
                                         <span className="text-red-400"> {currentUser.closedPRs} Closed</span>
@@ -201,12 +211,23 @@ const LeaderBoard = () => {
                 {/* Leaderboard */}
                 <div className="bg-[#2A2A2A] rounded-xl shadow-lg border border-[#3A3A3A]">
                     <div className="p-6 border-b border-[#3A3A3A]">
-                        <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-                            <h2 className="text-3xl font-bold text-white">Leaderboard</h2>
+                        <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
+                            <div className="flex items-center space-x-4">
+                                <h2 className="text-3xl font-bold text-white">Leaderboard</h2>
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="bg-[#3A3A3A] border-[#4A4A4A] hover:bg-[#4A4A4A] hover:text-[#ff3e3e] text-white"
+                                    onClick={() => handlePointSystemClick()}
+                                >
+                                    <Info className="w-4 h-4 mr-2" />
+                                    Point System
+                                </Button>
+                            </div>
                             <div className="flex items-center">
 
-                                <div className="relative w-72 md:w-64 ml-auto pr-3">
-                                    <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                                <div className="relative pr-3 ml-auto w-72 md:w-64">
+                                    <SearchIcon className="absolute w-5 h-5 text-gray-400 transform -translate-y-1/2 left-3 top-1/2" />
                                     <Input
                                         placeholder="Search contributors..."
                                         className="pl-10 bg-[#3A3A3A] border-[#4A4A4A] text-white placeholder-gray-400 w-full"
@@ -216,7 +237,7 @@ const LeaderBoard = () => {
                                 <Sheet>
                                     <SheetTrigger asChild>
                                         <Button variant="outline" size="icon" className="bg-[#3A3A3A] border-[#4A4A4A] hover:bg-[#4A4A4A]">
-                                            <SlidersHorizontal className="h-5 w-5" />
+                                            <SlidersHorizontal className="w-5 h-5" />
                                         </Button>
                                     </SheetTrigger>
                                     <SheetContent className="bg-[#2A2A2A] text-white">
@@ -226,7 +247,7 @@ const LeaderBoard = () => {
                                                 Adjust the filters to refine the leaderboard
                                             </SheetDescription>
                                         </SheetHeader>
-                                        <div className="space-y-6 py-4">
+                                        <div className="py-4 space-y-6">
                                             <div className="space-y-2">
                                                 <label className="text-sm font-medium text-gray-300">Points Range</label>
                                                 <Slider
@@ -267,10 +288,10 @@ const LeaderBoard = () => {
                         <table className="w-full">
                             <thead className="bg-[#3A3A3A]">
                             <tr>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Rank</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">User</th>
-                                <th className="px-6 py-3 text-right text-xs font-medium text-gray-300 uppercase tracking-wider">Points</th>
-                                <th className="px-6 py-3 text-right text-xs font-medium text-gray-300 uppercase tracking-wider">PRs</th>
+                                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-300 uppercase">Rank</th>
+                                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-300 uppercase">User</th>
+                                <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-300 uppercase">Points</th>
+                                <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-300 uppercase">PRs</th>
                             </tr>
                             </thead>
                             <tbody className="divide-y divide-[#3A3A3A]">
@@ -297,7 +318,7 @@ const LeaderBoard = () => {
                                                         'text-[#CD7F32]'
                                                 }`} />
                                             ) : (
-                                                <span className="text-gray-400 font-medium">#{contributor.rank}</span>
+                                                <span className="font-medium text-gray-400">#{contributor.rank}</span>
                                             )}
                                         </div>
                                     </td>
@@ -316,13 +337,13 @@ const LeaderBoard = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
+                                    <td className="px-6 py-4 text-sm text-right whitespace-nowrap">
                                         <div className="text-[#FF4545] font-bold">{contributor.points}</div>
                                     </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
+                                    <td className="px-6 py-4 text-sm text-right whitespace-nowrap">
                                         <div className="flex items-center justify-end space-x-2">
                                             <GitPullRequestIcon className="h-5 w-5 text-[#FFA500]" />
-                                            <span className="text-white font-medium">{contributor.prs.opened + contributor.prs.merged + contributor.prs.closed}</span>
+                                            <span className="font-medium text-white">{contributor.prs.opened + contributor.prs.merged + contributor.prs.closed}</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -332,7 +353,7 @@ const LeaderBoard = () => {
                     </div>
 
                     <div className="p-4 border-t border-[#3A3A3A]">
-                        <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                        <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
                             <Select value={limit.toString()} onValueChange={handleLimitChange}>
                                 <SelectTrigger className="w-[180px] bg-[#3A3A3A] border-[#4A4A4A] text-white">
                                     <SelectValue placeholder="Select rows per page" />
