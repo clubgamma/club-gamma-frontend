@@ -310,7 +310,9 @@ const LeaderBoard = () => {
                                                 alt="Contributor's avatar"
                                             />
                                             <div className="ml-4">
-                                                <div className="text-sm font-medium text-white">{contributor.githubId}</div>
+                                                <Link to={`https://github.com/${contributor.githubId}`} target="_blank" rel="noopener noreferrer">
+                                                        <div className="text-sm font-medium text-white">{contributor.githubId}</div>
+                                                 </Link>
                                             </div>
                                         </div>
                                     </td>
