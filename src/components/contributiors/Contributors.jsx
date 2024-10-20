@@ -8,7 +8,7 @@ const Contributors = () => {
     try{
         axios.get('https://api.github.com/repos/clubgamma/club-gamma-frontend/contributors')
         .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             setContributors(response.data);
         })
         .catch((error) => {
