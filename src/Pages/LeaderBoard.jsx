@@ -370,7 +370,7 @@ const LeaderBoard = () => {
                                         <PaginationPrevious
                                             onClick={() => handlePageChange(page - 1)}
                                             disabled={page <= 1}
-                                            className="bg-[#3A3A3A] border-[#4A4A4A] text-white hover:bg-[#4A4A4A]"
+                                            className="bg-[#3A3A3A] border-[#4A4A4A] text-white hover:cursor-pointer hover:bg-[#4A4A4A]"
                                         />
                                     </PaginationItem>
                                     {[...Array(totalPages)].map((_, i) => (
@@ -378,7 +378,7 @@ const LeaderBoard = () => {
                                             <PaginationLink
                                                 onClick={() => handlePageChange(i + 1)}
                                                 isActive={page === i + 1}
-                                                className={`${page === i + 1 ? 'bg-[#FF4545] text-white' : 'bg-[#3A3A3A] text-white'} border-[#4A4A4A] hover:bg-[#4A4A4A]`}
+                                                className={`${page === i + 1 ? 'bg-[#FF4545] text-white' : 'bg-[#3A3A3A] text-white'} border-[#4A4A4A] hover:bg-[#4A4A4A] hover:cursor-pointer`}
                                             >
                                                 {i + 1}
                                             </PaginationLink>
@@ -388,7 +388,7 @@ const LeaderBoard = () => {
                                         <PaginationNext
                                             onClick={() => handlePageChange(page + 1)}
                                             disabled={page >= totalPages}
-                                            className="bg-[#3A3A3A] border-[#4A4A4A] text-white hover:bg-[#4A4A4A]"
+                                            className="bg-[#3A3A3A] border-[#4A4A4A] text-white hover:bg-[#4A4A4A] hover:cursor-pointer"
                                         />
                                     </PaginationItem>
                                 </PaginationContent>
