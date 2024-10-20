@@ -25,7 +25,7 @@ function ContributorCard  ({contributor}) {
       className=" flex flex-col justify-center items-center p-5 max-w-sm rounded-lg overflow-hidden font-dm-sans shadow-lg bg-gradient-to-br from-[#644f4f] to-[#5e4545] transition-all duration-150 ease-in-out transform"
       initial={{ scale: 0 }}
       animate={inView ? { scale: 1 } : { scale: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
     >
       <div className='w-full'>
         <img
@@ -62,7 +62,7 @@ function ContributorCard  ({contributor}) {
               rel="noopener noreferrer"
               className="font-bold py-2 px-4 rounded-md transition-colors duration-300"
             >
-              <FaGithub size={24} />
+              <FaGithub size={24} color='white' />
             </a>
           </motion.div>
       </div>
