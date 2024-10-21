@@ -23,7 +23,7 @@ const Home = () => {
 
     return (
         <div className='bg-gradient-to-br overflow-x-hidden from-[#1e1e1e] to-[#4e3535]'>
-            <div id="hero">
+            <div id="hero" className='pt-4'>
                 <Hero/>
             </div>
             <div id="q&a" className='pt-20'>
