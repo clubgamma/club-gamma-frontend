@@ -29,6 +29,7 @@ import { Slider } from "@/components/ui/slider";
 import Global from "@/Global";
 import 'ldrs/infinity'
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const LeaderBoard = () => {
