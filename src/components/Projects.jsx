@@ -84,14 +84,14 @@ function ProjectCard({ title, description, buttonText, onButtonClick }) {
 
   return (
     <motion.div
-      className="max-w-sm rounded-lg overflow-hidden font-dm-sans shadow-lg bg-gradient-to-br from-[#644f4f] to-[#5e4545] transition-all duration-150 ease-in-out transform"
+      className="cursor-pointer max-w-sm rounded-lg overflow-hidden font-dm-sans shadow-lg bg-gradient-to-br from-[#644f4f] to-[#5e4545] transition-all duration-150 ease-in-out transform"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.1 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      onClick={isMobile ? () => setIsHovered(!isHovered) : null}
+      onClick={onButtonClick}
     >
       <div className="p-6">
         <motion.h2
@@ -118,8 +118,11 @@ function ProjectCard({ title, description, buttonText, onButtonClick }) {
           }}
           transition={{ duration: 0.3 }}
         >
-          <button
-            onClick={onButtonClick}
+           <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onButtonClick();
+            }}
             className="bg-red-500 flex hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300"
           >
             {buttonText}
