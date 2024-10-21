@@ -53,7 +53,57 @@ const Modal = ({ content, onClose }) => {
                             h1: ({ node, ...props }) => (
                                 <h1 className="text-3xl font-bold text-white mt-6 mb-4" {...props} />
                             ),
-                            // Other markdown component customizations...
+                            h2: ({ node, ...props }) => (
+                                <h2 className="text-2xl font-semibold text-white mt-5 mb-3" {...props} />
+                            ),
+                            h3: ({ node, ...props }) => (
+                                <h3 className="text-xl font-medium text-white mt-4 mb-2" {...props} />
+                            ),
+                            p: ({ node, children, ...props }) => (
+                                <p className="text-gray-300 mb-4 leading-relaxed" {...props}>
+                                    {children}
+                                </p>
+                            ),
+                            em: ({ node, ...props }) => (
+                                <em className="italic text-gray-300" {...props} />
+                            ),
+                            a: ({ node, href, children, ...props }) => (
+                                <a
+                                    href={href}
+                                    className="text-[#ff6b6b] hover:text-[#ff9b9b] underline"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    {...props}
+                                >
+                                    {children}
+                                </a>
+                            ),
+                            ul: ({ node, ...props }) => (
+                                <ul className="list-disc ml-6 mb-4 space-y-2 text-gray-300" {...props} />
+                            ),
+                            ol: ({ node, ...props }) => (
+                                <ol className="list-decimal ml-6 mb-4 space-y-2 text-gray-300" {...props} />
+                            ),
+                            li: ({ node, ...props }) => (
+                                <li className="text-gray-300" {...props} />
+                            ),
+                            blockquote: ({ node, ...props }) => (
+                                <blockquote
+                                    className="border-l-4 border-[#ff6b6b] pl-4 my-4 italic text-gray-400"
+                                    {...props}
+                                />
+                            ),
+                            code: ({ node, inline, ...props }) => (
+                                inline ?
+                                    <code className="bg-[#222] px-1 py-0.5 rounded text-sm text-[#ff6b6b]" {...props} /> :
+                                    <code className="block bg-[#222] p-4 rounded-lg text-sm text-[#ff6b6b] overflow-x-auto" {...props} />
+                            ),
+                            pre: ({ node, ...props }) => (
+                                <pre className="bg-[#222] p-4 rounded-lg overflow-x-auto mb-4" {...props} />
+                            ),
+                            img: ({ node, ...props }) => (
+                                <img className="max-w-full h-auto rounded-lg my-4" {...props} />
+                            ),
                         }}
                     >
                         {content}
