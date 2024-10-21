@@ -388,10 +388,16 @@ const LeaderBoard = () => {
                             alt="Contributor's avatar"
                           />
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-white">
-                              {contributor.githubId}
-                            </div>
+                                <a 
+                                    href={`https://clubgamma.vercel.app/profile/${contributor.githubId}`} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-sm font-medium text-white hover:cursor-pointer"
+                                >
+                                    {contributor.githubId}
+                                </a>
                           </div>
+
                         </div>
                       </td>
                       <td className="px-4 py-4 text-sm text-right whitespace-nowrap">
