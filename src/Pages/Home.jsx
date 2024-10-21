@@ -6,6 +6,7 @@ import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import QandA from '@/components/Q&A';
 import Stat from '@/components/Stat';
+import Contributors from '@/components/Contributors';
 
 const Home = () => {
     const location = useLocation();
@@ -34,6 +35,9 @@ const Home = () => {
             </div>
             <div id="project" className='pt-20'>
                 <Projects/>
+            </div>
+            <div className='pt-20'>
+                <Contributors />
             </div>
             <div id="contact" className='pt-20'>
                 <ContactUs/>
