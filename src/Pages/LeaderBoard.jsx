@@ -156,11 +156,9 @@ const LeaderBoard = () => {
     navigate("/point-system");
   };
 
-  // Pagination
   const renderPaginationNumbers = () => {
     const items = [];
 
-    // Always show first page
     items.push(
       <PaginationItem key={1}>
         <PaginationLink
@@ -174,16 +172,13 @@ const LeaderBoard = () => {
       </PaginationItem>
     );
 
-    // Calculate range of visible page numbers
     let startPage = Math.max(2, page - 1);
     let endPage = Math.min(totalPages - 1, page + 1);
 
-    // Show ellipsis after first page if necessary
     if (startPage > 2) {
       items.push(<PaginationEllipsis key="ellipsis-1" />);
     }
 
-    // Add pages between ellipses
     for (let i = startPage; i <= endPage; i++) {
       items.push(
         <PaginationItem key={i}>
@@ -199,12 +194,10 @@ const LeaderBoard = () => {
       );
     }
 
-    // Show ellipsis before last page if necessary
     if (endPage < totalPages - 1) {
       items.push(<PaginationEllipsis key="ellipsis-2" />);
     }
 
-    // Add last page if not already included
     if (totalPages > 1) {
       items.push(
         <PaginationItem key={totalPages}>
@@ -222,7 +215,6 @@ const LeaderBoard = () => {
 
     return items;
   };
-
 
   return (
     <div className="min-h-screen font-dm-sans bg-[#1C1C1C] text-white pt-16 md:pt-28">
@@ -382,6 +374,7 @@ const LeaderBoard = () => {
             </div>
           </div>
 
+          {/* Leaderboard */}
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-[#3A3A3A]">
@@ -455,17 +448,34 @@ const LeaderBoard = () => {
                             }
                             alt="Contributor's avatar"
                           />
-                          <div className="ml-4">
-                                <a 
-                                    href={`https://clubgamma.vercel.app/profile/${contributor.githubId}`} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    className="text-sm font-medium text-white hover:cursor-pointer"
-                                >
-                                    {contributor.githubId}
-                                </a>
+                          <div className="flex items-center ml-4">
+                            <a 
+                              href={`https://clubgamma.vercel.app/profile/${contributor.githubId}`} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="text-sm font-medium text-white hover:cursor-pointer"
+                            >
+                              {contributor.githubId}
+                            </a>
+                            
+                            {/* badge tag */}
+                            <span 
+                              className={`ml-2 px-2 py-1 text-xs font-semibold rounded-full ${
+                                contributor.points >= 40 ? 'bg-yellow-500' :
+                                contributor.points >= 20 ? 'bg-purple-500' :
+                                contributor.points >= 10 ? 'bg-blue-500' :
+                                contributor.points >= 1 ? 'bg-green-500' :
+                                'bg-gray-500'
+                              } text-white`}
+                            >
+                              {contributor.points >= 40 ? 'Master' :
+                               contributor.points >= 20 ? 'Expert' :
+                               contributor.points >= 10 ? 'Regular' :
+                               contributor.points >= 1 ? 'Contributor' :
+                               'Newcomer'}
+                            </span>
+                            
                           </div>
-
                         </div>
                       </td>
                       <td className="px-4 py-4 text-sm text-right whitespace-nowrap">
@@ -492,6 +502,8 @@ const LeaderBoard = () => {
 
           <div className="p-4 border-t border-none">
             <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
+              
+              {/* select rows per page */}
               <Select
                 value={limit.toString()}
                 onValueChange={handleLimitChange}
@@ -506,6 +518,8 @@ const LeaderBoard = () => {
                   <SelectItem value="50">50 per page</SelectItem>
                 </SelectContent>
               </Select>
+              
+              {/* Pagination */}
               <Pagination>
                 <PaginationContent className="flex items-center space-x-1">
                   <PaginationItem>
@@ -533,6 +547,7 @@ const LeaderBoard = () => {
                   </PaginationItem>
                 </PaginationContent>
               </Pagination>
+              
             </div>
           </div>
         </div>
