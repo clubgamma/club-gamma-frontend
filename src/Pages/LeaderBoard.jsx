@@ -156,6 +156,74 @@ const LeaderBoard = () => {
     navigate("/point-system");
   };
 
+  // Pagination
+  const renderPaginationNumbers = () => {
+    const items = [];
+
+    // Always show first page
+    items.push(
+      <PaginationItem key={1}>
+        <PaginationLink
+          onClick={() => handlePageChange(1)}
+          className={`${
+            page === 1 ? "bg-red-500" : "bg-[#3A3A3A]"
+          } text-white rounded-md px-3 py-2 hover:cursor-pointer hover:bg-[#4A4A4A]`}
+        >
+          1
+        </PaginationLink>
+      </PaginationItem>
+    );
+
+    // Calculate range of visible page numbers
+    let startPage = Math.max(2, page - 1);
+    let endPage = Math.min(totalPages - 1, page + 1);
+
+    // Show ellipsis after first page if necessary
+    if (startPage > 2) {
+      items.push(<PaginationEllipsis key="ellipsis-1" />);
+    }
+
+    // Add pages between ellipses
+    for (let i = startPage; i <= endPage; i++) {
+      items.push(
+        <PaginationItem key={i}>
+          <PaginationLink
+            onClick={() => handlePageChange(i)}
+            className={`${
+              page === i ? "bg-red-500" : "bg-[#3A3A3A]"
+            } text-white rounded-md px-3 py-2 hover:cursor-pointer hover:bg-[#4A4A4A]`}
+          >
+            {i}
+          </PaginationLink>
+        </PaginationItem>
+      );
+    }
+
+    // Show ellipsis before last page if necessary
+    if (endPage < totalPages - 1) {
+      items.push(<PaginationEllipsis key="ellipsis-2" />);
+    }
+
+    // Add last page if not already included
+    if (totalPages > 1) {
+      items.push(
+        <PaginationItem key={totalPages}>
+          <PaginationLink
+            onClick={() => handlePageChange(totalPages)}
+            className={`${
+              page === totalPages ? "bg-red-500" : "bg-[#3A3A3A]"
+            } text-white rounded-md px-3 py-2 hover:cursor-pointer hover:bg-[#4A4A4A]`}
+          >
+            {totalPages}
+          </PaginationLink>
+        </PaginationItem>
+      );
+    }
+
+    return items;
+  };
+
+
   return (
     <div className="min-h-screen font-dm-sans bg-[#1C1C1C] text-white pt-16 md:pt-28">
       <main className="container px-4 py-8 mx-auto">
@@ -444,87 +512,20 @@ const LeaderBoard = () => {
                     <PaginationLink
                       onClick={() => page > 1 && handlePageChange(page - 1)}
                       className={`text-white bg-[#3A3A3A] rounded-md p-2 hover:cursor-pointer
-                    ${
-                      page <= 1
-                        ? "opacity-50 pointer-events-none"
-                        : "hover:bg-[#4A4A4A]"
-                    }`}
+                        ${page <= 1 ? "opacity-50 pointer-events-none" : "hover:bg-[#4A4A4A]"}`}
                       aria-disabled={page <= 1}
                     >
                       <ChevronLeft className="w-4 h-4" />
                     </PaginationLink>
                   </PaginationItem>
 
-                  {/* First page */}
-                  <PaginationItem>
-                    <PaginationLink
-                      onClick={() => handlePageChange(1)}
-                      className={`${page === 1 ? "bg-red-500" : "bg-[#3A3A3A]"} 
-                    text-white rounded-md px-3 py-2 hover:cursor-pointer hover:bg-[#4A4A4A]`}
-                    >
-                      1
-                    </PaginationLink>
-                  </PaginationItem>
-
-                  {/* Left ellipsis */}
-                  {page > 4 && <PaginationEllipsis />}
-
-                  {/* Pages around current page */}
-                  {[...Array(totalPages)].map((_, i) => {
-                    const pageNumber = i + 1;
-                    // Show pages around current page
-                    if (
-                      pageNumber !== 1 &&
-                      pageNumber !== totalPages &&
-                      pageNumber >= page - 1 &&
-                      pageNumber <= page + 1
-                    ) {
-                      return (
-                        <PaginationItem key={i}>
-                          <PaginationLink
-                            onClick={() => handlePageChange(pageNumber)}
-                            className={`${
-                              page === pageNumber
-                                ? "bg-red-500"
-                                : "bg-[#3A3A3A]"
-                            } text-white rounded-md px-3 py-2 hover:cursor-pointer hover:bg-[#4A4A4A]`}
-                          >
-                            {pageNumber}
-                          </PaginationLink>
-                        </PaginationItem>
-                      );
-                    }
-                    return null;
-                  })}
-
-                  {/* Right ellipsis */}
-                  {page < totalPages - 3 && <PaginationEllipsis />}
-
-                  {/* Last page */}
-                  {totalPages > 1 && (
-                    <PaginationItem>
-                      <PaginationLink
-                        onClick={() => handlePageChange(totalPages)}
-                        className={`${
-                          page === totalPages ? "bg-red-500" : "bg-[#3A3A3A]"
-                        } text-white rounded-md px-3 py-2 hover:cursor-pointer hover:bg-[#4A4A4A]`}
-                      >
-                        {totalPages}
-                      </PaginationLink>
-                    </PaginationItem>
-                  )}
+                  {renderPaginationNumbers()}
 
                   <PaginationItem>
                     <PaginationLink
-                      onClick={() =>
-                        page < totalPages && handlePageChange(page + 1)
-                      }
+                      onClick={() => page < totalPages && handlePageChange(page + 1)}
                       className={`text-white bg-[#3A3A3A] rounded-md p-2 hover:cursor-pointer
-                    ${
-                      page >= totalPages
-                        ? "opacity-50 pointer-events-none"
-                        : "hover:bg-[#4A4A4A]"
-                    }`}
+                        ${page >= totalPages ? "opacity-50 pointer-events-none" : "hover:bg-[#4A4A4A]"}`}
                       aria-disabled={page >= totalPages}
                     >
                       <ChevronRight className="w-4 h-4" />
