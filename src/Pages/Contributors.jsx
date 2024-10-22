@@ -1,3 +1,4 @@
+import Global from '@/Global';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -12,8 +13,8 @@ const ContributorsPage = () => {
 
     const fetchContributors = async () => {
         try {
-            const data = await responce.json();
-            setContributors(data);
+          const response = await Global.httpGet(`/projects/contributors/${repoName}`);
+            setContributors(response);
         } catch (error) {
             setError("Error fetching contributors")
             console.error('Error fetching contributors:', error);
