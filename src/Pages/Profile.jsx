@@ -117,48 +117,47 @@ export default function GitHubProfile() {
             <div className="max-w-4xl mx-auto">
                 <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535] mb-8">
                     <CardContent className="p-6">
-                        <div className="flex flex-col sm:flex-row items-start gap-6">
-                            <Avatar className="h-24 w-24 ring-2 ring-red-900 ring-offset-2 ring-offset-[#2a2a2a]">
-                                <AvatarImage src={userData.avatar} alt={userData.name} />
-                                <AvatarFallback className="bg-red-900/20 text-red-400">
-                                    {userData.name.charAt(0)}
-                                </AvatarFallback>
-                            </Avatar>
+                        <div className="flex items-center space-x-4">
+                            {/* Avatar */}
+                            <img
+                                src={userData.avatar || 'default-avatar.png'} // use a default avatar if not provided
+                                alt={userData.name}
+                                className="w-24 h-24 rounded-full border-2 border-red-500"
+                            />
 
-                            <div className="flex-1">
-                                <h1 className="text-2xl font-bold text-white">{userData.name}</h1>
-                                <div className="text-zinc-400 flex items-center gap-2 mb-2">
-                                    {/* <Github className="h-4 w-4" /> */}
-                                    {userData.username}
-                                </div>
+                            {/* Name, Bio, Location, etc */}
+                            <div className="flex-1 flex flex-col justify-center">
+                                <h1 className="text-2xl font-bold text-white mb-1">{userData.name}</h1>
 
                                 {userData.bio && (
                                     <p className="text-zinc-300 mb-2">{userData.bio}</p>
                                 )}
 
-                                <div className="flex flex-wrap gap-4 text-sm text-zinc-400">
-                                    {userData.company && (
-                                        <div className="flex items-center gap-1">
-                                            <Building2 className="h-4 w-4" />
-                                            {userData.company}
-                                        </div>
-                                    )}
-                                    {userData.location && (
-                                        <div className="flex items-center gap-1">
-                                            <MapPin className="h-4 w-4" />
-                                            {userData.location}
-                                        </div>
-                                    )}
-                                    {userData.blog && (
-                                        <div className="flex items-center gap-1">
-                                            <LinkIcon className="h-4 w-4" />
-                                            <a href={userData.blog} target="_blank" rel="noopener noreferrer"
-                                                className="text-red-400 hover:text-red-300 transition-colors">
-                                                {userData.blog.replace(/^https?:\/\//, '')}
-                                            </a>
-                                        </div>
-                                    )}
-                                </div>
+                                {(userData.company || userData.location || userData.blog) && (
+                                    <div className="flex flex-wrap gap-4 text-sm text-zinc-400">
+                                        {userData.company && (
+                                            <div className="flex items-center gap-1">
+                                                <Building2 className="h-4 w-4" />
+                                                {userData.company}
+                                            </div>
+                                        )}
+                                        {userData.location && (
+                                            <div className="flex items-center gap-1">
+                                                <MapPin className="h-4 w-4" />
+                                                {userData.location}
+                                            </div>
+                                        )}
+                                        {userData.blog && (
+                                            <div className="flex items-center gap-1">
+                                                <LinkIcon className="h-4 w-4" />
+                                                <a href={userData.blog} target="_blank" rel="noopener noreferrer"
+                                                    className="text-red-400 hover:text-red-300 transition-colors">
+                                                    {userData.blog.replace(/^https?:\/\//, '')}
+                                                </a>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </CardContent>
