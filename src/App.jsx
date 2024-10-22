@@ -46,20 +46,23 @@ function App() {
 
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 0.7,
-            easing: (t) => t,
+            duration: 0.1,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             smooth: true,
-          });
+            smoothTouch: false,
+            touchMultiplier: 2,
+            wheelMultiplier: 1.2,
+        });
       
-          const raf = (time) => {
+        const raf = (time) => {
             lenis.raf(time);
             requestAnimationFrame(raf);
-          };
+        };
       
-          requestAnimationFrame(raf);
-          return () => {
+        requestAnimationFrame(raf);
+        return () => {
             lenis.destroy();
-          };
+        };
     }, []);
 
     if (!loaded && location.pathname !== '/redirect') {
