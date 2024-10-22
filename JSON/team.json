@@ -5,6 +5,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/jalay_movaliya.png",
         "position": "Club Lead",
         "name": "Jalay Movaliya",
+        "tagline": "Code With Purpose, Lead With Vision",
         "social": {
           "linkedin": "https://www.linkedin.com/in/jalaymovaliya/",
           "instagram": "https://www.instagram.com/jalaym825",
@@ -16,6 +17,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/clubgamma.github.io/master/client/src/assets/images/team_images/jay-khatri-min.jpg",
         "position": "Club Founder",
         "name": "Jay Khatri",
+        "tagline": "The One Who Started The Legacy",
         "social": {
           "linkedin": "https://www.linkedin.com/in/jayskhatri/",
           "instagram": "https://www.instagram.com/jay.s.khatri/",
@@ -29,6 +31,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/pooja_ramani.png",
         "position": "AI/ML Expert",
         "name": "Pooja Ramani",
+        "tagline": "Data-Driven Dreams In Action",
         "social": {
           "linkedin": "https://www.linkedin.com/in/pooja-ramani-73b603255/",
           "instagram": "https://www.instagram.com/pooja_ramani_8748/",
@@ -40,6 +43,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/bhavya_prajapati.png",
         "position": "Web Expert",
         "name": "Bhavya Prajapati",
+        "tagline": "One Bug At A Time, Making The Web A Better Place",
         "social": {
           "linkedin": "https://www.linkedin.com/in/bhavya-prajapati-a8b001256",
           "instagram": "https://www.instagram.com/bhavya5.exe",
@@ -51,6 +55,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/jay_rupapara.png",
         "position": "Web Expert",
         "name": "Jay Rupapara",
+        "tagline": "Code By Al, Tweaked By Me",
         "social": {
           "linkedin": "https://www.linkedin.com/in/jay_rupapara/",
           "instagram": "https://www.instagram.com/jayyptll",
@@ -64,6 +69,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/charmi_dodiya.png",
         "position": "Graphics Designer",
         "name": "Charmi Dodiya",
+        "tagline": "Crafting Pixel By Pixel, Chaos Into Creative Gold",
         "social": {
           "linkedin": "https://www.linkedin.com/in/charmi-dodiya-150a99287/",
           "instagram": "https://www.instagram.com/charmi_2285",
@@ -75,6 +81,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/satyam_charola.png",
         "position": "Graphics Designer",
         "name": "Satyam Charola",
+        "tagline": "Crafting Perfection: A Hundred Attempts To Make It Shine",
         "social": {
           "linkedin": "https://www.linkedin.com/in/satyam-charola-4b30b3301/",
           "instagram": "https://www.instagram.com/hu_satyo",
@@ -86,6 +93,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/dhairya_kanabar.png",
         "position": "Social Media Manager",
         "name": "Dhairya Kanabar",
+        "tagline": "Committing Creativity, Pushing Content & Merging Ideas",
         "social": {
           "linkedin": "https://www.linkedin.com/in/dhairya-kanabar-411990294",
           "instagram": "https://www.instagram.com/dhairya__kanabar",
@@ -99,6 +107,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/kaushal_bhanderi.png",
         "position": "PR Team",
         "name": "Kaushal Bhanderi",
+        "tagline": "Al In My Code, Connections In My Neural Network",
         "social": {
           "linkedin": "https://linkedin.com/in/kaushal-bhanderi/",
           "instagram": "https://www.instagram.com/kaushalb_11/",
@@ -110,6 +119,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/shrey_lakhtaria.png",
         "position": "PR Team",
         "name": "Shrey Lakhtaria",
+        "tagline": "When Innovation Meets Collaboration",
         "social": {
           "linkedin": "www.linkedin.com/in/shrey-lakhataria/",
           "instagram": "https://www.instagram.com/shrey7120",
@@ -121,6 +131,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/dhiraj_bagad.png",
         "position": "Cloud Expert",
         "name": "Dhuraj Bagad",
+        "tagline": "Decoding The Cloud Mysteries & Sparking The New Ones",
         "social": {
           "linkedin": "https://www.linkedin.com/in/dhiraj-bagad-398632258",
           "instagram":"https://www.instagram.com/dhiraj_bagad",
@@ -134,6 +145,7 @@
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/japan_kachhiya.png",
         "position": "Mobile Expert",
         "name": "Japan Kachhiya",
+        "tagline": "Redefining The Boundaries Of App Development",
         "social": {
           "linkedin": "https://www.linkedin.com/in/japan-kachhiya-b15b271b4",
           "instagram": "https://www.instagram.com/japank_07",
