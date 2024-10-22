@@ -166,8 +166,8 @@ const QandA = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.4 });
-  const qandaVariants = {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.6 });
+  const containerVariants = {
     hidden: { opacity: 0, y: -50 },
     visible: {
       opacity: 1,
@@ -180,7 +180,7 @@ const QandA = () => {
     <div className="flex flex-col w-full items-center justify-center min-h-[70vh] text-white">
       <motion.div
         ref={ref}
-        variants={qandaVariants}
+        variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         className="w-full max-w-5xl relative"

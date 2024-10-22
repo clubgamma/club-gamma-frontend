@@ -1,22 +1,21 @@
 import Lottie from 'lottie-react';
-import React from 'react';
 import { motion } from 'framer-motion';
 import lottie from '@/assets/lottie.json';
 
 const Hero = () => {
     const headingVariants = {
         hidden: { opacity: 0, y: -50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
     };
 
     const buttonVariants = {
         hidden: { opacity: 0 },
-        visible: { opacity: 1, scale: 1, transition: { delay: 0.5, duration: 0.5, ease: 'easeOut' } }
+        visible: { opacity: 1, scale: 1, transition: { delay: 0.3, duration: 0.5, ease: 'easeOut' } }
     };
 
     const lottieVariants = {
         hidden: { opacity: 0, scale: 0.8 },
-        visible: { opacity: 1, scale: 1, transition: { delay: 0.1, duration: 0.8, ease: 'easeOut' } }
+        visible: { opacity: 1, scale: 1, transition: { delay: 0.1, duration: 0.5, ease: 'easeOut' } }
     };
 
     return (
