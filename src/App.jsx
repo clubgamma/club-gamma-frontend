@@ -13,6 +13,7 @@ import Teams from './Pages/Team'
 import PointSystem from './Pages/PointSystem'
 import Lenis from '@studio-freight/lenis'
 import Loader from './components/Loader'
+import ContributorsPage from './Pages/Contributors'
 infinity.register()
 
 function App() {
@@ -86,6 +87,7 @@ function App() {
                 />
             }>
                 <Route index element={<Home />} />
+                <Route path="/contributors/:repoName" element={<ContributorsPage />} />
                 <Route path="leaderboard" element={<LeaderBoard />} />
                 <Route path="events/:year" element={<Events />} />
                 <Route path="profile/:username" element={<Profile />} />
