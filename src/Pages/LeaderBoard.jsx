@@ -443,7 +443,6 @@ const LeaderBoard = () => {
                           <div className="flex items-center ml-4">
                             <a 
                               href={`https://clubgamma.vercel.app/profile/${contributor.githubId}`} 
-                              target="_blank" 
                               rel="noopener noreferrer" 
                               className="text-sm font-medium text-white hover:cursor-pointer"
                             >
