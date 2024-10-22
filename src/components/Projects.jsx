@@ -93,6 +93,7 @@ function ProjectCard({ title, description, buttonText, onButtonClick }) {
       onHoverEnd={() => setIsHovered(false)}
       onClick={isMobile ? () => setIsHovered(!isHovered) : null}
     >
+      <a onClick={onButtonClick}>
       <div className="p-6">
         <motion.h2
           className="text-2xl font-bold mb-2 text-white"
@@ -127,6 +128,7 @@ function ProjectCard({ title, description, buttonText, onButtonClick }) {
           </button>
         </motion.div>
       </div>
+      </a>
     </motion.div>
   )
 }
