@@ -105,7 +105,7 @@
     [
       {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/kaushal_bhanderi.png",
-        "position": "PR Team",
+        "position": "PR Associate",
         "name": "Kaushal Bhanderi",
         "tagline": "Al In My Code, Connections In My Neural Network",
         "social": {
@@ -117,7 +117,7 @@
       },
       {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/shrey_lakhtaria.png",
-        "position": "PR Team",
+        "position": "PR Associate",
         "name": "Shrey Lakhtaria",
         "tagline": "When Innovation Meets Collaboration",
         "social": {
