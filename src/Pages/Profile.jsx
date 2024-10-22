@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { GitPullRequest } from 'lucide-react';
 import Global from '@/Global';
 import { useParams } from 'react-router-dom';
-import 'ldrs/infinity';
+import Loader from '@/components/Loader';
 
 const StatusBadge = ({ state }) => {
     const colors = {
@@ -47,14 +47,7 @@ export default function GitHubProfile() {
     if (!userData) {
         return (
             <div className="flex flex-col items-center justify-center h-screen">
-                <l-infinity
-                    size="55"
-                    stroke="4"
-                    stroke-length="0.15"
-                    bg-opacity="0.1"
-                    speed="1.3"
-                    color="black"
-                ></l-infinity>
+                <Loader/>
             </div>
         );
     }

@@ -12,6 +12,7 @@ import { infinity } from "ldrs";
 import Teams from './Pages/Team'
 import PointSystem from './Pages/PointSystem'
 import Lenis from '@studio-freight/lenis'
+import Loader from './components/Loader'
 infinity.register()
 
 function App() {
@@ -68,14 +69,7 @@ function App() {
     if (!loaded && location.pathname !== '/redirect') {
         return (
             <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]">
-                <l-infinity
-                    size="80"
-                    stroke="4"
-                    stroke-length="0.15"
-                    bg-opacity="0.1"
-                    speed="1.3"
-                    color="white"
-                />
+                <Loader size='80'/>
             </div>
         )
     }

@@ -34,9 +34,8 @@ import {
 } from "@/components/ui/sheet";
 import { Slider } from "@/components/ui/slider";
 import Global from "@/Global";
-import "ldrs/infinity";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import Loader from "@/components/Loader";
 
 const LeaderBoard = () => {
   const [contributors, setContributors] = useState([]);
@@ -400,14 +399,7 @@ const LeaderBoard = () => {
                       colSpan="4"
                       className="px-4 py-4 text-center text-gray-400"
                     >
-                      <l-infinity
-                        size="55"
-                        stroke="4"
-                        stroke-length="0.15"
-                        bg-opacity="0.1"
-                        speed="1.3"
-                        color="white"
-                      ></l-infinity>
+                      <Loader/>
                     </td>
                   </tr>
                 ) : (
