@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/sheet";
 import { Slider } from "@/components/ui/slider";
 import Global from "@/Global";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "@/components/Loader";
 
 const LeaderBoard = () => {
@@ -441,13 +441,13 @@ const LeaderBoard = () => {
                             alt="Contributor's avatar"
                           />
                           <div className="flex items-center ml-4">
-                            <a 
-                              href={`https://clubgamma.vercel.app/profile/${contributor.githubId}`} 
+                            <Link
+                              to={`/profile/${contributor.githubId}`} 
                               rel="noopener noreferrer" 
                               className="text-sm font-medium text-white hover:cursor-pointer"
                             >
                               {contributor.githubId}
-                            </a>
+                            </Link>
                             
                             {/* badge tag */}
                             <span 
