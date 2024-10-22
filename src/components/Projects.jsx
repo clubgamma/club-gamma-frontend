@@ -81,7 +81,6 @@ export default function ProjectShowcase() {
 function ProjectCard({ title, description, buttonText, onButtonClick }) {
   const [isHovered, setIsHovered] = useState(false)
   const isMobile = window.innerWidth <= 768;
-
   return (
     <motion.div
       className="max-w-sm rounded-lg overflow-hidden font-dm-sans shadow-lg bg-gradient-to-br from-[#644f4f] to-[#5e4545] transition-all duration-150 ease-in-out transform"
@@ -93,6 +92,7 @@ function ProjectCard({ title, description, buttonText, onButtonClick }) {
       onHoverEnd={() => setIsHovered(false)}
       onClick={isMobile ? () => setIsHovered(!isHovered) : null}
     >
+      <a onClick={isMobile && onButtonClick}>
       <div className="p-6">
         <motion.h2
           className="text-2xl font-bold mb-2 text-white"
@@ -127,6 +127,7 @@ function ProjectCard({ title, description, buttonText, onButtonClick }) {
           </button>
         </motion.div>
       </div>
+      </a>
     </motion.div>
   )
 }
