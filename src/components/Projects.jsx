@@ -16,7 +16,7 @@ const ProjectShowcase = () => {
     {
       title: "Club Gamma Website (React)",
       description: "A modern and responsive website built using Vite and React, showcasing advanced web development skills and design aesthetics.",
-      repoName: "hacktoberfest2024",
+      repoName: "club-gamma-frontend",
       buttonText: "Github",
       url: "https://github.com/clubgamma/club-gamma-frontend"
     },
