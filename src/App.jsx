@@ -11,7 +11,8 @@ import Events from './Pages/Events'
 import { infinity } from "ldrs";
 import Teams from './Pages/Team'
 import PointSystem from './Pages/PointSystem'
-import Lenis from '@studio-freight/lenis'
+import Lenis from 'lenis';
+import Hacktober2024 from './Pages/Hacktober2024'
 infinity.register()
 
 function App() {
@@ -26,6 +27,11 @@ function App() {
             const element = document.getElementById(section);
             element?.scrollIntoView({ behavior: 'smooth' });
         }
+    };
+
+    // Navigate to /hacktoberfest2024 when Register button is clicked
+    const handleRegisterClick = () => {
+        navigate('/hacktoberfest2024');
     };
 
     useEffect(() => {
@@ -82,21 +88,14 @@ function App() {
 
     return (
         <Routes>
-            <Route path="/" element={
-                <Navbar
-                    onHeroClick={() => handleNavigation('hero')}
-                    onContactClick={() => handleNavigation('contact')}
-                    onQandAClick={() => handleNavigation('q&a')}
-                    onStatusClick={() => handleNavigation('stat')}
-                    onProjectsClick={() => handleNavigation('project')}
-                />
-            }>
-                <Route index element={<Home />} />
+            <Route path="/">
+                <Route index element={<Home onRegisterClick={handleRegisterClick} />} /> {/* Pass the handleRegisterClick */}
                 <Route path="leaderboard" element={<LeaderBoard />} />
                 <Route path="events/:year" element={<Events />} />
                 <Route path="profile/:username" element={<Profile />} />
                 <Route path='/team' element={<Teams />} />
                 <Route path='/point-system' element={<PointSystem />} />
+                <Route path='/hacktoberfest2024' element={<Hacktober2024 />} /> {/* New route for Hacktoberfest 2024 */}
             </Route>
             <Route path="/redirect" element={<RedirectPage />} />
         </Routes>
