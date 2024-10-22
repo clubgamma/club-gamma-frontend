@@ -26,7 +26,7 @@
     ],
     [
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/pooja_ramani.jpeg",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/pooja_ramani.png",
         "position": "AI/ML Expert",
         "name": "Pooja Ramani",
         "social": {
@@ -48,7 +48,7 @@
         }
       },
       {
-        "imageUrl": "https://clubgamma.vercel.app/assets/logo-DJb3Nfol.jpeg",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/jay_rupapara.png",
         "position": "Web Expert",
         "name": "Jay Rupapara",
         "social": {
@@ -61,25 +61,25 @@
     ],
     [
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/dhiraj_bagad.png",
-        "position": "Cloud Expert",
-        "name": "Dhuraj Bagad",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/charmi_dodiya.png",
+        "position": "Graphics Designer",
+        "name": "Charmi Dodiya",
         "social": {
-          "linkedin": "https://www.linkedin.com/in/dhiraj-bagad-398632258",
-          "instagram":"https://www.instagram.com/dhiraj_bagad",
-          "github": "https://github.com/DHIRAJ44",
-          "twitter":"https://x.com/dhiraj650484"
+          "linkedin": "https://www.linkedin.com/in/charmi-dodiya-150a99287/",
+          "instagram": "https://www.instagram.com/charmi_2285",
+          "github": "https://github.com/charmi2208",
+          "twitter": "https://x.com/charm_2208"
         }
       },
       {
-        "imageUrl": "https://clubgamma.vercel.app/assets/logo-DJb3Nfol.jpeg",
-        "position": "Mobile Expert",
-        "name": "Japan Kachhiya",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/satyam_charola.png",
+        "position": "Graphics Designer",
+        "name": "Satyam Charola",
         "social": {
-          "linkedin": "https://www.linkedin.com/in/japan-kachhiya-b15b271b4",
-          "instagram": "https://www.instagram.com/japank_07",
-          "github": "https://github.com/japan1907",
-          "twitter": "https://x.com/japank_07"
+          "linkedin": "https://www.linkedin.com/in/satyam-charola-4b30b3301/",
+          "instagram": "https://www.instagram.com/hu_satyo",
+          "github": "https://github.com/SatyamCharola",
+          "twitter": "https://x.com/SatyamCharola"
         }
       },
       {
@@ -111,69 +111,34 @@
         "position": "PR Team",
         "name": "Shrey Lakhtaria",
         "social": {
-          "linkedin": "https://www.linkedin.com/in/jalaymovaliya/",
-          "instagram": "https://www.instagram.com/club_gamma",
-          "github": "https://github.com/clubgamma",
+          "linkedin": "www.linkedin.com/in/shrey-lakhataria/",
+          "instagram": "https://www.instagram.com/shrey7120",
+          "github": "https://github.com/shreylakhtaria",
           "twitter": "https://x.com/club_gamma"
         }
       },
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/satyam_charola.png",
-        "position": "Graphics Designer",
-        "name": "Satyam Charola",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/dhiraj_bagad.png",
+        "position": "Cloud Expert",
+        "name": "Dhuraj Bagad",
         "social": {
-          "linkedin": "https://www.linkedin.com/in/satyam-charola-4b30b3301/",
-          "instagram": "https://www.instagram.com/hu_satyo",
-          "github": "https://github.com/SatyamCharola",
-          "twitter": "https://x.com/SatyamCharola"
+          "linkedin": "https://www.linkedin.com/in/dhiraj-bagad-398632258",
+          "instagram":"https://www.instagram.com/dhiraj_bagad",
+          "github": "https://github.com/DHIRAJ44",
+          "twitter":"https://x.com/dhiraj650484"
         }
       }
     ],
     [
       {
-        "imageUrl": "https://clubgamma.vercel.app/assets/logo-DJb3Nfol.jpeg",
-        "position": "Graphics Designer",
-        "name": "Charmi Dodiya",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/japan_kachhiya.png",
+        "position": "Mobile Expert",
+        "name": "Japan Kachhiya",
         "social": {
-          "linkedin": "https://www.linkedin.com/in/charmi-dodiya-150a99287/",
-          "instagram": "https://www.instagram.com/charmi_2285",
-          "github": "https://github.com/charmi2208",
-          "twitter": "https://x.com/charm_2208"
-        }
-      },
-      {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/yug_shah.png",
-        "position": "Volunteer",
-        "name": "Yug Shah",
-        "social": {
-          "linkedin": "https://www.linkedin.com/in/jalaymovaliya/",
-          "instagram": "https://www.instagram.com/club_gamma",
-          "github": "https://github.com/clubgamma",
-          "twitter": "https://x.com/club_gamma"
-        }
-      },
-      {
-        "imageUrl": "https://clubgamma.vercel.app/assets/logo-DJb3Nfol.jpeg",
-        "position": "Volunteer",
-        "name": "Krish Bhardwaj",
-        "social": {
-          "linkedin":"https://www.linkedin.com/in/krrish-bhardwaj-621945328/",
-          "instagram": "https://www.instagram.com/club_gamma",
-          "github": "https://github.com/krrish-snippets",
-          "twitter": "https://x.com/club_gamma"
-        }
-      }
-    ],
-    [
-      {
-        "imageUrl": "https://clubgamma.vercel.app/assets/logo-DJb3Nfol.jpeg",
-        "position": "Volunteer",
-        "name": "Jigar Sakhia",
-        "social": {
-          "linkedin": "https://www.linkedin.com/in/jalaymovaliya/",
-          "instagram": "https://www.instagram.com/club_gamma",
-          "github": "https://github.com/clubgamma",
-          "twitter": "https://x.com/club_gamma"
+          "linkedin": "https://www.linkedin.com/in/japan-kachhiya-b15b271b4",
+          "instagram": "https://www.instagram.com/japank_07",
+          "github": "https://github.com/japan1907",
+          "twitter": "https://x.com/japank_07"
         }
       }
     ]
