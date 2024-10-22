@@ -104,6 +104,30 @@
     ],
     [
       {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/japan_kachhiya.png",
+        "position": "Mobile Expert",
+        "name": "Japan Kachhiya",
+        "tagline": "Redefining The Boundaries Of App Development",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/japan-kachhiya-b15b271b4",
+          "instagram": "https://www.instagram.com/japank_07",
+          "github": "https://github.com/japan1907",
+          "twitter": "https://x.com/japank_07"
+        }
+      },
+      {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/dhiraj_bagad.png",
+        "position": "Cloud Expert",
+        "name": "Dhiraj Bagad",
+        "tagline": "Decoding The Cloud Mysteries & Sparking The New Ones",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/dhiraj-bagad-398632258",
+          "instagram": "https://www.instagram.com/dhiraj_bagad",
+          "github": "https://github.com/DHIRAJ44",
+          "twitter": "https://x.com/dhiraj650484"
+        }
+      },
+      {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/kaushal_bhanderi.png",
         "position": "PR Associate",
         "name": "Kaushal Bhanderi",
@@ -114,7 +138,9 @@
           "github": "https://github.com/Kaushal-11",
           "twitter": "https://x.com/kaushalba11/"
         }
-      },
+      }
+    ],
+    [
       {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/shrey_lakhtaria.png",
         "position": "PR Associate",
@@ -125,32 +151,6 @@
           "instagram": "https://www.instagram.com/shrey7120",
           "github": "https://github.com/shreylakhtaria",
           "twitter": "https://x.com/club_gamma"
-        }
-      },
-      {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/dhiraj_bagad.png",
-        "position": "Cloud Expert",
-        "name": "Dhuraj Bagad",
-        "tagline": "Decoding The Cloud Mysteries & Sparking The New Ones",
-        "social": {
-          "linkedin": "https://www.linkedin.com/in/dhiraj-bagad-398632258",
-          "instagram":"https://www.instagram.com/dhiraj_bagad",
-          "github": "https://github.com/DHIRAJ44",
-          "twitter":"https://x.com/dhiraj650484"
-        }
-      }
-    ],
-    [
-      {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/japan_kachhiya.png",
-        "position": "Mobile Expert",
-        "name": "Japan Kachhiya",
-        "tagline": "Redefining The Boundaries Of App Development",
-        "social": {
-          "linkedin": "https://www.linkedin.com/in/japan-kachhiya-b15b271b4",
-          "instagram": "https://www.instagram.com/japank_07",
-          "github": "https://github.com/japan1907",
-          "twitter": "https://x.com/japank_07"
         }
       }
     ]
