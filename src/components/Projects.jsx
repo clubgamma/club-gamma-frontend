@@ -1,21 +1,22 @@
-import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { BiRightArrowAlt } from 'react-icons/bi'
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
+import { ArrowUpRight, Users } from 'lucide-react';
 
-export default function ProjectShowcase() {
+const ProjectShowcase = () => {
   const navigate = useNavigate();
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const handleButtonClick = (url) => {
-    window.open(url, '_blank')
-  }
+    window.open(url, '_blank');
+  };
 
   const projects = [
     {
       title: "Club Gamma Website (React)",
       description: "A modern and responsive website built using Vite and React, showcasing advanced web development skills and design aesthetics.",
-      repoName: "club-gamma-frontend",
+      repoName: "hacktoberfest2024",
       buttonText: "Github",
       url: "https://github.com/clubgamma/club-gamma-frontend"
     },
@@ -70,122 +71,109 @@ export default function ProjectShowcase() {
     }
   ];
 
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.3 });
+  const [ref, inView] = useInView({ 
+    triggerOnce: false, 
+    threshold: 0.1,
+    rootMargin: '-50px'
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.12,
       },
     },
   };
 
-  const statVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  const fadeUpVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+      scale: 0.95
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: { 
+        duration: 0.5,
+        ease: "easeOut"
+      } 
+    },
   };
-  
+
   return (
-    <div className="min-h-[70vh] py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center">
-      <div className="max-w-7xl mx-auto text-center">
+    <div className="relative min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto">
         <motion.div
-          variants={statVariants}
-          animate={inView ? "visible" : "hidden"}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUpVariants}
+          className="text-center mb-16"
         >
-          <h1 className="text-4xl font-extrabold font-poppins text-white mb-12">
-            Our Projects 🧑‍💻
+          <h1 className="text-5xl font-black font-poppins text-white mb-4">
+            Our Projects
           </h1>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+            Discover our innovative solutions across different domains
+          </p>
         </motion.div>
+
         <motion.div
           ref={ref}
-          className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
           {projects.map((project, index) => (
-            <motion.div key={index} variants={statVariants}>
-              <ProjectCard
-                key={index}
-                title={project.title}
-                description={project.description}
-                repoName={project.repoName}
-                buttonText={project.buttonText}
-                onButtonClick={() => handleButtonClick(project.url)}
-                onContributorsClick={() => navigate(`/contributors/${project.repoName}`)}
-              />
+            <motion.div
+              key={index}
+              variants={fadeUpVariants}
+              onHoverStart={() => setHoveredIndex(index)}
+              onHoverEnd={() => setHoveredIndex(null)}
+              className="relative group"
+            >
+              <div className="h-full rounded-xl overflow-hidden border border-[#4e3535] shadow-lg bg-gradient-to-br from-[#2a2424] to-[#3d2c2c] transform transition-all duration-300 group-hover:scale-[1.02] group-hover:border-red-500/50">
+                <div className="p-6 h-full flex flex-col">
+                  <div className="mb-4">
+                    <span className="inline-block px-3 py-1 text-xs font-semibold text-red-400 bg-red-900/20 rounded-full mb-4">
+                      {project.category}
+                    </span>
+                    <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-red-500 transition-colors">
+                      {project.title}
+                    </h2>
+                    <p className="text-gray-300 mb-6 line-clamp-3">
+                      {project.description}
+                    </p>
+                  </div>
+                  
+                  <div className="mt-auto flex justify-between gap-4">
+                    <button
+                      onClick={() => navigate(`/contributors/${project.repoName}`)}
+                      className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#3d2c2c] hover:bg-[#4e3535] text-white transition-all duration-300 flex-1"
+                    >
+                      <Users size={18} />
+                      <span>Contributors</span>
+                    </button>
+                    <button
+                      onClick={() => handleButtonClick(project.url)}
+                      className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-500 hover:text-red-400 transition-all duration-300 flex-1"
+                    >
+                      <span>Github</span>
+                      <ArrowUpRight size={18} />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
       </div>
     </div>
   );
-}
+};
 
-function ProjectCard({ title, description, buttonText, onButtonClick,onContributorsClick }) {
-  const [isHovered, setIsHovered] = useState(false)
-  const isMobile = window.innerWidth <= 768;
-
-  return (
-    <motion.div
-      className="max-w-sm rounded-lg overflow-hidden font-dm-sans shadow-lg bg-gradient-to-br from-[#644f4f] to-[#5e4545] transition-all duration-150 ease-in-out transform"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.1 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      onClick={isMobile ? () => setIsHovered(!isHovered) : null}
-    >
-      <a onClick={isMobile && onButtonClick}>
-
-      <div className="p-6">
-        <motion.h2
-          className="text-2xl font-bold mb-2 text-white"
-          initial={{ y: 0 }}
-          animate={{ y: isHovered ? -5 : 0 }}
-          transition={{ duration: 0.3 }}
-          >
-          {title}
-        </motion.h2>
-        <motion.p
-          className="text-gray-300 mb-4"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: isHovered ? 0.7 : 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          {description}
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{
-            opacity: isHovered || isMobile ? 1 : 0,
-            y: isHovered || isMobile ? 0 : 20,
-          }}
-          transition={{ duration: 0.3 }}
-        >
-        <div className="flex justify-between">
-            <button
-              onClick={onContributorsClick}
-              className="bg-blue-500 flex hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300"
-            >
-              Contributors
-              <BiRightArrowAlt size={24} />
-            </button>
-            
-          <button
-            onClick={onButtonClick}
-            className="bg-red-500 flex hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300"
-            >
-          {buttonText}
-          <BiRightArrowAlt size={24} />
-          </button>
-        </div>
-        </motion.div>
-      </div>
-      </a>
-    </motion.div>
-  )
-}
+export default ProjectShowcase;
