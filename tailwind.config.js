@@ -14,12 +14,12 @@ module.exports = {
   		}
   	},
   	extend: {
-		fontFamily: {
-			'poppins': ['Poppins', 'sans-serif'],
-			'montserrat': ['Montserrat', 'sans-serif'],
-			'dm-sans': ['DM Sans', 'sans-serif'],
-			'edu': ['Edu AU VIC WA NT Guides', 'cursive']
-		},
+  		fontFamily: {
+  			poppins: ['Poppins', 'sans-serif'],
+  			montserrat: ['Montserrat', 'sans-serif'],
+  			'dm-sans': ['DM Sans', 'sans-serif'],
+  			edu: ['Edu AU VIC WA NT Guides', 'cursive']
+  		},
   		keyframes: {
   			'accordion-down': {
   				from: {

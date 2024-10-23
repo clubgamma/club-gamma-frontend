@@ -3,7 +3,7 @@ import lottie from '@/assets/lottie.json';
 
 const Hero = () => {
     return (
-        <div className='w-full'>
+        <div className="relative w-full min-h-screen">
             <section className="w-full flex flex-col-reverse lg:flex-row min-h-screen items-center px-4 lg:px-10 py-8">
                 <div className="w-full lg:w-[50%]  z-10 p-6 text-center lg:text-left">
                     <h1 className="text-white   text-4xl  lg:text-[3rem] font-bold font-dm-sans mb-6 leading-tight">
