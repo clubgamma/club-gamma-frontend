@@ -31,20 +31,23 @@ const ContributionBox = ({ value, date }) => {
     };
 
     return (
-        <TooltipProvider>
-            <Tooltip delayDuration={200}>
-                <TooltipTrigger>
-                    <div className={`w-6 h-6 ${getBackgroundColor(value)} rounded-sm  flex items-center justify-center`}>
-                    </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                    <p className='font-dm-sans'>{value || 'No'} contribution{value !== 1 ? 's' : ''} on {date}</p>
-                </TooltipContent>
-            </Tooltip>
-        </TooltipProvider>
+        <div className="w-6 h-6">
+            <TooltipProvider>
+                <Tooltip delayDuration={200}>
+                    <TooltipTrigger asChild>
+                        <div 
+                            className={`${getBackgroundColor(value)} w-full h-full rounded-sm cursor-pointer`}
+                            aria-label={`${value || 'No'} contribution${value !== 1 ? 's' : ''} on ${date}`}
+                        />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <p className='font-dm-sans'>{value || 'No'} contribution{value !== 1 ? 's' : ''} on {date}</p>
+                    </TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
+        </div>
     );
 };
-
 const ContributionCalendar = ({ userPRs }) => {
     const prData = userPRs.prCountPerDay;
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
