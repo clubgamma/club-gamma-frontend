@@ -42,7 +42,6 @@ const Hero = () => {
                         Register
                     </motion.button>
                 </motion.div>
-
                 <motion.div
                     className='w-full lg:w-[50%] flex justify-center'
                     initial="hidden"
