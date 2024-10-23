@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ProjectShowcase = () => {
   const navigate = useNavigate();
-  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const handleButtonClick = (url) => {
     window.open(url, '_blank');
@@ -30,7 +26,7 @@ const ProjectShowcase = () => {
     {
       title: "Internet Speed-Tester (React)",
       description: "A React-based application to test internet speed, demonstrating proficiency in frontend development and user interface design.",
-      repoName :"Internet-Speed-Tester",
+      repoName: "Internet-Speed-Tester",
       buttonText: "Github",
       url: "https://github.com/clubgamma/Internet-Speed-Tester"
     },
@@ -71,69 +67,14 @@ const ProjectShowcase = () => {
     }
   ];
 
-  const [ref, inView] = useInView({ 
-    triggerOnce: false, 
-    threshold: 0.1,
-    rootMargin: '-50px'
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-      },
-    },
-  };
-
-  const fadeUpVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-      scale: 0.95
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: { 
-        duration: 0.5,
-        ease: "easeOut"
-      } 
-    },
-  };
-
   return (
     <div className="relative min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="relative max-w-7xl mx-auto">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeUpVariants}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl font-black font-poppins text-white mb-4">
-            Our Projects
-          </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Discover our innovative solutions across different domains
-          </p>
-        </motion.div>
-
-        <motion.div
-          ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-        >
+        <h1 className="text-4xl font-extrabold font-poppins text-white mb-12">Our Projects 🧑‍💻</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={fadeUpVariants}
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
               className="relative group"
             >
               <div className="h-full rounded-xl overflow-hidden border border-[#4e3535] shadow-lg bg-gradient-to-br from-[#2a2424] to-[#3d2c2c] transform transition-all duration-300 group-hover:scale-[1.02] group-hover:border-red-500/50">
@@ -149,7 +90,7 @@ const ProjectShowcase = () => {
                       {project.description}
                     </p>
                   </div>
-                  
+
                   <div className="mt-auto flex justify-between gap-4">
                     <button
                       onClick={() => navigate(`/contributors/${project.repoName}`)}
@@ -168,9 +109,9 @@ const ProjectShowcase = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );

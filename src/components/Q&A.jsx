@@ -166,25 +166,9 @@ const QandA = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.6 });
-  const containerVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
-
   return (
-    <div className="flex flex-col w-full items-center justify-center min-h-[70vh] text-white">
-      <motion.div
-        ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        className="w-full max-w-5xl relative"
-      >
+    <div className="flex flex-col w-full items-center justify-center min-h-[70vh] text-white ">
+      <div className="w-full max-w-5xl relative">
         <button
           onClick={prevSlide}
           className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10"
@@ -216,18 +200,18 @@ const QandA = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-
         <div className="flex justify-center mt-8 space-x-2 z-10">
           {slides.map((_, index) => (
             <div
               key={index}
-              className={`w-3 h-3 rounded-full ${
-                index === currentSlide ? "bg-white" : "bg-gray-500"
-              }`}
+              className={`w-3 h-3 rounded-full ${index === currentSlide
+                ? 'bg-white'
+                : 'bg-gray-500'
+                }`}
             />
           ))}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

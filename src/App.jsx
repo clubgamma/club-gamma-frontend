@@ -11,7 +11,6 @@ import Events from './Pages/Events'
 import { infinity } from "ldrs";
 import Teams from './Pages/Team'
 import PointSystem from './Pages/PointSystem'
-import Lenis from '@studio-freight/lenis'
 import Loader from './components/Loader'
 import ContributorsPage from './Pages/Contributors'
 infinity.register()
@@ -45,27 +44,6 @@ function App() {
 
         initializeUser();
     }, [location.pathname]);
-
-    useEffect(() => {
-        const lenis = new Lenis({
-            duration: 0.1,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
-            smoothTouch: false,
-            touchMultiplier: 2,
-            wheelMultiplier: 1.2,
-        });
-      
-        const raf = (time) => {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        };
-      
-        requestAnimationFrame(raf);
-        return () => {
-            lenis.destroy();
-        };
-    }, []);
 
     if (!loaded && location.pathname !== '/redirect') {
         return (
