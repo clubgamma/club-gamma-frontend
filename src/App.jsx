@@ -13,6 +13,7 @@ import Teams from './Pages/Team'
 import PointSystem from './Pages/PointSystem'
 import Loader from './components/Loader'
 import ContributorsPage from './Pages/Contributors'
+import { SEOLayout } from './components/SEOLayout'
 infinity.register()
 
 function App() {
@@ -54,26 +55,28 @@ function App() {
     }
 
     return (
-        <Routes>
-            <Route path="/" element={
-                <Navbar
-                    onHeroClick={() => handleNavigation('hero')}
-                    onContactClick={() => handleNavigation('contact')}
-                    onQandAClick={() => handleNavigation('q&a')}
-                    onStatusClick={() => handleNavigation('stat')}
-                    onProjectsClick={() => handleNavigation('project')}
-                />
-            }>
-                <Route index element={<Home />} />
-                <Route path="/contributors/:repoName" element={<ContributorsPage />} />
-                <Route path="leaderboard" element={<LeaderBoard />} />
-                <Route path="events/:year" element={<Events />} />
-                <Route path="profile/:username" element={<Profile />} />
-                <Route path='/team' element={<Teams />} />
-                <Route path='/point-system' element={<PointSystem />} />
-            </Route>
-            <Route path="/redirect" element={<RedirectPage />} />
-        </Routes>
+        <SEOLayout >
+            <Routes>
+                <Route path="/" element={
+                    <Navbar
+                        onHeroClick={() => handleNavigation('hero')}
+                        onContactClick={() => handleNavigation('contact')}
+                        onQandAClick={() => handleNavigation('q&a')}
+                        onStatusClick={() => handleNavigation('stat')}
+                        onProjectsClick={() => handleNavigation('project')}
+                    />
+                }>
+                    <Route index element={<Home />} />
+                    <Route path="/contributors/:repoName" element={<ContributorsPage />} />
+                    <Route path="leaderboard" element={<LeaderBoard />} />
+                    <Route path="events/:year" element={<Events />} />
+                    <Route path="profile/:username" element={<Profile />} />
+                    <Route path='/team' element={<Teams />} />
+                    <Route path='/point-system' element={<PointSystem />} />
+                </Route>
+                <Route path="/redirect" element={<RedirectPage />} />
+                </Routes>
+        </SEOLayout>
     )
 }
 

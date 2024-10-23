@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TeamCard from "@/components/TeamCard";
 import Loader from "@/components/Loader";
+import { SEO } from "@/components/SEO";
 
 const Team = () => {
     const [teamData, setTeamData] = useState([]);
@@ -46,45 +47,52 @@ const Team = () => {
     }
 
     return (
-        <section className="bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] pt-24 min-h-screen">
-            <div className="container mx-auto px-4 pb-24">
-                <div className="relative py-16 text-center">
-                    {/* Decorative background elements */}
-                    <div className="absolute top-0 right-1/4 w-64 h-64 bg-gradient-to-br from-red-500/10 to-transparent rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-gradient-to-tr from-red-600/10 to-transparent rounded-full blur-3xl" />
+        <>
+            <SEO title="Team" pathname="/team"
+                description="Meet the talented team behind Club Gamma. Discover the people driving our mission and making things happen!"
+                keywords="Club Gamma, team, developers, open source, contributors, leadership, tech team"
+            />
+ 
+            <section className="bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] pt-24 min-h-screen">
+                <div className="container mx-auto px-4 pb-24">
+                    <div className="relative py-16 text-center">
+                        {/* Decorative background elements */}
+                        <div className="absolute top-0 right-1/4 w-64 h-64 bg-gradient-to-br from-red-500/10 to-transparent rounded-full blur-3xl" />
+                        <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-gradient-to-tr from-red-600/10 to-transparent rounded-full blur-3xl" />
 
-                    <div className="relative space-y-4">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-                            Meet Team{" "}
-                            <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent hover:from-red-400 hover:to-red-500 transition-colors duration-300">
-                                Gamma
-                            </span>
-                        </h1>
+                        <div className="relative space-y-4">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+                                Meet Team{" "}
+                                <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent hover:from-red-400 hover:to-red-500 transition-colors duration-300">
+                                    Gamma
+                                </span>
+                            </h1>
 
-                        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-                            These are the fine folks behind Club Gamma!
-                        </p>
-                    </div>
-                </div>
-
-                {teamData.map((group, index) => (
-                    <div key={index} className="mb-16 last:mb-0">
-                        <div className={`grid gap-8 w-full ${group.length === 1
-                                ? "grid-cols-1 max-w-md mx-auto"
-                                : group.length === 2
-                                    ? "grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto"
-                                    : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
-                            }`}>
-                            {group.map((member) => (
-                                <div key={member.name} className="w-full max-w-sm mx-auto">
-                                    <TeamCard member={member} />
-                                </div>
-                            ))}
+                            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+                                These are the fine folks behind Club Gamma!
+                            </p>
                         </div>
                     </div>
-                ))}
-            </div>
-        </section>
+
+                    {teamData.map((group, index) => (
+                        <div key={index} className="mb-16 last:mb-0">
+                            <div className={`grid gap-8 w-full ${group.length === 1
+                                    ? "grid-cols-1 max-w-md mx-auto"
+                                    : group.length === 2
+                                        ? "grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto"
+                                        : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
+                                }`}>
+                                {group.map((member) => (
+                                    <div key={member.name} className="w-full max-w-sm mx-auto">
+                                        <TeamCard member={member} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </>
     );
 };
 
