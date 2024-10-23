@@ -88,7 +88,7 @@ const ProjectShowcase = () => {
               key={index}
               className="relative group p-3"
             >
-              <div className="h-full rounded-xl overflow-hidden border border-[#4e3535] shadow-lg bg-gradient-to-br from-[#2a2424] to-[#3d2c2c] transform transition-all duration-300 group-hover:scale-[1.02] group-hover:border-red-500/50">
+              <div className="h-full rounded-xl font-dm-sans overflow-hidden border border-[#4e3535] shadow-lg bg-gradient-to-br from-[#2a2424] to-[#3d2c2c] transform transition-all duration-300 group-hover:scale-[1.02] group-hover:border-red-500/50">
                 <div className="p-6 h-full flex flex-col">
                   <div className="mb-4">
                     <span className="inline-block px-3 py-1 text-xs font-semibold text-red-400 bg-red-900/20 rounded-full mb-4">
