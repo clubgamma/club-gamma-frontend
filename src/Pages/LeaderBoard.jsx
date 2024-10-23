@@ -36,6 +36,7 @@ import { Slider } from "@/components/ui/slider";
 import Global from "@/Global";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "@/components/Loader";
+import { SEO } from "@/components/SEO";
 
 const LeaderBoard = () => {
   const [contributors, setContributors] = useState([]);
@@ -216,6 +217,13 @@ const LeaderBoard = () => {
   };
 
   return (
+    <>
+      <SEO
+        pathname="/leaderboard"
+        title={"Leaderboard"}
+        description="Track and explore Club Gamma's top contributors on our leaderboard. View rankings, points, and pull request statistics for our open-source community."
+        keywords="Club Gamma, Club Gamma leaderboard, open source contributions, GitHub contributors, developer achievements, contribution metrics, pull request tracking, developer badges, Club Gamma community, contribution points, open source community"
+      />
     <div className="min-h-screen font-dm-sans bg-[#1C1C1C] text-white pt-16 md:pt-28">
       <main className="container px-4 py-8 mx-auto">
         {currentUser && (
@@ -543,7 +551,8 @@ const LeaderBoard = () => {
           </div>
         </div>
       </main>
-    </div>
+      </div>
+      </>
   );
 };
 

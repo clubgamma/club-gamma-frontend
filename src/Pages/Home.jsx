@@ -6,6 +6,7 @@ import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import QandA from '@/components/Q&A';
 import Stat from '@/components/Stat';
+import { SEO } from '@/components/SEO';
 
 const Home = () => {
     const location = useLocation();
@@ -22,6 +23,8 @@ const Home = () => {
     }, [location]);
 
     return (
+        <>
+        <SEO />
         <div className='bg-gradient-to-br overflow-x-hidden from-[#1e1e1e] to-[#4e3535]'>
             <div id="hero" className='pt-4'>
                 <Hero/>
@@ -39,7 +42,8 @@ const Home = () => {
                 <ContactUs/>
             </div>
             <Footer/>
-        </div>
+            </div>
+        </>
     );
 };
 
