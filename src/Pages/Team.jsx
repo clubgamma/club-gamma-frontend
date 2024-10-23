@@ -30,17 +30,16 @@ const Team = () => {
     }, []);
 
     if (isLoading) {
-        console.log("oienroen")
         return (
-            <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]">
-                <Loader size='80'/>
+            <div className="flex flex-col items-center justify-center h-screen">
+                <Loader size='80' />
             </div>
         );
     }
 
     if (error) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]">
+            <div className="min-h-screen flex items-center justify-center">
                 <div className="text-white">{error}</div>
             </div>
         );
@@ -52,8 +51,8 @@ const Team = () => {
                 description="Meet the talented team behind Club Gamma. Discover the people driving our mission and making things happen!"
                 keywords="Club Gamma, team, developers, open source, contributors, leadership, tech team"
             />
- 
-            <section className="bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] pt-24 min-h-screen">
+
+            <section className="pt-24 min-h-screen">
                 <div className="container mx-auto px-4 pb-24">
                     <div className="relative py-16 text-center">
                         {/* Decorative background elements */}
@@ -77,10 +76,10 @@ const Team = () => {
                     {teamData.map((group, index) => (
                         <div key={index} className="mb-16 last:mb-0">
                             <div className={`grid gap-8 w-full ${group.length === 1
-                                    ? "grid-cols-1 max-w-md mx-auto"
-                                    : group.length === 2
-                                        ? "grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto"
-                                        : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
+                                ? "grid-cols-1 max-w-md mx-auto"
+                                : group.length === 2
+                                    ? "grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto"
+                                    : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
                                 }`}>
                                 {group.map((member) => (
                                     <div key={member.name} className="w-full max-w-sm mx-auto">

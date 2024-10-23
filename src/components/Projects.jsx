@@ -68,14 +68,25 @@ const ProjectShowcase = () => {
   ];
 
   return (
-    <div className="relative min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+    <div className="relative min-h-screen">
       <div className="relative max-w-7xl mx-auto">
-        <h1 className="text-4xl font-extrabold font-poppins text-white mb-12">Our Projects 🧑‍💻</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-8">
+        <div className="relative space-y-4 mb-12 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white">
+            Our{" "}
+            <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent hover:from-red-400 hover:to-red-500 transition-colors duration-300">
+              Projects
+            </span>{" "}
+            🧑‍💻
+          </h1>
+          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+            Explore our innovative projects and contributions!
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-3">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="relative group"
+              className="relative group p-3"
             >
               <div className="h-full rounded-xl overflow-hidden border border-[#4e3535] shadow-lg bg-gradient-to-br from-[#2a2424] to-[#3d2c2c] transform transition-all duration-300 group-hover:scale-[1.02] group-hover:border-red-500/50">
                 <div className="p-6 h-full flex flex-col">
