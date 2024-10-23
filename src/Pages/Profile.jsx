@@ -32,7 +32,7 @@ const ContributionBox = ({ value, date }) => {
 
     return (
         <TooltipProvider>
-            <Tooltip delayDuration={0}>
+            <Tooltip delayDuration={200}>
                 <TooltipTrigger>
                     <div className={`w-6 h-6 ${getBackgroundColor(value)} rounded-sm  flex items-center justify-center`}>
                     </div>
