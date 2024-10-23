@@ -4,6 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useLocation, useNavigate } from "react-router-dom"
+import { SEO } from "@/components/SEO"
 
 const pointSystem = [
   { type: "Documentation ", points: 1 },
@@ -45,6 +46,13 @@ export default function PointSystem({onProjectClick}) {
   };
 
   return (
+    <>
+      <SEO
+        title="Points System"
+        pathname="/point-system"
+        description="Explore Club Gamma's Hacktoberfest point system and badge levels. Learn how to earn points through various contribution types, from documentation to advanced development."
+        keywords="Hacktoberfest, open source, point system, contribution, badges, Club Gamma, GitHub, bug fixes, documentation, coding"
+      />
     <div className="min-h-screen bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] text-white font-sans">
       <main className="container px-4 py-12 pt-20 mx-15 auto">
         <Button
@@ -175,6 +183,7 @@ export default function PointSystem({onProjectClick}) {
           </Button>
         </div>
       </main>
-    </div>
+      </div>
+      </>
   )
 }

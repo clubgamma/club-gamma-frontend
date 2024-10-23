@@ -130,8 +130,10 @@ const Navbar = () => {
                         <hr className="border-gray-700" />
                         {Global.user ? (
                             <>
-                                <Link to={`/profile/${Global.user.githubId}`} className="block hover:text-red-500">Profile</Link>
-                                <button onClick={handleLogout} className="block w-full text-center hover:text-red-500">Logout</button>
+                                <Link to={`/profile/${Global.user.githubId}`} className="text-white block hover:text-red-500 transition-colors duration-200" onClick={() => setSidebarOpen(false)}>
+                                    Profile
+                                </Link>
+                                <button onClick={handleLogout} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Logout</button>
                             </>
                         ) : (
                             <Button onClick={handleGithubLogin} className="block w-full bg-red-500 hover:bg-red-600">Continue with GitHub</Button>
