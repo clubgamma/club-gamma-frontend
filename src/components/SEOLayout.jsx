@@ -64,10 +64,17 @@ export const SEOLayout = ({ children }) => {
 
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={defaultMeta.siteName} />
+        <meta property="og:image" content={`${defaultMeta.baseUrl}/og_image.png`} />
+        <meta property="og:image:secure_url" content={`${defaultMeta.baseUrl}/og_image.png`} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Club Gamma" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@club_gamma" />
         <meta name="twitter:creator" content="@club_gamma" />
+        <meta name="twitter:image" content={`${defaultMeta.baseUrl}/og_image.png`} />
 
         {/* Schema.org JSON-LD */}
         <script type="application/ld+json">{JSON.stringify(schema)}</script>

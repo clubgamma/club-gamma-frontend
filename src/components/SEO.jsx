@@ -14,15 +14,14 @@ export const SEO = ({
   title,
   description = defaultMeta.description,
   pathname = "",
-  imageUrl = "/og_image.png",
   noindex = false,
   keywords = defaultMeta.keywords,
 }) => {
   const seo = {
     title: title ? `${title} | ${defaultMeta.siteName}` : defaultMeta.siteName,
     description: description,
-    url: `https://clubgamma.vercel.app${pathname}`,
-    image: `https://clubgamma.vercel.app${imageUrl}`,
+    url: `${defaultMeta.baseUrl}${pathname}`,
+    image: `${defaultMeta.baseUrl}/og_image.png`,
   };
 
   return (
@@ -41,6 +40,7 @@ export const SEO = ({
         <meta property="og:title" content={seo.title} />
         <meta property="og:description" content={seo.description} />
         <meta property="og:image" content={seo.image} />
+        <meta property="og:image:secure_url" content={seo.image} />
 
         {/* Twitter Card */}
         <meta name="twitter:title" content={seo.title} />
