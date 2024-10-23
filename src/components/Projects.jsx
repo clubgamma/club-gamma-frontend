@@ -72,10 +72,11 @@ const ProjectShowcase = () => {
   ];
 
   const [ref, inView] = useInView({ 
-    triggerOnce: false, 
+    triggerOnce: true, 
     threshold: 0.1,
-    rootMargin: '-50px'
+    rootMargin: '0px 0px -50px 0px', 
   });
+  
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -114,9 +115,9 @@ const ProjectShowcase = () => {
           className="text-center mb-16"
         >
           <h1 className="text-5xl font-black font-poppins text-white mb-4">
-            Our Projects
+            Our Projects 🧑‍💻
           </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 font-montserrat text-lg max-w-2xl mx-auto">
             Discover our innovative solutions across different domains
           </p>
         </motion.div>
@@ -136,7 +137,7 @@ const ProjectShowcase = () => {
               onHoverEnd={() => setHoveredIndex(null)}
               className="relative group"
             >
-              <div className="h-full rounded-xl overflow-hidden border border-[#4e3535] shadow-lg bg-gradient-to-br from-[#2a2424] to-[#3d2c2c] transform transition-all duration-300 group-hover:scale-[1.02] group-hover:border-red-500/50">
+              <div className="h-full rounded-xl font-dm-sans overflow-hidden border border-[#4e3535] shadow-lg bg-gradient-to-br from-[#2a2424] to-[#3d2c2c] transform transition-all duration-300 group-hover:scale-[1.02] group-hover:border-red-500/50">
                 <div className="p-6 h-full flex flex-col">
                   <div className="mb-4">
                     <span className="inline-block px-3 py-1 text-xs font-semibold text-red-400 bg-red-900/20 rounded-full mb-4">

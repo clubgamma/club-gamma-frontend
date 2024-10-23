@@ -113,7 +113,7 @@ export default function GitHubProfile() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] p-4 sm:p-8 pt-24 sm:pt-32">
+        <div className="min-h-screen bg-gradient-to-br font-dm-sans from-[#1e1e1e] to-[#4e3535] p-4 sm:p-8 pt-24 sm:pt-32">
             <div className="max-w-4xl mx-auto">
                 <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535] mb-8">
                     <CardContent className="p-6">

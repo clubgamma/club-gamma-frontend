@@ -43,7 +43,7 @@ const Stat = () => {
   const [stats, setStats] = useState([]);
   const [error, setError] = useState("");
 
-  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.4 });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.4 });
 
   useEffect(() => {
     const fetchStats = async () => {

@@ -166,7 +166,7 @@ const QandA = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.6 });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.6 });
   const containerVariants = {
     hidden: { opacity: 0, y: -50 },
     visible: {

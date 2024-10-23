@@ -20,7 +20,7 @@ const statVariants = {
 };
 
 const ContactUs = () => {
-  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.4 });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.4 });
 
   return (
     <div className="flex flex-col items-center min-h-[40vh] p-4">

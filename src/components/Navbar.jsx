@@ -214,7 +214,7 @@ const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onPr
             </nav>
 
             <motion.div
-                className="fixed inset-y-0 left-0 font-dm-sans w-64 bg-gray-900 z-50 lg:hidden overflow-y-auto"
+                className="fixed inset-y-0 left-0 font-dm-sans w-64 bg-[#181717] z-50 lg:hidden overflow-y-auto"
                 variants={sidebarVariants}
                 initial="closed"
                 animate={sidebarOpen ? "open" : "closed"}
@@ -264,10 +264,10 @@ const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onPr
                         <Link to="/team" onClick={() => setSidebarOpen(false)} className="text-white block hover:text-red-500 transition-colors duration-200">Team</Link>
 
 
-                        <hr className="border-gray-700" />
+                        <hr className="border-gray-700"/>
                         {Global.user ? (
                             <>
-                                <Link to={`/profile/${Global.user.githubId}`} className="text-white block hover:text-red-500 transition-colors duration-200">
+                                <Link to={`/profile/${Global.user.githubId}`} onClick={() => setSidebarOpen(false)} className="text-white block hover:text-red-500 transition-colors duration-200">
                                     Profile
                                 </Link>
                                 <button onClick={handleLogout} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Logout</button>
