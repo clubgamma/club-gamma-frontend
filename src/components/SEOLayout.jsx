@@ -93,4 +93,3 @@ export const SEOLayout = ({ children }) => {
   );
 };
 
-export default Layout;
