@@ -36,7 +36,7 @@ import { Slider } from "@/components/ui/slider";
 import Global from "@/Global";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "@/components/Loader";
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 
 const LeaderBoard = () => {
   const [contributors, setContributors] = useState([]);

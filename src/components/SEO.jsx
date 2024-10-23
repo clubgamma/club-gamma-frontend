@@ -1,7 +1,6 @@
-import React from "react";
-import { Helmet } from "react-helmet";
+import  { useEffect } from "react";
 
-export const defaultMeta = {
+const defaultMeta = {
   siteName: "Club Gamma",
   baseUrl: "https://clubgamma.vercel.app",
   description:
@@ -10,7 +9,7 @@ export const defaultMeta = {
     "Club Gamma, tech community, coding, programming, technology, learning, developer community, tech events, skill development",
 };
 
-export const SEO = ({
+const SEO = ({
   title,
   description = defaultMeta.description,
   pathname = "",
@@ -24,35 +23,53 @@ export const SEO = ({
     image: `${defaultMeta.baseUrl}/og_image.png`,
   };
 
-  return (
-    <>
-      <Helmet>
-        {/* Basic Meta Tags */}
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-        <meta name="keywords" content={keywords} />
+  // Update meta tags at runtime
+  useEffect(() => {
+    // Update title
+    document.title = seo.title;
 
-        {/* Canonical URL */}
-        <link rel="canonical" href={seo.url} />
+    // Update meta tags
+    updateMetaTag("description", seo.description);
+    updateMetaTag("keywords", keywords);
 
-        {/* Open Graph */}
-        <meta property="og:url" content={seo.url} />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.description} />
-        <meta property="og:image" content={seo.image} />
-        <meta property="og:image:secure_url" content={seo.image} />
+    // Update Open Graph tags
+    updateMetaTag("og:title", seo.title, "property");
+    updateMetaTag("og:description", seo.description, "property");
+    updateMetaTag("og:url", seo.url, "property");
+    updateMetaTag("og:image", seo.image, "property");
+    updateMetaTag("og:image:secure_url", seo.image, "property");
 
-        {/* Twitter Card */}
-        <meta name="twitter:title" content={seo.title} />
-        <meta name="twitter:description" content={seo.description} />
-        <meta name="twitter:image" content={seo.image} />
+    // Update Twitter Card tags
+    updateMetaTag("twitter:title", seo.title);
+    updateMetaTag("twitter:description", seo.description);
+    updateMetaTag("twitter:image", seo.image);
 
-        {/* Robots */}
-        <meta
-          name="robots"
-          content={noindex ? "noindex, nofollow" : "index, follow"}
-        />
-      </Helmet>
-    </>
-  );
+    // Update robots meta tag
+    updateMetaTag("robots", noindex ? "noindex, nofollow" : "index, follow");
+
+    // Update canonical link
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', seo.url);
+  }, [title, description, pathname, noindex, keywords, seo]);
+
+  return null;
 };
+
+const updateMetaTag = (name, content, attributeName = "name") => {
+  let meta = document.querySelector(`meta[${attributeName}="${name}"]`);
+  
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute(attributeName, name);
+    document.head.appendChild(meta);
+  }
+  
+  meta.setAttribute('content', content);
+};
+
+export default SEO;

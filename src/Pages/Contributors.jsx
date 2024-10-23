@@ -12,7 +12,7 @@ import {
   Github
 } from 'lucide-react';
 import Global from '@/Global';
-import { SEO } from '@/components/SEO';
+import SEO from '@/components/SEO';
 
 const ContributorsPage = () => {
   const { repoName } = useParams();

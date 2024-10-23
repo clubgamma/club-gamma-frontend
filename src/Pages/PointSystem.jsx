@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useLocation, useNavigate } from "react-router-dom"
-import { SEO } from "@/components/SEO"
+import SEO from "@/components/SEO"
 
 const pointSystem = [
   { type: "Documentation ", points: 1 },

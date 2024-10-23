@@ -6,7 +6,7 @@ import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import QandA from '@/components/Q&A';
 import Stat from '@/components/Stat';
-import { SEO } from '@/components/SEO';
+import SEO from '@/components/SEO';
 
 const Home = () => {
     const location = useLocation();

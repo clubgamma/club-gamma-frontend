@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
-import { defaultMeta } from "./SEO";
 import { injectSpeedInsights } from "@vercel/speed-insights";
 import { inject } from "@vercel/analytics";
 import links from "@/links";
+
+const defaultMeta = {
+  siteName: "Club Gamma",
+  baseUrl: "https://clubgamma.vercel.app",
+  description:
+    "Club Gamma is a dynamic tech community empowering students through open source, hands-on projects, and collaborative learning. Join us to grow your coding skills.",
+  keywords:
+    "Club Gamma, tech community, coding, programming, technology, learning, developer community, tech events, skill development",
+};
 
 export const SEOLayout = ({ children }) => {
   useEffect(() => {
@@ -52,51 +59,37 @@ export const SEOLayout = ({ children }) => {
     ],
   };
 
-  return (
-    <>
-      <Helmet>
-        <html lang="en" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-        />
-        <link rel="icon" href="/gamma.svg" type="image/x-icon" />
+  useEffect(() => {
+    // Add Schema.org JSON-LD
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.text = JSON.stringify(schema);
+    document.head.appendChild(scriptTag);
 
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content={defaultMeta.siteName} />
-        <meta property="og:image" content={`${defaultMeta.baseUrl}/og_image.png`} />
-        <meta property="og:image:secure_url" content={`${defaultMeta.baseUrl}/og_image.png`} />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Club Gamma" />
+    // Google Analytics Setup
+    const gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = `https://www.googletagmanager.com/gtag/js?id=G-22NV2DWVYG`;
+    document.head.appendChild(gaScript);
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@club_gamma" />
-        <meta name="twitter:creator" content="@club_gamma" />
-        <meta name="twitter:image" content={`${defaultMeta.baseUrl}/og_image.png`} />
+    const gaConfigScript = document.createElement('script');
+    gaConfigScript.text = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22NV2DWVYG', {
+        page_path: window.location.pathname,
+      });
+    `;
+    document.head.appendChild(gaConfigScript);
 
-        {/* Schema.org JSON-LD */}
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      </Helmet>
+    // Cleanup
+    return () => {
+      document.head.removeChild(scriptTag);
+      document.head.removeChild(gaScript);
+      document.head.removeChild(gaConfigScript);
+    };
+  }, []);
 
-      {children}
-
-      {/* Google Analytics Script */}
-      <script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=G-22NV2DWVYG`}
-      ></script>
-      <script>
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-22NV2DWVYG', {
-          page_path: window.location.pathname,
-        `}
-      </script>
-    </>
-  );
+  return <>{children}</>;
 };
-

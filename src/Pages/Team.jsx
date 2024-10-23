@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import TeamCard from "@/components/TeamCard";
 import Loader from "@/components/Loader";
-import { SEO } from "@/components/SEO";
+import SEO from "@/components/SEO";
 
 const Team = () => {
     const [teamData, setTeamData] = useState([]);

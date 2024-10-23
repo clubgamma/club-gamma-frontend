@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import EventCard from '@/components/EventCard';
 import Loader from '@/components/Loader';
-import { SEO } from '@/components/SEO';
+import SEO  from '@/components/SEO';
 
 const Events = () => {
   const { year } = useParams();
