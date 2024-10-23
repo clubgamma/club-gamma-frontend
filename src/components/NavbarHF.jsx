@@ -1,24 +1,17 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import logo from '@/assets/logo.jpeg';
-import Global from '@/Global';
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { User, ChevronDown } from 'lucide-react';
-import { RiMenu3Fill } from "react-icons/ri";
+import Global from '@/Global';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronDown, User } from 'lucide-react';
+import { useState } from 'react';
 import { IoMdClose } from "react-icons/io";
-import { Link, Outlet } from 'react-router-dom';
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
+import { RiMenu3Fill } from "react-icons/ri";
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 
-const NavbarHF = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onProjectsClick, onLeaderboardClick }) => {
+const NavbarHF = () => {
+    const navigate = useNavigate();
 
     const handleGithubLogin = () => {
         // window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/github`;
@@ -54,11 +47,7 @@ const NavbarHF = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, on
             opacity: 1,
             transition: {
                 height: {
-                    duration: 0.3,
-                },
-                opacity: {
-                    duration: 0.25,
-                    delay: 0.1,
+                    duration: 0.05,
                 },
             },
         },
@@ -67,13 +56,19 @@ const NavbarHF = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, on
             opacity: 0,
             transition: {
                 height: {
-                    duration: 0.3,
-                },
-                opacity: {
-                    duration: 0.25,
+                    duration: 0.05,
                 },
             },
         },
+    };
+
+    const handleNavigation = (section) => {
+        if (location.pathname !== '/') {
+            navigate('/hacktoberfest2024/', { state: { scrollTo: section } });
+        } else {
+            const element = document.getElementById(section);
+            element?.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     return (
@@ -91,10 +86,10 @@ const NavbarHF = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, on
 
                 {/* Navbar Links (visible on larger screens) */}
                 <div className="hidden lg:flex items-center gap-10 font-montserrat text-[1rem]">
-                    <button onClick={onHeroClick}
+                    <button onClick={() => handleNavigation('hero')}
                         className="text-white hover:text-red-500 transition-all duration-300">Home
                     </button>
-                    <NavigationMenu>
+                    {/* <NavigationMenu>
                         <NavigationMenuList >
                             <NavigationMenuItem>
                                 <NavigationMenuTrigger className="bg-transparent text-[16px]  text-white hover:text-red-500  transition-all duration-300">
@@ -126,13 +121,21 @@ const NavbarHF = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, on
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
                         </NavigationMenuList>
-                    </NavigationMenu>
-
-
-                    <Link to="/leaderboard"
+                    </NavigationMenu> */}
+                    <Link to="leaderboard"
                         className="text-white hover:text-red-500 transition-all duration-300">Leaderboard
                     </Link> {/* Add this line */}
-                    <NavigationMenu>
+                    <button onClick={() => handleNavigation('q&a')}
+                        className="text-white hover:text-red-500 transition-all duration-300">Q&A
+                    </button>
+                    <button onClick={() => handleNavigation('stats')}
+                        className="text-white hover:text-red-500 transition-all duration-300">Stats
+                    </button>
+                    <button onClick={() => handleNavigation('projects')}
+                        className="text-white hover:text-red-500 transition-all duration-300">Projects
+                    </button>
+
+                    {/* <NavigationMenu>
                         <NavigationMenuList >
                             <NavigationMenuItem>
                                 <NavigationMenuTrigger className="bg-transparent text-[16px] text-white hover:text-red-500  transition-all duration-300">
@@ -168,10 +171,10 @@ const NavbarHF = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, on
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
                         </NavigationMenuList>
-                    </NavigationMenu>
-                    <Link to='/team' className='text-white hover:text-red-500 transition-all duration-300'>
+                    </NavigationMenu> */}
+                    {/* <Link to='/team' className='text-white hover:text-red-500 transition-all duration-300'>
                         Team
-                    </Link>
+                    </Link> */}
 
                 </div>
 
@@ -224,10 +227,10 @@ const NavbarHF = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, on
                     <img className="w-10 h-10 rounded-full mb-4" src={logo} alt="Logo" />
                     <nav className="space-y-6">
                         <Link to="/" onClick={() => setSidebarOpen(false)} className="text-white block hover:text-red-500 transition-colors duration-200">Home</Link>
-                        <button onClick={() => { onQandAClick(); setSidebarOpen(false) }} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Q&A</button>
-                        <button onClick={() => { onStatusClick(); setSidebarOpen(false) }} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Stats</button>
-                        <button onClick={() => { onProjectsClick(); setSidebarOpen(false) }} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Projects</button>
-                        <button onClick={() => { onContactClick(); setSidebarOpen(false) }} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Contact</button>
+                        <button onClick={() => { handleNavigation('q&a'); setSidebarOpen(false) }} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Q&A</button>
+                        <button onClick={() => { handleNavigation('stats'); setSidebarOpen(false) }} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Stats</button>
+                        <button onClick={() => { handleNavigation('projects'); setSidebarOpen(false) }} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Projects</button>
+                        <button onClick={() => { handleNavigation('contact'); setSidebarOpen(false) }} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Contact</button>
                         <Link to="/leaderboard" onClick={() => setSidebarOpen(false)} className="text-white block hover:text-red-500 transition-colors duration-200">Leaderboard</Link>
 
                         <div className="relative">
@@ -267,7 +270,7 @@ const NavbarHF = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, on
                         <hr className="border-gray-700" />
                         {Global.user ? (
                             <>
-                                <Link to={`/profile/${Global.user.githubId}`} className="text-white block hover:text-red-500 transition-colors duration-200">
+                                <Link to={`/profile/${Global.user.githubId}`} className="text-white block hover:text-red-500 transition-colors duration-200" onClick={() => setSidebarOpen(false)}>
                                     Profile
                                 </Link>
                                 <button onClick={handleLogout} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Logout</button>

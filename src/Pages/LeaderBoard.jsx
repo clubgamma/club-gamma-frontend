@@ -153,7 +153,7 @@ const LeaderBoard = () => {
 
   const navigate = useNavigate();
   const handlePointSystemClick = () => {
-    navigate("/point-system");
+    navigate("/hacktoberfest2024/point-system");
   };
 
   const renderPaginationNumbers = () => {

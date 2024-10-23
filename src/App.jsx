@@ -15,6 +15,7 @@ import Hacktober2024 from './Pages/Hacktober2024'
 import Loader from './components/Loader'
 import ContributorsPage from './Pages/Contributors'
 import { SEOLayout } from './components/SEOLayout'
+import NavbarHF from './components/NavbarHF'
 infinity.register()
 
 function App() {
@@ -64,16 +65,8 @@ function App() {
         <SEOLayout >
             <div className="bg-gradient-to-br overflow-hidden from-[#1e1e1e] to-[#4e3535] min-h-screen">
                 <Routes>
-                    <Route path="/" element={
-                        <Navbar
-                            onHeroClick={() => handleNavigation('hero')}
-                            onContactClick={() => handleNavigation('contact')}
-                            onQandAClick={() => handleNavigation('q&a')}
-                            onStatusClick={() => handleNavigation('stat')}
-                            onProjectsClick={() => handleNavigation('project')}
-                        />
-                    }>
-                        <Route index element={<Home />} />
+                    <Route path="/">
+                        <Route index element={<Home onRegisterClick={handleRegisterClick} />} />
                         <Route path="/contributors/:repoName" element={<ContributorsPage />} />
                         <Route path="leaderboard" element={<LeaderBoard />} />
                         <Route path="events/:year" element={<Events />} />
@@ -81,6 +74,13 @@ function App() {
                         <Route path='/team' element={<Teams />} />
                         <Route path='/point-system' element={<PointSystem />} />
                     </Route>
+
+                    <Route path='/hacktoberfest2024' element={<NavbarHF/>}>
+                        <Route index element={<Hacktober2024/>}/>
+                        <Route path='leaderboard' element={<LeaderBoard/>}/>
+                        <Route path='point-system' element={<PointSystem />} />
+                    </Route>
+
                     <Route path="/redirect" element={<RedirectPage />} />
                 </Routes>
             </div>

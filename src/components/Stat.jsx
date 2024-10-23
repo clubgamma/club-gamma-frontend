@@ -23,7 +23,7 @@ const CountUp = ({ end, duration = 2000 }) => {
   return <>{count}</>;
 };
 
-const Stat = () => {
+const Stats = () => {
   const [stats, setStats] = useState([]);
   const [error, setError] = useState("");
 
@@ -117,4 +117,4 @@ const Stat = () => {
   );
 };
 
-export default Stat;
+export default Stats;

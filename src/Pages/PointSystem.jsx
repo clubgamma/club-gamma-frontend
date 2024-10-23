@@ -23,7 +23,7 @@ const badgeLevels = [
   { level: "Master", points: 40, nextLevel: null, color: "bg-yellow-500" },
 ]
 
-export default function PointSystem({onProjectClick}) { 
+export default function PointSystem() { 
   const navigate = useNavigate();
   const location = useLocation();
 

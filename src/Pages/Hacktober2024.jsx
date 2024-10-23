@@ -5,9 +5,7 @@ import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import QandA from '@/components/Q&A';
-import Stat from '@/components/Stat';
-// import Navbar from '@/components/Navbar';
-import NavbarHF from '@/components/NavbarHF';
+import Stats from '@/components/Stat';
 
 const Hacktober2024 = () => {
     const location = useLocation();
@@ -25,23 +23,22 @@ const Hacktober2024 = () => {
 
     return (
         <div className='bg-gradient-to-br overflow-x-hidden from-[#1e1e1e] to-[#4e3535]'>
-            <NavbarHF/>
             <div id="hero" className='pt-4'>
-                <Hero/>
+                <Hero />
+            </div>
+            <div id="stats" className='pt-20'>
+                <Stats />
+            </div>
+            <div id="projects" className='pt-20'>
+                <Projects />
             </div>
             <div id="q&a" className='pt-20'>
-                <QandA/>
-            </div>
-            <div id="stat" className='pt-20'>
-                <Stat/>
-            </div>
-            <div id="project" className='pt-20'>
-                <Projects/>
+                <QandA />
             </div>
             <div id="contact" className='pt-20'>
-                <ContactUs/>
+                <ContactUs />
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 };

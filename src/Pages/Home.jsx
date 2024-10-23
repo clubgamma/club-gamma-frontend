@@ -62,8 +62,6 @@ Card.propTypes = {
 };
 
 const Home = () => {
-    console.log("owinegoinogniw");
-    
     const [openIndex, setOpenIndex] = useState(null);
 
     const faqs = [
@@ -107,6 +105,9 @@ const Home = () => {
                         <ScrollLink to="home" smooth={true} duration={800} offset={-70} className="text-black transition-all duration-300 cursor-pointer hover:text-red-500">
                             Home
                         </ScrollLink>
+                        <Link to="/hacktoberfest2024" className="text-black transition-all duration-300 cursor-pointer hover:text-red-500">
+                            Hacktoberfest
+                        </Link>
                         <ScrollLink to="about" smooth={true} duration={800} offset={-70} className="text-black transition-all duration-300 cursor-pointer hover:text-red-500">
                             About Us
                         </ScrollLink>
