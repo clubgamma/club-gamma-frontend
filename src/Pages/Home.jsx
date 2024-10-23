@@ -6,6 +6,7 @@ import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import QandA from '@/components/Q&A';
 import Stat from '@/components/Stat';
+import SyncPRs from '@/components/SyncPRs';
 
 const Home = () => {
     const location = useLocation();
@@ -31,6 +32,9 @@ const Home = () => {
             </div>
             <div id="stat" className='pt-20'>
                 <Stat/>
+            </div>
+            <div id="SyncPRs" className='pt-20'>
+                <SyncPRs/>
             </div>
             <div id="project" className='pt-20'>
                 <Projects/>
