@@ -40,6 +40,18 @@
         }
       },
       {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/mit_monpara.png",
+        "position": "Web Expert",
+        "name": "Mit Monpara",
+        "tagline": "Bringing Web Interfaces to Life With Precision",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/mit-monpara-94ba77257",
+          "instagram": "https://www.instagram.com/mit_monpara_",
+          "github": "https://github.com/mitm123",
+          "twitter": "https://x.com/club_gamma"
+        }
+      },
+      {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/bhavya_prajapati.png",
         "position": "Web Expert",
         "name": "Bhavya Prajapati",
@@ -50,7 +62,9 @@
           "github": "https://github.com/bhavyaGP",
           "twitter": "https://x.com/5678_bhavya"
         }
-      },
+      }
+    ],
+    [
       {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/jay_rupapara.png",
         "position": "Web Expert",
@@ -62,9 +76,7 @@
           "github": "https://github.com/JayRupapara",
           "twitter": "https://x.com/club_gamma"
         }
-      }
-    ],
-    [
+      },
       {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/charmi_dodiya.png",
         "position": "Graphics Designer",
@@ -88,7 +100,9 @@
           "github": "https://github.com/SatyamCharola",
           "twitter": "https://x.com/SatyamCharola"
         }
-      },
+      }
+    ],
+    [
       {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/dhairya_kanabar.png",
         "position": "Social Media Manager",
@@ -100,9 +114,7 @@
           "github": "https://github.com/Dhairya7737",
           "twitter": "https://x.com/DhairyaKanabar"
         }
-      }
-    ],
-    [
+      },
       {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/japan_kachhiya.png",
         "position": "Mobile Expert",
@@ -126,7 +138,9 @@
           "github": "https://github.com/DHIRAJ44",
           "twitter": "https://x.com/dhiraj650484"
         }
-      },
+      }
+    ],
+    [
       {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/kaushal_bhanderi.png",
         "position": "PR Associate",
@@ -138,9 +152,7 @@
           "github": "https://github.com/Kaushal-11",
           "twitter": "https://x.com/kaushalba11/"
         }
-      }
-    ],
-    [
+      },
       {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/shrey_lakhtaria.png",
         "position": "PR Associate",

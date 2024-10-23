@@ -54,11 +54,7 @@ const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onPr
             opacity: 1,
             transition: {
                 height: {
-                    duration: 0.3,
-                },
-                opacity: {
-                    duration: 0.25,
-                    delay: 0.1,
+                    duration: 0.05,
                 },
             },
         },
@@ -67,10 +63,7 @@ const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onPr
             opacity: 0,
             transition: {
                 height: {
-                    duration: 0.3,
-                },
-                opacity: {
-                    duration: 0.25,
+                    duration: 0.05,
                 },
             },
         },
@@ -267,7 +260,7 @@ const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onPr
                         <hr className="border-gray-700"/>
                         {Global.user ? (
                             <>
-                                <Link to={`/profile/${Global.user.githubId}`} onClick={() => setSidebarOpen(false)} className="text-white block hover:text-red-500 transition-colors duration-200">
+                                <Link to={`/profile/${Global.user.githubId}`} className="text-white block hover:text-red-500 transition-colors duration-200" onClick={() => setSidebarOpen(false)}>
                                     Profile
                                 </Link>
                                 <button onClick={handleLogout} className="text-white block hover:text-red-500 transition-colors duration-200 w-full text-left">Logout</button>

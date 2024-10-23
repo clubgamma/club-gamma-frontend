@@ -11,9 +11,9 @@ import Events from './Pages/Events'
 import { infinity } from "ldrs";
 import Teams from './Pages/Team'
 import PointSystem from './Pages/PointSystem'
-import Lenis from '@studio-freight/lenis'
 import Loader from './components/Loader'
 import ContributorsPage from './Pages/Contributors'
+import { SEOLayout } from './components/SEOLayout'
 infinity.register()
 
 function App() {
@@ -46,56 +46,39 @@ function App() {
         initializeUser();
     }, [location.pathname]);
 
-    useEffect(() => {
-        const lenis = new Lenis({
-            duration: 0.1,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
-            smoothTouch: false,
-            touchMultiplier: 2,
-            wheelMultiplier: 1.2,
-        });
-      
-        const raf = (time) => {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        };
-      
-        requestAnimationFrame(raf);
-        return () => {
-            lenis.destroy();
-        };
-    }, []);
-
     if (!loaded && location.pathname !== '/redirect') {
         return (
-            <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]">
+            <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br overflow-hidden from-[#1e1e1e] to-[#4e3535]">
                 <Loader size='80'/>
             </div>
         )
     }
 
     return (
-        <Routes>
-            <Route path="/" element={
-                <Navbar
-                    onHeroClick={() => handleNavigation('hero')}
-                    onContactClick={() => handleNavigation('contact')}
-                    onQandAClick={() => handleNavigation('q&a')}
-                    onStatusClick={() => handleNavigation('stat')}
-                    onProjectsClick={() => handleNavigation('project')}
-                />
-            }>
-                <Route index element={<Home />} />
-                <Route path="/contributors/:repoName" element={<ContributorsPage />} />
-                <Route path="leaderboard" element={<LeaderBoard />} />
-                <Route path="events/:year" element={<Events />} />
-                <Route path="profile/:username" element={<Profile />} />
-                <Route path='/team' element={<Teams />} />
-                <Route path='/point-system' element={<PointSystem />} />
-            </Route>
-            <Route path="/redirect" element={<RedirectPage />} />
-        </Routes>
+        <SEOLayout >
+            <div className="bg-gradient-to-br overflow-hidden from-[#1e1e1e] to-[#4e3535] min-h-screen">
+                <Routes>
+                    <Route path="/" element={
+                        <Navbar
+                            onHeroClick={() => handleNavigation('hero')}
+                            onContactClick={() => handleNavigation('contact')}
+                            onQandAClick={() => handleNavigation('q&a')}
+                            onStatusClick={() => handleNavigation('stat')}
+                            onProjectsClick={() => handleNavigation('project')}
+                        />
+                    }>
+                        <Route index element={<Home />} />
+                        <Route path="/contributors/:repoName" element={<ContributorsPage />} />
+                        <Route path="leaderboard" element={<LeaderBoard />} />
+                        <Route path="events/:year" element={<Events />} />
+                        <Route path="profile/:username" element={<Profile />} />
+                        <Route path='/team' element={<Teams />} />
+                        <Route path='/point-system' element={<PointSystem />} />
+                    </Route>
+                    <Route path="/redirect" element={<RedirectPage />} />
+                </Routes>
+            </div>
+        </SEOLayout>
     )
 }
 

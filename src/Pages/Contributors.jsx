@@ -12,6 +12,7 @@ import {
   Github
 } from 'lucide-react';
 import Global from '@/Global';
+import SEO from '@/components/SEO';
 
 const ContributorsPage = () => {
   const { repoName } = useParams();
@@ -54,6 +55,17 @@ const ContributorsPage = () => {
   };
 
   return (
+    <>
+      <SEO
+        title={`Contributors`}
+        pathname={`/contributors/${repoName}`}
+        description="Discover the open-source contributors driving innovation at Club Gamma. Explore the people behind the projects."
+        keywords={`Club Gamma,${
+          repoName || "Club Gamma"
+        } contributors,open source,github ${
+          repoName || "Club Gamma"
+        },project collaborators,developer community`}
+      />
     <div className="min-h-screen p-4 sm:p-32 bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] flex flex-col items-center pt-32">
       {/* Header Card */}
       <Card className="w-full max-w-4xl bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-none mb-4 sm:mb-8">
@@ -202,7 +214,8 @@ const ContributorsPage = () => {
           </div>
         )}
       </div>
-    </div>
+      </div>
+      </>
   );
 };
 

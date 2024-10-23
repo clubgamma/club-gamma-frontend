@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import EventCard from '@/components/EventCard';
 import Loader from '@/components/Loader';
+import SEO  from '@/components/SEO';
 
 const Events = () => {
   const { year } = useParams();
@@ -40,6 +41,13 @@ const Events = () => {
 
 
   return (
+    <>
+      <SEO
+        title={`Events ${year && `${year}`}`}
+        pathname={`/events/${year}`}
+        description="Explore Club Gamma's tech events, workshops, and community initiatives for hands-on learning and networking in the tech world."
+        keywords="Club Gamma events, tech workshops, developer networking, tech community, coding, programming, technology, learning, developer community, tech events, skill development"
+      />
     <div className="min-h-screen font-dm-sans bg-[#1e1e1e] text-white p-8 pt-28">
       <h1 className="text-4xl md:text-5xl font-bold mb-8 md:mb-12 text-center">
         <span className="text-[#ff6b6b]">
@@ -60,7 +68,8 @@ const Events = () => {
       ) : (
         <p className="text-center text-gray-300">No events found for the year {year}.</p>
       )}
-    </div>
+      </div>
+      </>
   );
 };
 
