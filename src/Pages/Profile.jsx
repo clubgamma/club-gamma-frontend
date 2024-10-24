@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import Global from '@/Global';
 import { useParams } from 'react-router-dom';
+import ProgressLevel from '@/components/ProgressLevel';
 
 
 
@@ -72,8 +73,8 @@ const ContributionCalendar = ({ userPRs }) => {
     const days = getDaysInMonth();
 
     return (
-        <Card className="bg-gradient-to-br w-full sm:w-[600px] flex justify-center from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
-            <CardContent className="p-4 sm:p-6 w-full sm:w-[500px]">
+        <Card className="bg-gradient-to-br w-full sm:w-[500px] flex justify-center from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
+            <CardContent className="p-4 sm:p-6 w-full">
                 <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
                     Contribution Activity
                 </h2>
@@ -182,6 +183,7 @@ export default function GitHubProfile() {
             try {
                 const { user, stats } = await Global.httpGet(`/users/stats/${username}`);
                 setUserData({ ...user, ...stats });
+                console.log(user, stats);
                 setUserPRs(stats);
                 document.title = `Profile | ${user.name}`;
             } catch (err) {
@@ -191,6 +193,7 @@ export default function GitHubProfile() {
 
         fetchData();
     }, [username]);
+
 
     if (error) {
         return (
@@ -212,7 +215,7 @@ export default function GitHubProfile() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br font-dm-sans from-[#1e1e1e] to-[#4e3535] p-4 sm:p-8 pt-24 sm:pt-32">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-5xl mx-auto"> {/* Increased from max-w-4xl to max-w-6xl */}
                 <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535] mb-8">
                     <CardContent className="p-6">
                         <div className="flex items-center space-x-4">
@@ -264,18 +267,19 @@ export default function GitHubProfile() {
                     <StatCard value={userData.following} label="Following" icon={Users} />
                 </div>
 
-                <div className="mb-8 w-full flex justify-center">
+                <div className="mb-8 w-full flex flex-col gap-4 sm:flex-row justify-between">
                     <ContributionCalendar userPRs={userPRs} />
+                    <ProgressLevel userData={userData} />
                 </div>
-                <div className="space-y-8 ">
 
+                <div className="space-y-8">
                     <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
                         <CardContent className="p-6">
                             <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
                             <div className="space-y-3">
                                 {userData.prs.map((pr, index) => (
                                     <a href={pr.url} key={index} target="_blank" rel="noopener noreferrer">
-                                        <Card key={index} className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
+                                        <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
                                             <CardContent className="p-4">
                                                 <div className="flex items-start justify-between gap-4">
                                                     <div className="flex items-start gap-3 min-w-0">
