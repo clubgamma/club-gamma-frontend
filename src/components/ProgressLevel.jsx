@@ -1,38 +1,32 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Star, Trophy, Target, Zap, Award } from 'lucide-react'
+import { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Code2, Bug, BookOpen, Puzzle, Boxes } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const ProgressLevel = ({ userData }) => {
     const { prs } = userData;
-    console.log(prs);
-    const [showCelebration, setShowCelebration] = useState(false)
+    const [showCelebration] = useState(false);
 
     const categorizePRs = (prs) => {
         const categorized = {
-            easy: { solved: 0, total: 0 },
-            medium: { solved: 0, total: 0 },
-            hard: { solved: 0, total: 0 },
-            bug: { solved: 0, total: 0 },
-            docs: { solved: 0, total: 0 }
+            hard: 0,
+            medium: 0,
+            easy: 0,
+            bug: 0,
+            docs: 0
         };
 
         prs.forEach(pr => {
-            if (pr.points === 8) {
-                categorized.hard.solved++;
-                categorized.hard.total++;
-            } else if (pr.points === 5) {
-                categorized.medium.solved++;
-                categorized.medium.total++;
-            } else if (pr.points === 3) {
-                categorized.easy.solved++;
-                categorized.easy.total++;
-            }else if (pr.points === 2) {
-                categorized.bug.solved++;
-                categorized.bug.total++;
-            }else if (pr.points === 1) {
-                categorized.docs.solved++;
-                categorized.docs.total++;
-            }
+            if (pr.points === 8)
+                categorized.hard++;
+            else if (pr.points === 5)
+                categorized.medium++;
+            else if (pr.points === 3)
+                categorized.easy++;
+            else if (pr.points === 2)
+                categorized.bug++;
+            else if (pr.points === 1)
+                categorized.docs++;
         });
 
         return categorized;
@@ -41,95 +35,106 @@ const ProgressLevel = ({ userData }) => {
     const prStats = categorizePRs(prs);
 
     const difficulties = [
-        {
-            label: 'Hard',
-            solved: prStats.hard.solved,
-            total: prStats.hard.total || 757,
-            icon: Star,
-            color: 'text-rose-400'
-        },
-        {
-            label: 'Medium',
-            solved: prStats.medium.solved,
-            total: prStats.medium.total || 1742,
-            icon: Target,
-            color: 'text-amber-400'
-        },
-        {
-            label: 'Easy',
-            solved: prStats.easy.solved,
-            total: prStats.easy.total || 830,
-            icon: Zap,
-            color: 'text-emerald-400'
-        },
-        {
-            label:'Bug',
-            solved: prStats.bug.solved,
-            total: prStats.bug.total || 0,
-            icon: Trophy,
-            color: 'text-yellow-400'
-        },
-        {
-            label: 'Docs',
-            solved: prStats.docs.solved,
-            total: prStats.docs.total || 0,
-            icon: Award,
-            color: 'text-red-400'
-        }
-
+        [
+            {
+                label: 'Hard',
+                solved: prStats.hard,
+                icon: Boxes,
+                color: 'text-red-400',
+                bgColor: 'bg-red-950/50',
+                description: 'Complex features'
+            },
+            {
+                label: 'Medium',
+                solved: prStats.medium,
+                icon: Puzzle,
+                color: 'text-red-400',
+                bgColor: 'bg-red-950/50',
+                description: 'Moderate changes'
+            }
+        ],
+        [
+            {
+                label: 'Easy',
+                solved: prStats.easy,
+                icon: Code2,
+                color: 'text-red-400',
+                bgColor: 'bg-red-950/50',
+                description: 'Simple tasks'
+            },
+            {
+                label: 'Bug',
+                solved: prStats.bug,
+                icon: Bug,
+                color: 'text-red-400',
+                bgColor: 'bg-red-950/50',
+                description: 'Bug fixes'
+            }
+        ],
+        [
+            {
+                label: 'Docs',
+                solved: prStats.docs,
+                icon: BookOpen,
+                color: 'text-red-400',
+                bgColor: 'bg-red-950/50',
+                description: 'Documentation'
+            }
+        ]
     ];
 
-    const attempting = prs.filter(pr => pr.state === 'merged').length;
+    const totalPRs = prs.filter(pr => pr.state === 'merged').length;
+    const completionRate = totalPRs > 0 ? Math.round((totalPRs / prs.length) * 100) : 0;
 
-    return (
-        <div className="flex w-full sm:max-w-[500px] items-center justify-center text-white">
-            <div
-                className="bg-opacity-60 rounded-3xl shadow-2xl p-6 max-w-md w-full backdrop-blur-lg border border-red-500/20"
-            >
-                <h2
-                    className="text-xl font-bold text-start mb-6 text-red-300"
-                >
-                    Your Coding Journey
-                </h2>
-                
-
-                <div className="space-y-4 mb-8">
-                    {difficulties.map((difficulty, index) => (
-                        <div
-                            key={difficulty.label}
-                            initial={{ x: -50, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: index * 0.1 + 0.5 }}
-                            className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] rounded-lg p-4 shadow-md flex items-center justify-between"
-                        >
+    const DifficultyItem = ({ difficulty }) => (
+                    <div className="group bg-[#1e1e1e]/50 hover:bg-[#2a2a2a]/50 border border-[#4e3535] hover:border-red-900/50 transition-all duration-300 rounded-lg p-3">
+                        <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-3">
-                                <difficulty.icon className={`w-6 h-6 ${difficulty.color}`} />
-                                <span className="font-medium">{difficulty.label}</span>
-                            </div>
-                            <div className="text-right">
-                                <div className={`text-lg font-bold ${difficulty.color}`}>
-                                    {difficulty.solved}
+                                <div className={`p-2 rounded-lg ${difficulty.bgColor}`}>
+                                    <difficulty.icon className={`w-4 h-4 ${difficulty.color}`} />
+                                </div>
+                                <div>
+                                    <h3 className="text-sm font-medium text-white">{difficulty.label}</h3>
+                                    <p className="text-xs text-zinc-400">{difficulty.description}</p>
                                 </div>
                             </div>
+                            <div className="flex items-baseline space-x-1">
+                                <span className={`text-lg font-bold ${difficulty.color}`}>
+                                    {difficulty.solved}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+    );
+
+    return (
+        <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535] w-full sm:w-[500px]">
+            <CardContent className="p-4 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
+                    Progress Overview
+                </h2>
+
+                <div className="space-y-3">
+                    {difficulties.map((row, rowIndex) => (
+                        <div key={rowIndex} className="grid grid-cols-2 gap-3">
+                            {row.map((difficulty, index) => (
+                                <div key={difficulty.label} className={row.length === 1 ? 'col-span-2' : ''}>
+                                    <DifficultyItem difficulty={difficulty} />
+                                </div>
+                            ))}
                         </div>
                     ))}
                 </div>
 
-                <AnimatePresence>
-                    {showCelebration && (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.5 }}
-                            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                        >
-                            <Trophy className="w-24 h-24 text-yellow-400 animate-bounce" />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
-        </div>
-    )
-}
+                <div className="mt-4 pt-4 border-t border-[#4e3535]">
+                    <div className="flex justify-between items-center">
+                        <span className="text-sm text-zinc-400">Acceptance Rate</span>
+                        <span className="text-lg font-bold text-red-400">{completionRate}%</span>
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
+    );
+};
 
-export default ProgressLevel
+export default ProgressLevel;
