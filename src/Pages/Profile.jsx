@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import Global from '@/Global';
 import { useParams } from 'react-router-dom';
+import ProgressLevel from '@/components/ProgressLevel';
 
 
 
@@ -69,7 +70,7 @@ const ContributionCalendar = ({ userPRs }) => {
     const days = getDaysInMonth();
 
     return (
-        <Card className="bg-gradient-to-br w-full sm:w-[600px] flex justify-center from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
+        <Card className="bg-gradient-to-br w-full sm:w-[500px] flex justify-center from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
             <CardContent className="p-4 sm:p-6 w-full sm:w-[500px]">
                 <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
                     Contribution Activity
@@ -179,6 +180,7 @@ export default function GitHubProfile() {
             try {
                 const { user, stats } = await Global.httpGet(`/users/stats/${username}`);
                 setUserData({ ...user, ...stats });
+                console.log(user, stats);
                 setUserPRs(stats);
                 document.title = `Profile | ${user.name}`;
             } catch (err) {
@@ -261,8 +263,9 @@ export default function GitHubProfile() {
                     <StatCard value={userData.following} label="Following" icon={Users} />
                 </div>
 
-                <div className="mb-8 w-full flex justify-center">
+                <div className="mb-8 w-full flex justify-between">
                     <ContributionCalendar userPRs={userPRs} />
+                    <ProgressLevel  userData={userData} />
                 </div>
                 <div className="space-y-8 ">
 
