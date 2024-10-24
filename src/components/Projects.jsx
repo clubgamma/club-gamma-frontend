@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { ArrowUpRight, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -82,7 +83,7 @@ const ProjectShowcase = () => {
             Explore our innovative projects and contributions!
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -94,7 +95,7 @@ const ProjectShowcase = () => {
                     <span className="inline-block px-3 py-1 text-xs font-semibold text-red-400 bg-red-900/20 rounded-full mb-4">
                       {project.category}
                     </span>
-                    <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-red-500 transition-colors">
+                    <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-red-500 transition-colors min-h-[4rem] break-words leading-normal">
                       {project.title}
                     </h2>
                     <p className="text-gray-300 mb-6 line-clamp-3">
@@ -107,15 +108,15 @@ const ProjectShowcase = () => {
                       onClick={() => navigate(`/contributors/${project.repoName}`)}
                       className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#3d2c2c] hover:bg-[#4e3535] text-white transition-all duration-300 flex-1"
                     >
-                      <Users size={18} />
+                      <Users size={18} className={cn('block','sm:hidden', 'md:block')} />
                       <span>Contributors</span>
                     </button>
                     <button
                       onClick={() => handleButtonClick(project.url)}
-                      className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-500 hover:text-red-400 transition-all duration-300 flex-1"
+                      className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-500 hover:text-red-400 transition-all duration-300 flex-1 "
                     >
                       <span>Github</span>
-                      <ArrowUpRight size={18} />
+                      <ArrowUpRight size={18} className={cn('block','sm:hidden', 'md:block')}/>
                     </button>
                   </div>
                 </div>
