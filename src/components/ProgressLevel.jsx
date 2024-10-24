@@ -3,14 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Star, Trophy, Target, Zap, Award } from 'lucide-react'
 
 const ProgressLevel = ({ userData }) => {
-    const { prs } = userData
+    const { prs } = userData;
+    console.log(prs);
     const [showCelebration, setShowCelebration] = useState(false)
 
     const categorizePRs = (prs) => {
         const categorized = {
             easy: { solved: 0, total: 0 },
             medium: { solved: 0, total: 0 },
-            hard: { solved: 0, total: 0 }
+            hard: { solved: 0, total: 0 },
+            bug: { solved: 0, total: 0 },
+            docs: { solved: 0, total: 0 }
         };
 
         prs.forEach(pr => {
@@ -20,9 +23,15 @@ const ProgressLevel = ({ userData }) => {
             } else if (pr.points === 5) {
                 categorized.medium.solved++;
                 categorized.medium.total++;
-            } else if (pr.points < 5) {
+            } else if (pr.points === 3) {
                 categorized.easy.solved++;
                 categorized.easy.total++;
+            }else if (pr.points === 2) {
+                categorized.bug.solved++;
+                categorized.bug.total++;
+            }else if (pr.points === 1) {
+                categorized.docs.solved++;
+                categorized.docs.total++;
             }
         });
 
@@ -53,6 +62,20 @@ const ProgressLevel = ({ userData }) => {
             icon: Zap,
             color: 'text-emerald-400'
         },
+        {
+            label:'Bug',
+            solved: prStats.bug.solved,
+            total: prStats.bug.total || 0,
+            icon: Trophy,
+            color: 'text-yellow-400'
+        },
+        {
+            label: 'Docs',
+            solved: prStats.docs.solved,
+            total: prStats.docs.total || 0,
+            icon: Award,
+            color: 'text-red-400'
+        }
 
     ];
 
@@ -60,24 +83,19 @@ const ProgressLevel = ({ userData }) => {
 
     return (
         <div className="flex w-full sm:max-w-[500px] items-center justify-center text-white">
-            <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
+            <div
                 className="bg-opacity-60 rounded-3xl shadow-2xl p-6 max-w-md w-full backdrop-blur-lg border border-red-500/20"
             >
-                <motion.h2
-                    initial={{ y: -20 }}
-                    animate={{ y: 0 }}
+                <h2
                     className="text-xl font-bold text-start mb-6 text-red-300"
                 >
                     Your Coding Journey
-                </motion.h2>
+                </h2>
                 
 
                 <div className="space-y-4 mb-8">
                     {difficulties.map((difficulty, index) => (
-                        <motion.div
+                        <div
                             key={difficulty.label}
                             initial={{ x: -50, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
@@ -93,20 +111,9 @@ const ProgressLevel = ({ userData }) => {
                                     {difficulty.solved}
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 }}
-                    className="text-center"
-                >
-                    <span className="bg-red-500/20 text-red-300 px-4 py-2 rounded-full text-sm font-medium">
-                        {attempting} Problems Accepted out of {prs.length}
-                    </span>
-                </motion.div>
 
                 <AnimatePresence>
                     {showCelebration && (
@@ -120,7 +127,7 @@ const ProgressLevel = ({ userData }) => {
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </motion.div>
+            </div>
         </div>
     )
 }
