@@ -274,24 +274,26 @@ export default function GitHubProfile() {
                             <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
                             <div className="space-y-3">
                                 {userData.prs.map((pr, index) => (
-                                    <Card key={index} className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
-                                        <CardContent className="p-4">
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="flex items-start gap-3 min-w-0">
-                                                    <GitPullRequest className="h-5 w-5 text-red-400 mt-1" />
-                                                    <div className="min-w-0">
-                                                        <div className="font-medium text-white truncate">
-                                                            {pr.title}
-                                                        </div>
-                                                        <div className="text-sm text-zinc-400 truncate">
-                                                            {pr.url}
+                                    <a href={pr.url} key={index} target="_blank" rel="noopener noreferrer">
+                                        <Card key={index} className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
+                                            <CardContent className="p-4">
+                                                <div className="flex items-start justify-between gap-4">
+                                                    <div className="flex items-start gap-3 min-w-0">
+                                                        <GitPullRequest className="h-5 w-5 text-red-400 mt-1" />
+                                                        <div className="min-w-0">
+                                                            <div className="font-medium text-white truncate">
+                                                                {pr.title}
+                                                            </div>
+                                                            <div className="text-sm text-zinc-400 truncate">
+                                                                {pr.url}
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <StatusBadge state={pr.state} />
                                                 </div>
-                                                <StatusBadge state={pr.state} />
-                                            </div>
-                                        </CardContent>
-                                    </Card>
+                                            </CardContent>
+                                        </Card>
+                                    </a>
                                 ))}
                             </div>
                         </CardContent>
