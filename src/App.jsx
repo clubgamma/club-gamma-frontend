@@ -14,6 +14,7 @@ import PointSystem from './Pages/PointSystem'
 import Loader from './components/Loader'
 import ContributorsPage from './Pages/Contributors'
 import { SEOLayout } from './components/SEOLayout'
+import NotFound from './components/NotFound'
 infinity.register()
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
                         <Route path='/point-system' element={<PointSystem />} />
                     </Route>
                     <Route path="/redirect" element={<RedirectPage />} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>
         </SEOLayout>
