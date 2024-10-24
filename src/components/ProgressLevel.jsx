@@ -59,7 +59,7 @@ const ProgressLevel = ({ userData }) => {
     const attempting = prs.filter(pr => pr.state === 'merged').length;
 
     return (
-        <div className="flex min-w-[500px] items-center justify-center text-white">
+        <div className="flex w-full sm:max-w-[500px] items-center justify-center text-white">
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}

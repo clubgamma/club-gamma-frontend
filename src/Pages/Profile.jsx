@@ -263,7 +263,7 @@ export default function GitHubProfile() {
                     <StatCard value={userData.following} label="Following" icon={Users} />
                 </div>
 
-                <div className="mb-8 w-full flex justify-between">
+                <div className="mb-8 w-full flex flex-col gap-4 sm:flex-row justify-between">
                     <ContributionCalendar userPRs={userPRs} />
                     <ProgressLevel  userData={userData} />
                 </div>
