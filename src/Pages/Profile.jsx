@@ -32,20 +32,23 @@ const ContributionBox = ({ value, date }) => {
     };
 
     return (
-        <TooltipProvider>
-            <Tooltip delayDuration={0}>
-                <TooltipTrigger>
-                    <div className={`w-6 h-6 ${getBackgroundColor(value)} rounded-sm  flex items-center justify-center`}>
-                    </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                    <p className='font-dm-sans'>{value || 'No'} contribution{value !== 1 ? 's' : ''} on {date}</p>
-                </TooltipContent>
-            </Tooltip>
-        </TooltipProvider>
+        <div className="w-6 h-6">
+            <TooltipProvider>
+                <Tooltip delayDuration={200}>
+                    <TooltipTrigger asChild>
+                        <div 
+                            className={`${getBackgroundColor(value)} w-full h-full rounded-sm cursor-pointer`}
+                            aria-label={`${value || 'No'} contribution${value !== 1 ? 's' : ''} on ${date}`}
+                        />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <p className='font-dm-sans'>{value || 'No'} contribution{value !== 1 ? 's' : ''} on {date}</p>
+                    </TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
+        </div>
     );
 };
-
 const ContributionCalendar = ({ userPRs }) => {
     const prData = userPRs.prCountPerDay;
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -274,24 +277,26 @@ export default function GitHubProfile() {
                             <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
                             <div className="space-y-3">
                                 {userData.prs.map((pr, index) => (
-                                    <Card key={index} className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
-                                        <CardContent className="p-4">
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="flex items-start gap-3 min-w-0">
-                                                    <GitPullRequest className="h-5 w-5 text-red-400 mt-1" />
-                                                    <div className="min-w-0">
-                                                        <div className="font-medium text-white truncate">
-                                                            {pr.title}
-                                                        </div>
-                                                        <div className="text-sm text-zinc-400 truncate">
-                                                            {pr.url}
+                                    <a href={pr.url} key={index} target="_blank" rel="noopener noreferrer">
+                                        <Card key={index} className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
+                                            <CardContent className="p-4">
+                                                <div className="flex items-start justify-between gap-4">
+                                                    <div className="flex items-start gap-3 min-w-0">
+                                                        <GitPullRequest className="h-5 w-5 text-red-400 mt-1" />
+                                                        <div className="min-w-0">
+                                                            <div className="font-medium text-white truncate">
+                                                                {pr.title}
+                                                            </div>
+                                                            <div className="text-sm text-zinc-400 truncate">
+                                                                {pr.url}
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <StatusBadge state={pr.state} />
                                                 </div>
-                                                <StatusBadge state={pr.state} />
-                                            </div>
-                                        </CardContent>
-                                    </Card>
+                                            </CardContent>
+                                        </Card>
+                                    </a>
                                 ))}
                             </div>
                         </CardContent>
