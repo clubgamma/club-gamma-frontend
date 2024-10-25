@@ -14,7 +14,7 @@
         }
       },
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/client/src/assets/team-photos/jay-khatri.jpg",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/team-photos/jay-khatri.jpg",
         "position": "Club Founder",
         "name": "Jay Khatri",
         "tagline": "The One Who Started The Legacy",
