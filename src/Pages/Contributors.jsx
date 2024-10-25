@@ -174,7 +174,7 @@ const ContributorsPage = () => {
                     <div className="flex items-center space-x-3 sm:space-x-4">
                       <div className="relative">
                         <img 
-                          src={contributor.avatarUrl} 
+                          src={`https://avatars.githubusercontent.com/${contributor.githubId}`} 
                           alt={`${contributor.name}'s profile`} 
                           className="w-12 h-12 sm:w-16 sm:h-16 rounded-full ring-2 ring-red-900 ring-offset-2 ring-offset-[#2a2a2a]"
                         />

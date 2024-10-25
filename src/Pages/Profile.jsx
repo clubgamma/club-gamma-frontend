@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
+import ProgressLevel from '@/components/ProgressLevel';
+import SyncPRs from '@/components/SyncPRs';
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import Global from '@/Global';
 import {
-    GitPullRequest,
-    Users,
-    Star,
+    Building2,
     GitFork,
     Github,
-    Building2,
+    GitPullRequest,
     Link as LinkIcon,
-    MapPin
+    MapPin,
+    SquareArrowOutUpRight,
+    Star,
+    Users
 } from 'lucide-react';
-import Global from '@/Global';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ProgressLevel from '@/components/ProgressLevel';
-
-
 
 const ContributionBox = ({ value, date }) => {
     const getBackgroundColor = (value) => {
@@ -36,7 +35,7 @@ const ContributionBox = ({ value, date }) => {
             <TooltipProvider>
                 <Tooltip delayDuration={200}>
                     <TooltipTrigger asChild>
-                        <div 
+                        <div
                             className={`${getBackgroundColor(value)} w-full h-full rounded-sm cursor-pointer`}
                             aria-label={`${value || 'No'} contribution${value !== 1 ? 's' : ''} on ${date}`}
                         />
@@ -194,7 +193,6 @@ export default function GitHubProfile() {
         fetchData();
     }, [username]);
 
-
     if (error) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] flex items-center justify-center p-4">
@@ -220,12 +218,31 @@ export default function GitHubProfile() {
                     <CardContent className="p-6">
                         <div className="flex items-center space-x-4">
                             <img
-                                src={userData.avatar || 'default-avatar.png'}
+                                src={`https://avatars.githubusercontent.com/${userData.githubId}` || 'default-avatar.png'}
                                 alt={userData.name}
                                 className="w-24 h-24 rounded-full border-2 border-red-500"
                             />
                             <div className="flex-1 flex flex-col justify-center">
-                                <h1 className="text-2xl font-bold text-white mb-1">{userData.name}</h1>
+                                <div className="flex items-center justify-between">
+                                    <h1 className="text-2xl font-bold text-white mb-1 flex items-center">
+                                        {userData.name}
+                                        <a
+                                            href={`https://github.com/${userData.githubId}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="ml-2"
+                                        >
+                                            <SquareArrowOutUpRight className="w-5 h-5 text-white opacity-75 hover:opacity-100 transition-opacity" />
+                                        </a>
+                                    </h1>
+                                    {/* {
+                                        Global.user && (Global.user.githubId === userData.githubId || Global.user.githubId === 'jalaym825') && (
+                                            <div id="SyncPRs">
+                                                <SyncPRs />
+                                            </div>
+                                        )
+                                    } */}
+                                </div>
                                 {userData.bio && (
                                     <p className="text-zinc-300 mb-2">{userData.bio}</p>
                                 )}
@@ -278,7 +295,7 @@ export default function GitHubProfile() {
                             <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
                             <div className="space-y-3">
                                 {userData.prs.map((pr, index) => (
-                                    <a href={pr.url} key={index} target="_blank" rel="noopener noreferrer">
+                                    <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
                                         <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
                                             <CardContent className="p-4">
                                                 <div className="flex items-start justify-between gap-4">
@@ -289,7 +306,7 @@ export default function GitHubProfile() {
                                                                 {pr.title}
                                                             </div>
                                                             <div className="text-sm text-zinc-400 truncate">
-                                                                {pr.url}
+                                                                {`https://github.com/${pr.repository}/pull/${pr.prNumber}`}
                                                             </div>
                                                         </div>
                                                     </div>

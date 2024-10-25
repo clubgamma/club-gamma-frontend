@@ -11,10 +11,11 @@ import Events from './Pages/Events'
 import { infinity } from "ldrs";
 import Teams from './Pages/Team'
 import PointSystem from './Pages/PointSystem'
-import Loader from './components/Loader'
+import Loader from '@/components/Loader'
 import ContributorsPage from './Pages/Contributors'
-import { SEOLayout } from './components/SEOLayout'
-import NotFound from './components/NotFound'
+import { SEOLayout } from '@/components/SEOLayout'
+import NotFound from '@/components/NotFound'
+import Toaster from '@/components/Toaster';
 infinity.register()
 
 function App() {
@@ -57,6 +58,11 @@ function App() {
 
     return (
         <SEOLayout >
+            <Toaster 
+                expand={true}
+                richColors
+                closeButton
+            />
             <div className="bg-gradient-to-br overflow-hidden from-[#1e1e1e] to-[#4e3535] min-h-screen">
                 <Routes>
                     <Route path="/" element={

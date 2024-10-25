@@ -12,7 +12,7 @@ const Team = () => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-                const response = await fetch("https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/JSON/team.json");
+                const response = await fetch("https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/JSON/teams/2024-25.json");
                 if (!response.ok) {
                     throw new Error('Failed to fetch team data');
                 }
