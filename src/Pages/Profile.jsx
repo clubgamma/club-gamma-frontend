@@ -291,7 +291,7 @@ export default function GitHubProfile() {
                             <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
                             <div className="space-y-3">
                                 {userData.prs.map((pr, index) => (
-                                    <a href={pr.url} key={index} target="_blank" rel="noopener noreferrer">
+                                    <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
                                         <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
                                             <CardContent className="p-4">
                                                 <div className="flex items-start justify-between gap-4">
@@ -302,7 +302,7 @@ export default function GitHubProfile() {
                                                                 {pr.title}
                                                             </div>
                                                             <div className="text-sm text-zinc-400 truncate">
-                                                                {pr.url}
+                                                                {`https://github.com/${pr.repository}/pull/${pr.prNumber}`}
                                                             </div>
                                                         </div>
                                                     </div>

@@ -38,6 +38,48 @@ import { Link, useNavigate } from "react-router-dom";
 import Loader from "@/components/Loader";
 import SEO from "@/components/SEO";
 
+const UserSkeleton = () => {
+  return (
+    <div className="bg-[#1e1e1e]/50 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-[#4e3535]/30 mb-8 animate-pulse">
+      <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
+        <div className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+          {/* Avatar skeleton */}
+          <div className="w-20 h-20 rounded-full bg-gray-700 border-4 border-[#4e3535]" />
+
+          {/* User info skeleton */}
+          <div className="text-center md:text-left space-y-2">
+            <div className="h-8 w-48 bg-gray-700 rounded-md" />
+            <div className="h-5 w-32 bg-gray-700 rounded-md" />
+            <div className="h-6 w-24 bg-gray-700 rounded-md" />
+          </div>
+        </div>
+
+        {/* Stats skeleton */}
+        <div className="grid w-full grid-cols-3 gap-2 text-center md:gap-4 md:w-auto">
+          {/* Points */}
+          <div className="p-2 md:p-4 rounded-lg bg-[#1e1e1e]/70 backdrop-blur-sm space-y-2">
+            <div className="h-8 w-16 mx-auto bg-gray-700 rounded-md" />
+            <div className="h-4 w-12 mx-auto bg-gray-700 rounded-md" />
+          </div>
+
+          {/* Total PRs */}
+          <div className="p-2 md:p-4 rounded-lg bg-[#1e1e1e]/70 backdrop-blur-sm space-y-2">
+            <div className="h-8 w-16 mx-auto bg-gray-700 rounded-md" />
+            <div className="h-4 w-12 mx-auto bg-gray-700 rounded-md" />
+          </div>
+
+          {/* PR Status */}
+          <div className="p-2 md:p-4 rounded-lg bg-[#1e1e1e]/70 backdrop-blur-sm space-y-2">
+            <div className="h-4 w-20 mx-auto bg-gray-700 rounded-md" />
+            <div className="h-4 w-24 mx-auto bg-gray-700 rounded-md mt-1" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
 const LeaderBoard = () => {
   const [contributors, setContributors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -223,77 +265,80 @@ const LeaderBoard = () => {
       />
       <div className="min-h-screen font-dm-sans text-white pt-16 md:pt-28 bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] overflow-hidden">
         <main className="container px-4 py-8 mx-auto">
-          {currentUser && (
-            <div className="bg-[#1e1e1e]/50 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-[#4e3535]/30 mb-8">
-              <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
-                <div className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-                  <img
-                    src={
-                      currentUser.githubId
-                        ? `https://avatars.githubusercontent.com/${currentUser.githubId}`
-                        : "https://github.com/identicons/jasonlong.png"
-                    }
-                    alt={currentUser.username}
-                    className="w-20 h-20 rounded-full border-4 border-[#4e3535]"
-                  />
-                  <div className="text-center md:text-left">
-                    <h2 className="text-2xl font-bold text-white md:text-3xl">
-                      {Global.user.name}
-                    </h2>
-                    <h2
-                      className="text-base text-blue-400 cursor-pointer"
-                      onClick={() =>
-                        window.open(
-                          `https://github.com/${currentUser.githubId}`,
-                          "_blank"
-                        )
+          {Global.user && (
+            currentUser ?
+              <div className="bg-[#1e1e1e]/50 backdrop-blur-sm rounded-xl shadow-lg p-4 md:p-6 border border-[#4e3535]/30 mb-8">
+                <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
+                  <div className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+                    <img
+                      src={
+                        currentUser.githubId
+                          ? `https://avatars.githubusercontent.com/${currentUser.githubId}`
+                          : "https://github.com/identicons/jasonlong.png"
                       }
-                    >
-                      @{currentUser.githubId}
-                    </h2>
-                    <p className="text-[#FF4545] text-lg">
-                      Rank #{currentUser.rank}
-                    </p>
+                      alt={currentUser.username}
+                      className="w-20 h-20 rounded-full border-4 border-[#4e3535]"
+                    />
+                    <div className="text-center md:text-left">
+                      <h2 className="text-2xl font-bold text-white md:text-3xl">
+                        {Global.user.name}
+                      </h2>
+                      <h2
+                        className="text-base text-blue-400 cursor-pointer"
+                        onClick={() =>
+                          window.open(
+                            `https://github.com/${currentUser.githubId}`,
+                            "_blank"
+                          )
+                        }
+                      >
+                        @{currentUser.githubId}
+                      </h2>
+                      <p className="text-[#FF4545] text-lg">
+                        Rank #{currentUser.rank}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="grid w-full grid-cols-3 gap-2 text-center md:gap-4 md:w-auto">
-                  <div className="p-2 md:p-4 rounded-lg bg-[#1e1e1e]/70 backdrop-blur-sm">
-                    <div className="text-xl md:text-3xl font-bold text-[#FF4545]">
-                      {currentUser.points}
+                  <div className="grid w-full grid-cols-3 gap-2 text-center md:gap-4 md:w-auto">
+                    <div className="p-2 md:p-4 rounded-lg bg-[#1e1e1e]/70 backdrop-blur-sm">
+                      <div className="text-xl md:text-3xl font-bold text-[#FF4545]">
+                        {currentUser.points}
+                      </div>
+                      <div className="text-xs text-gray-300 md:text-sm">Points</div>
                     </div>
-                    <div className="text-xs text-gray-300 md:text-sm">Points</div>
-                  </div>
-                  <div className="p-2 md:p-4 rounded-lg bg-[#1e1e1e]/70 backdrop-blur-sm">
-                    <div className="text-xl md:text-3xl font-bold text-[#FFA500]">
-                      {currentUser.totalPRs}
+                    <div className="p-2 md:p-4 rounded-lg bg-[#1e1e1e]/70 backdrop-blur-sm">
+                      <div className="text-xl md:text-3xl font-bold text-[#FFA500]">
+                        {currentUser.totalPRs}
+                      </div>
+                      <div className="text-xs text-gray-300 md:text-sm">
+                        Total PRs
+                      </div>
                     </div>
-                    <div className="text-xs text-gray-300 md:text-sm">
-                      Total PRs
-                    </div>
-                  </div>
-                  <div className="p-2 md:p-4 rounded-lg bg-[#1e1e1e]/70 backdrop-blur-sm">
-                    <div className="text-xs font-medium text-gray-300 md:text-sm">
-                      PRs Status
-                    </div>
-                    <div className="mt-1 text-xs">
-                      <span className="text-green-400">
-                        {currentUser.openPRs} Open
-                      </span>{" "}
-                      |
-                      <span className="text-blue-400">
-                        {" "}
-                        {currentUser.mergedPRs} Merged
-                      </span>{" "}
-                      |
-                      <span className="text-red-400">
-                        {" "}
-                        {currentUser.closedPRs} Closed
-                      </span>
+                    <div className="p-2 md:p-4 rounded-lg bg-[#1e1e1e]/70 backdrop-blur-sm">
+                      <div className="text-xs font-medium text-gray-300 md:text-sm">
+                        PRs Status
+                      </div>
+                      <div className="mt-1 text-xs">
+                        <span className="text-green-400">
+                          {currentUser.openPRs} Open
+                        </span>{" "}
+                        |
+                        <span className="text-blue-400">
+                          {" "}
+                          {currentUser.mergedPRs} Merged
+                        </span>{" "}
+                        |
+                        <span className="text-red-400">
+                          {" "}
+                          {currentUser.closedPRs} Closed
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+              :
+              <UserSkeleton />
           )}
 
           <div className="bg-[#1e1e1e]/50 backdrop-blur-sm rounded-xl shadow-lg border border-[#4e3535]/30">
