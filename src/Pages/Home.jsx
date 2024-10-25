@@ -122,7 +122,7 @@ const Home = () => {
             </section>
 
             {/* About Section */}
-            <section id="about" className=" bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] py-20 relative overflow-hidden">
+            <section id="about" className=" bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] py-24 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                     <div className="absolute top-20 left-10 w-16 h-16 border-2 border-red-400 rounded-full animate-pulse"></div>
                     <div className="absolute top-40 right-20 w-16 h-16 border-2 border-red-300 rounded-full animate-ping"></div>
@@ -194,7 +194,7 @@ const Home = () => {
 
             {/* Events Section */}
             {/* Events Section */}
-            <section id="events">
+            <section id="events" className='relative min-h-screen  overflow-hidden bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]'>
                 <EventsSection />
             </section>
 
@@ -215,7 +215,7 @@ const Home = () => {
 
 
             {/* FAQ Section */}
-            <section id="faqs" className="bg-gradient-to-br from-[#1e1e1e]  to-[#4e3535] py-20 relative overflow-hidden">
+            <section id="faqs" className="bg-gradient-to-br from-[#1e1e1e]  to-[#4e3535] py-24 relative overflow-hidden">
                 <FAQs />
             </section>
 

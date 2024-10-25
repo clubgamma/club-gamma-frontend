@@ -71,7 +71,7 @@ const EventsSection = () => {
   }
 
   return (
-    <div className="py-20 font-dm-sans relative overflow-hidden bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]">
+    <div className="py-24 font-dm-sans relative overflow-hidden bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGgLTJWMzJoMnYyem0wLTh2MmgtMnYtMmgyem0tOCA4aDJ2LTJoLTJ2MnptMC04aDJ2MmgtMnYtMnoiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4yIi8+PC9nPjwvc3ZnPg==')]"></div>
       </div>
