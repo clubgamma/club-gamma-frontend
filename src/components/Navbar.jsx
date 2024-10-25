@@ -207,7 +207,7 @@ const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onPr
                             <p className="text-xs leading-none text-gray-400">{Global.user.email}</p>
                             </div>
                         </DropdownMenuLabel>
-                        <DropdownMenuItem asChild className=" focus:bg-transparent focus:text-red-500 transition-colors duration-200">
+                        <DropdownMenuItem asChild className=" focus:bg-transparent focus:text-red-500 transition-colors duration-200 cursor-pointer">
                             <Link to={`/profile/${Global.user.githubId}`} className="flex items-center py-2">
                             <User className="mr-2 h-4 w-4" />
                             <span>Profile</span>
@@ -222,7 +222,7 @@ const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onPr
                             <span>{Global.user.rank}</span>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator className="bg-gray-700" />
-                        <DropdownMenuItem onClick={handleLogout} className="focus:bg-transparent focus:text-red-500 transition-colors duration-200">
+                        <DropdownMenuItem onClick={handleLogout} className="focus:bg-transparent focus:text-red-500 transition-colors duration-200 cursor-pointer">
                             <LogOut className="mr-2 h-4 w-4" />
                             <span>Log out</span>
                         </DropdownMenuItem>
