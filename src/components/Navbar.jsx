@@ -17,6 +17,7 @@ import {
     NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { cn } from '@/lib/utils';
 
 
 const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onProjectsClick, onLeaderboardClick }) => {
@@ -174,69 +175,68 @@ const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onPr
                     <Link to='/team' className='text-white hover:text-red-500 transition-all duration-300'>
                         Team
                     </Link>
-
                 </div>
 
                 {/* User Menu / GitHub Login */}
-      <div className="hidden lg:flex items-center">
-        {Global.user ? (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-12 rounded-full pl-2 pr-4 hover:bg-transparent group">
-                <div className="flex items-center space-x-3">
-                  <Avatar className="h-10 w-10 border-2 border-red-500">
-                    <AvatarImage src={`https://github.com/${Global.user.githubId}.png`} alt={Global.user.name} />
-                    <AvatarFallback>{Global.user.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <div className="flex flex-col items-start">
-                    <span className="text-sm font-medium text-white group-hover:text-red-500 transition-colors duration-200">
-                      {truncateName(Global.user.name)}
-                    </span>
-                    <span className="text-xs text-gray-300 group-hover:text-red-500 transition-colors duration-200">
-                      Rank {Global.user.rank}
-                    </span>
-                  </div>
-                  <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-red-500 transition-colors duration-200" />
+                <div className="hidden lg:flex items-center">
+                    {Global.user ? (
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="relative h-12 rounded-full pl-2 pr-4 hover:bg-transparent group">
+                            <div className="flex items-center space-x-3">
+                            <Avatar className="h-10 w-10 border-2 border-red-500">
+                                <AvatarImage src={`https://github.com/${Global.user.githubId}.png`} alt={Global.user.name} />
+                                <AvatarFallback>{Global.user.name.charAt(0)}</AvatarFallback>
+                            </Avatar>
+                            <div className="flex flex-col items-start">
+                                <span className="text-sm font-medium text-white group-hover:text-red-500 transition-colors duration-200">
+                                {truncateName(Global.user.name)}
+                                </span>
+                                <span className="text-xs text-gray-300 group-hover:text-red-500 transition-colors duration-200">
+                                Rank {Global.user.rank}
+                                </span>
+                            </div>
+                            <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-red-500 transition-colors duration-200" />
+                            </div>
+                        </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-48 bg-[rgba(36,21,21,0.95)] text-white border-none rounded-md shadow-lg" align="end" forceMount>
+                        <DropdownMenuLabel className="font-normal border-b border-gray-700 pb-2">
+                            <div className="flex flex-col space-y-1">
+                            <p className="text-sm font-medium leading-5">{Global.user.name}</p>
+                            <p className="text-xs leading-none text-gray-400">{Global.user.email}</p>
+                            </div>
+                        </DropdownMenuLabel>
+                        <DropdownMenuItem asChild className=" focus:bg-transparent focus:text-red-500 transition-colors duration-200">
+                            <Link to={`/profile/${Global.user.githubId}`} className="flex items-center py-2">
+                            <User className="mr-2 h-4 w-4" />
+                            <span>Profile</span>
+                            </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="flex justify-between items-center py-2 pointer-events-none">
+                            <span>Points</span>
+                            <span>{Global.user.points}</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="flex justify-between items-center py-2 pointer-events-none">
+                            <span>Rank</span>
+                            <span>{Global.user.rank}</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="bg-gray-700" />
+                        <DropdownMenuItem onClick={handleLogout} className="focus:bg-transparent focus:text-red-500 transition-colors duration-200">
+                            <LogOut className="mr-2 h-4 w-4" />
+                            <span>Log out</span>
+                        </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                    ) : (
+                    <Button onClick={handleGithubLogin} className="flex items-center bg-[#181717] text-white py-2 px-5 rounded-md font-bold shadow-lg hover:shadow-none transition-all duration-500">
+                        <svg className="w-6 h-6 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10,0,0,0,8.84,21.5c.5.08.66-.23.66-.5V19.31C6.73,19.91,6.14,18,6.14,18A2.69,2.69,0,0,0,5,16.5c-.91-.62.07-.6.07-.6a2.1,2.1,0,0,1,1.53,1,2.15,2.15,0,0,0,2.91.83,2.16,2.16,0,0,1,.63-1.34C8,16.17,5.62,15.31,5.62,11.5a3.87,3.87,0,0,1,1-2.71,3.58,3.58,0,0,1,.1-2.64s.84-.27,2.75,1a9.63,9.63,0,0,1,5,0c1.91-1.29,2.75-1,2.75-1a3.58,3.58,0,0,1,.1,2.64,3.87,3.87,0,0,1,1,2.71c0,3.82-2.34,4.66-4.57,4.91a2.39,2.39,0,0,1,.69,1.85V21c0,.27.16.59.67.5A10,10,0,0,0,12,2Z" />
+                        </svg>
+                        Continue with GitHub
+                    </Button>
+                    )}
                 </div>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-48 bg-[rgba(36,21,21,0.95)] text-white border-none rounded-md shadow-lg" align="end" forceMount>
-              <DropdownMenuLabel className="font-normal border-b border-gray-700 pb-2">
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-5">{Global.user.name}</p>
-                  <p className="text-xs leading-none text-gray-400">{Global.user.email}</p>
-                </div>
-              </DropdownMenuLabel>
-              <DropdownMenuItem asChild className=" focus:bg-transparent focus:text-red-500 transition-colors duration-200">
-                <Link to={`/profile/${Global.user.githubId}`} className="flex items-center py-2">
-                  <User className="mr-2 h-4 w-4" />
-                  <span>Profile</span>
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="flex justify-between items-center py-2 pointer-events-none">
-                <span>Points</span>
-                <span>{Global.user.points}</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="flex justify-between items-center py-2 pointer-events-none">
-                <span>Rank</span>
-                <span>{Global.user.rank}</span>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator className="bg-gray-700" />
-              <DropdownMenuItem onClick={handleLogout} className="focus:bg-transparent focus:text-red-500 transition-colors duration-200">
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Log out</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        ) : (
-          <Button onClick={handleGithubLogin} className="flex items-center bg-[#181717] text-white py-2 px-5 rounded-md font-bold shadow-lg hover:shadow-none transition-all duration-500">
-            <svg className="w-6 h-6 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M12,2A10,10,0,0,0,8.84,21.5c.5.08.66-.23.66-.5V19.31C6.73,19.91,6.14,18,6.14,18A2.69,2.69,0,0,0,5,16.5c-.91-.62.07-.6.07-.6a2.1,2.1,0,0,1,1.53,1,2.15,2.15,0,0,0,2.91.83,2.16,2.16,0,0,1,.63-1.34C8,16.17,5.62,15.31,5.62,11.5a3.87,3.87,0,0,1,1-2.71,3.58,3.58,0,0,1,.1-2.64s.84-.27,2.75,1a9.63,9.63,0,0,1,5,0c1.91-1.29,2.75-1,2.75-1a3.58,3.58,0,0,1,.1,2.64,3.87,3.87,0,0,1,1,2.71c0,3.82-2.34,4.66-4.57,4.91a2.39,2.39,0,0,1,.69,1.85V21c0,.27.16.59.67.5A10,10,0,0,0,12,2Z" />
-            </svg>
-            Continue with GitHub
-          </Button>
-        )}
-      </div>
 
                 <div className="lg:hidden">
                     <button className="text-white bg-transparent border-none" onClick={toggleSidebar}>
@@ -311,7 +311,9 @@ const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onPr
                 </div>
             </motion.div>
 
-            <Outlet />
+            <div className={sidebarOpen ? "blur-sm":""}>
+                <Outlet />
+            </div>
         </>
     );
 };
