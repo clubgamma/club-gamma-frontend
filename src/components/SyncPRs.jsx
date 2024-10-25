@@ -1,77 +1,108 @@
-import React, { useState } from "react";
+import { toast } from 'sonner';
 import Global from '@/Global';
+import { Loader2, RefreshCw } from "lucide-react";
+import { useState } from "react";
 
 const SyncPRs = () => {
-  const [syncStatus, setSyncStatus] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [syncedPRs, setSyncedPRs] = useState([]);
+    const [syncState, setSyncState] = useState({
+        status: 'idle',
+        retryCount: 0
+    });
 
-  const handleSyncPRs = async () => {
-    setLoading(true);
-    setSyncStatus("");
+    const MAX_RETRIES = 3;
+    const RETRY_DELAY = 1000;
 
-    try {
-      const synceResponse = await Global.httpPost("/api/users/sync-prs");
+    const handleSyncPRs = async () => {
+        if (syncState.status === 'loading') return;
 
-      if (response.ok) {
-        setSyncedPRs(synceResponse);
-        setSyncStatus("PRs synced successfully!");
-      } else if (response.status === 429) {
-        setSyncStatus("You are being rate-limited. Please try again later.");
-      } else {
-        setSyncStatus("Failed to sync PRs. Please try again.");
-      }
-    } catch (error) {
-      setSyncStatus("An error occurred while syncing PRs.");
-    } finally {
-      setLoading(false);
-    }
-  };
+        if (!Global.user?.githubId) {
+            toast.error('GitHub ID not found. Please ensure you are logged in.');
+            setSyncState({ status: 'error', retryCount: 0 });
+            return;
+        }
 
-  return (
-    <div className="flex flex-col items-center mt-5">
-      <h2 className="text-2xl font-bold mb-4 text-white">
-        Sync Your Pull Requests
-      </h2>
+        setSyncState(prev => ({
+            ...prev,
+            status: 'loading'
+        }));
 
-      <button
-        onClick={handleSyncPRs}
-        disabled={loading}
-        className={`px-4 py-2 text-white font-semibold rounded-lg shadow-md transition duration-300 ease-in-out ${
-          loading
-            ? "bg-[#3d2c2c] hover:bg-[#4e3535] cursor-not-allowed"
-            : "bg-[#523d3d] hover:bg-[#4e3535] border-[#4e3535] hover:bg-brown-600"
-        }`}
-      >
-        {loading ? "Syncing PRs..." : "Sync PRs"}
-      </button>
+        const syncPromise = new Promise(async (resolve, reject) => {
+            const attemptSync = async (retryCount) => {
+                try {
+                    const data = await Global.httpPost("/users/sync-prs", {
+                        githubId: Global.user.githubId
+                    });
 
-      {syncStatus && (
-        <p
-          className={`mt-3 text-lg ${
-            syncStatus.includes("successfully")
-              ? "text-green-500"
-              : "text-red-500"
-          }`}
-        >
-          {syncStatus}
-        </p>
-      )}
+                    setSyncState({ status: 'success', retryCount: 0 });
 
-      {syncedPRs.length > 0 && (
-        <div className="mt-5">
-          <h3 className="text-xl font-semibold mb-2">Synced Pull Requests:</h3>
-          <ul className="list-disc list-inside text-white">
-            {syncedPRs.map((pr, index) => (
-              <li key={index} className="text-lg text-yellow-50">
-                {pr.title} - #{pr.number}
-              </li>
-            ))}
-          </ul>
+                    resolve(`Synced ${data?.prCount || 0} PRs`);
+
+                    // Reload the page after successful sync
+                    if(data?.prCount > 0)
+                    {
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500);
+                    }
+
+                } catch (error) {
+                    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+
+                    setSyncState(prev => ({
+                        ...prev,
+                        status: 'error',
+                        retryCount: prev.retryCount + 1
+                    }));
+
+                    if (errorMessage.includes('rate-limited') || error?.status === 429) {
+                        reject('Rate limited. Try again later.');
+                        return;
+                    }
+
+                    if (error?.status === 401) {
+                        reject('Auth failed. Please log in.');
+                        return;
+                    }
+
+                    if (retryCount < MAX_RETRIES) {
+                        await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+                        return attemptSync(retryCount + 1);
+                    }
+
+                    reject(`Sync failed: ${errorMessage}`);
+                }
+            };
+
+            await attemptSync(0);
+        });
+
+        toast.promise(syncPromise, {
+            // loading: 'Syncing your PRs...',
+            success: (message) => message,
+            error: (error) => error
+        });
+    };
+
+    return (
+        <div className="flex items-center gap-3">
+            <button
+                onClick={handleSyncPRs}
+                disabled={syncState.status === 'loading'}
+                className={`flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-300
+                    ${syncState.status === 'loading'
+                        ? "bg-gray-700/50 text-gray-300 cursor-not-allowed"
+                        : "bg-red-500/20 text-red-400 hover:bg-red-500/30 active:bg-red-500/40"
+                    }`}
+            >
+                {syncState.status === 'loading' ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                    <RefreshCw className="w-4 h-4" />
+                )}
+                {syncState.status === 'loading' ? "Syncing..." : "Sync PRs"}
+            </button>
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default SyncPRs;

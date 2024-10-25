@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const serverUrl = import.meta.env.VITE_API_URL + '/api'  // This should point to your backend API in production
+const serverUrl = "http://localhost:3006" + '/api'  // This should point to your backend API in production
 
 export default class Global {
     static user;
@@ -33,6 +33,7 @@ export default class Global {
     static async httpGet(endPoint, params = {}) {
         try {
             const token = localStorage.getItem('token');  // Get token from localStorage
+            console.log(this.axios.defaults.baseURL)
             const res = await this.axios.get(endPoint, {
                 params,
                 headers: {
@@ -57,7 +58,7 @@ export default class Global {
             });
             return res.data;
         } catch (err) {
-            throw new Error("Error sending data");
+            throw err;
         }
     }
 

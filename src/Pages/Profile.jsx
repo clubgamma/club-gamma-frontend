@@ -37,7 +37,7 @@ const ContributionBox = ({ value, date }) => {
             <TooltipProvider>
                 <Tooltip delayDuration={200}>
                     <TooltipTrigger asChild>
-                        <div 
+                        <div
                             className={`${getBackgroundColor(value)} w-full h-full rounded-sm cursor-pointer`}
                             aria-label={`${value || 'No'} contribution${value !== 1 ? 's' : ''} on ${date}`}
                         />
@@ -225,7 +225,12 @@ export default function GitHubProfile() {
                                 className="w-24 h-24 rounded-full border-2 border-red-500"
                             />
                             <div className="flex-1 flex flex-col justify-center">
-                                <h1 className="text-2xl font-bold text-white mb-1">{userData.name}</h1>
+                                <div className="flex items-center justify-between">
+                                    <h1 className="text-2xl font-bold text-white mb-1">{userData.name}</h1>
+                                    <div id="SyncPRs">
+                                        <SyncPRs />
+                                    </div>
+                                </div>
                                 {userData.bio && (
                                     <p className="text-zinc-300 mb-2">{userData.bio}</p>
                                 )}
@@ -254,9 +259,6 @@ export default function GitHubProfile() {
                                         )}
                                     </div>
                                 )}
-                                <div id="SyncPRs" className="pt-20">
-                                   <SyncPRs/> 
-                                </div>
                             </div>
                         </div>
                     </CardContent>
