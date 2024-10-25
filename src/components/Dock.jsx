@@ -59,7 +59,7 @@ const Docks = () => {
             <TooltipProvider>
                 <Dock
                     direction="middle"
-                    className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-black/20 backdrop-blur-xl border border-white/10 rounded-full px-4 pointer-events-auto z-50"
+                    className="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black/20 backdrop-blur-xl border border-white/10 rounded-full px-4 pointer-events-auto z-50"
                 >
                     {DOCK_ITEMS.map((item, index) => (
                         item.type === "separator" ? (
