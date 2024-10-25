@@ -235,9 +235,13 @@ export default function GitHubProfile() {
                                             <SquareArrowOutUpRight className="w-5 h-5 text-white opacity-75 hover:opacity-100 transition-opacity" />
                                         </a>
                                     </h1>
-                                    <div id="SyncPRs">
-                                        <SyncPRs />
-                                    </div>
+                                    {
+                                        Global.user && Global.user.githubId === userData.githubId && (
+                                            <div id="SyncPRs">
+                                                <SyncPRs />
+                                            </div>
+                                        )
+                                    }
                                 </div>
                                 {userData.bio && (
                                     <p className="text-zinc-300 mb-2">{userData.bio}</p>
