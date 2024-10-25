@@ -4,13 +4,19 @@ import ContactUs from '@/components/ContactUs';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
-import QandA from '@/components/Q&A';
+import QandA from '@/components/HFQ&A';
 import Stats from '@/components/Stat';
 
 
 const Hacktober2024 = () => {
     const location = useLocation();
   
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+        });
+    }, []);
 
     useEffect(() => {
         // Check if we need to scroll to a section

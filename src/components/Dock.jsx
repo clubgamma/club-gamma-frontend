@@ -29,16 +29,16 @@ const DOCK_ITEMS = [
         path: "/hacktoberfest2024",
     },
     {
-        icon: HelpCircle,
-        label: "Q&A",
-        scrollTo: "q&a",
-        path: "/hacktoberfest2024", 
-    },
-    {
         icon: FolderKanban,
         label: "Projects",
         scrollTo: "projects",
         path: "/hacktoberfest2024",  
+    },
+    {
+        icon: HelpCircle,
+        label: "Q&A",
+        scrollTo: "q&a",
+        path: "/hacktoberfest2024", 
     },
 ];
 
