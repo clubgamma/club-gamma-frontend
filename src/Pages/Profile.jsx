@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import {
-    GitPullRequest,
-    Users,
-    Star,
-    GitFork,
-    Github,
-    Building2,
-    Link as LinkIcon,
-    MapPin
-} from 'lucide-react';
-import Global from '@/Global';
-import { useParams } from 'react-router-dom';
 import ProgressLevel from '@/components/ProgressLevel';
 import SyncPRs from '@/components/SyncPRs';
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import Global from '@/Global';
+import {
+    Building2,
+    GitFork,
+    Github,
+    GitPullRequest,
+    Link as LinkIcon,
+    MapPin,
+    SquareArrowOutUpRight,
+    Star,
+    Users
+} from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 
 
@@ -226,7 +226,17 @@ export default function GitHubProfile() {
                             />
                             <div className="flex-1 flex flex-col justify-center">
                                 <div className="flex items-center justify-between">
-                                    <h1 className="text-2xl font-bold text-white mb-1">{userData.name}</h1>
+                                    <h1 className="text-2xl font-bold text-white mb-1 flex items-center">
+                                        {userData.name}
+                                        <a
+                                            href={`https://github.com/${userData.githubId}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="ml-2"
+                                        >
+                                            <SquareArrowOutUpRight className="w-5 h-5 text-white opacity-75 hover:opacity-100 transition-opacity" />
+                                        </a>
+                                    </h1>
                                     <div id="SyncPRs">
                                         <SyncPRs />
                                     </div>
