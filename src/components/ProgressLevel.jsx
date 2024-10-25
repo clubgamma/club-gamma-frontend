@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Code2, Bug, BookOpen, Puzzle, Boxes } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from '@/lib/utils';
 
 const ProgressLevel = ({ userData }) => {
     const { prs } = userData;
@@ -90,15 +91,15 @@ const ProgressLevel = ({ userData }) => {
                     <div className="group bg-[#1e1e1e]/50 hover:bg-[#2a2a2a]/50 border border-[#4e3535] hover:border-red-900/50 transition-all duration-300 rounded-lg p-3">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-3">
-                                <div className={`p-2 rounded-lg ${difficulty.bgColor}`}>
+                                <div className={`p-2 rounded-lg ${difficulty.bgColor} sm:p-0 md:p-2`}>
                                     <difficulty.icon className={`w-4 h-4 ${difficulty.color}`} />
                                 </div>
                                 <div>
-                                    <h3 className="text-sm font-medium text-white">{difficulty.label}</h3>
-                                    <p className="text-xs text-zinc-400">{difficulty.description}</p>
+                                    <h3 className="text-sm font-medium text-white sm:text-xs md:text-sm">{difficulty.label}</h3>
+                                <p className={cn('block', 'sm:hidden', 'md:block', "text-xs text-zinc-400 ")}>{difficulty.description}</p>
                                 </div>
                             </div>
-                            <div className="flex items-baseline space-x-1">
+                            <div className="flex items-baseline space-x-1 sm:space-x-0 md:space-x-1">
                                 <span className={`text-lg font-bold ${difficulty.color}`}>
                                     {difficulty.solved}
                                 </span>
