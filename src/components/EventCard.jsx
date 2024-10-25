@@ -45,9 +45,9 @@ const EventModal = ({ event, onClose, open }) => {
     return (
         <Dialog open={open} onOpenChange={onClose}>
             <DialogContent 
-                className={`flex flex-col bg-[#2a2a2a] border-[#4e3535] max-w-4xl w-[95vw] ${calculateMinHeight()} max-h-[90vh] p-0`}
+                className={`flex flex-col  bg-[#2a2a2a] border-[#4e3535] max-w-4xl w-[95vw] ${calculateMinHeight()} max-h-[90vh] p-0`}
             >
-                <DialogHeader className="flex-none bg-[#4e3535] p-4 flex flex-row justify-between items-center border-b border-[#4e3535]">
+                <DialogHeader className="flex-none rounded-t-lg bg-[#4e3535] p-4 flex flex-row justify-between items-center border-b border-[#4e3535]">
                     <DialogTitle className="text-xl font-bold text-white">
                         {event?.title}
                     </DialogTitle>
