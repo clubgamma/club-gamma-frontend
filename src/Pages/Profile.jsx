@@ -19,8 +19,6 @@ import {
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-
-
 const ContributionBox = ({ value, date }) => {
     const getBackgroundColor = (value) => {
         if (!value) return 'bg-gray-700';
@@ -220,7 +218,7 @@ export default function GitHubProfile() {
                     <CardContent className="p-6">
                         <div className="flex items-center space-x-4">
                             <img
-                                src={userData.avatar || 'default-avatar.png'}
+                                src={`https://avatars.githubusercontent.com/${userData.githubId}` || 'default-avatar.png'}
                                 alt={userData.name}
                                 className="w-24 h-24 rounded-full border-2 border-red-500"
                             />
