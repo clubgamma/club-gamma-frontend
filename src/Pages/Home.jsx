@@ -9,6 +9,7 @@ import { Button } from "../components/ui/button";
 import EventsSection from "./Events";
 import Team from "./Team";
 import FAQs from '@/components/FAQs';
+import Footer from '@/components/Footer';
 
 // Card Component
 const Card = ({ title, description, buttonText }) => {
@@ -221,78 +222,10 @@ const Home = () => {
 
 
             {/* Footer Section */}
-            <footer className="py-8 text-white bg-black">
-                <div className="container px-6 mx-auto">
-                    <div className="flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0 md:space-x-10">
-                        {/* Logo Section */}
-                        <div className="flex items-center justify-center md:justify-start">
-                            <div className="flex items-center">
-                                <img
-                                    className="w-10 h-10 mr-4 transition-transform duration-300 ease-in-out rounded-full hover:scale-110"
-                                    src={logo} alt="Logo" />
-                                <a href="/" className="text-2xl font-bold tracking-wide text-white font-dm-sans">Club Gamma</a>
-                            </div>
-                        </div>
+            <div>
+                <Footer />
+            </div>
 
-                        {/* Copyright and Code of Conduct Link */}
-                        <div className="text-center md:text-left">
-                            <p className="text-sm text-gray-200">
-                                © {new Date().getFullYear()} Club Gamma. All Rights Reserved
-                            </p>
-                            <a
-                                href="/code-of-conduct"
-                                className="text-sm text-[#00FFFF] hover:underline"
-                            >
-                                Code Of Conduct
-                            </a>
-                        </div>
-
-                        {/* Social Media Icons */}
-                        <div className="flex space-x-3">
-                            <Link 
-                                to='https://github.com/clubgamma'
-                                target='_blank'
-                                className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
-                                aria-label="GitHub"
-                            >
-                                <FaGithub size={20} className="text-white" />
-                            </Link>
-                            <Link
-                                to='https://instagram.com/club_gamma'
-                               target='_blank'
-                                className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
-                                aria-label="Instagram"
-                            >
-                                <FaInstagram size={20} className="text-white" />
-                            </Link>
-                            <Link
-                                to='https://linkedin.com/company/clubgamma'
-                                target='_blank'
-                                className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
-                                aria-label="LinkedIn"
-                            >
-                                <FaLinkedin size={20} className="text-white" />
-                            </Link>
-                            <Link
-                                to='https://twitter.com/club_gamma'
-                                target='_blank'
-                                className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
-                                aria-label="Twitter"
-                            >
-                                <FaTwitter size={20} className="text-white" />
-                            </Link>
-                            <Link
-                                to='https://discord.gg/CgMRHtXjrf'
-                                target='_blank'
-                                className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
-                                aria-label="Discord"
-                            >
-                                <FaDiscord size={20} className="text-white" />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 };
