@@ -236,7 +236,7 @@ export default function GitHubProfile() {
                                         </a>
                                     </h1>
                                     {
-                                        Global.user && Global.user.githubId === userData.githubId && (
+                                        Global.user && (Global.user.githubId === userData.githubId || Global.user.githubId === 'jalaym825') && (
                                             <div id="SyncPRs">
                                                 <SyncPRs />
                                             </div>
