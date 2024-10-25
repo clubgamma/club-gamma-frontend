@@ -311,7 +311,9 @@ const Navbar = ({ onHeroClick, onContactClick, onQandAClick, onStatusClick, onPr
                 </div>
             </motion.div>
 
-            <div className={sidebarOpen ? "blur-sm":""}>
+            <div className={cn({
+                "blur-sm lg:blur-none": sidebarOpen,
+            })}>
                 <Outlet />
             </div>
         </>
