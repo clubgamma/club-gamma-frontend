@@ -9,7 +9,7 @@ const Team = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData = async () => { 
             try {
                 setIsLoading(true);
                 const response = await fetch("https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/JSON/teams/2024-25.json");
