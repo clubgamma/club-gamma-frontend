@@ -1,6 +1,6 @@
 import logo from '@/assets/logo.jpeg';
 import { motion } from 'framer-motion';
-import { ArrowRight, BrainCog, Code, Cpu, Lightbulb, Rocket, Sparkles, Star, Terminal, Users } from 'lucide-react';
+import { ArrowRight, BrainCog, Code, Cpu, Lightbulb, Rocket, Sparkles, Star, Target, Terminal, Users } from 'lucide-react';
 import PropTypes from "prop-types";
 import { useEffect, useState } from 'react';
 import { FaDiscord, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
@@ -249,55 +249,46 @@ const Home = () => {
 
                         {/* Social Media Icons */}
                         <div className="flex space-x-3">
-                            <a
-                                href="#"
+                            <Link 
+                                to='https://github.com/clubgamma'
+                                target='_blank'
                                 className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
                                 aria-label="GitHub"
                             >
                                 <FaGithub size={20} className="text-white" />
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                to='https://instagram.com/club_gamma'
+                               target='_blank'
                                 className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
                                 aria-label="Instagram"
                             >
                                 <FaInstagram size={20} className="text-white" />
-                            </a>
-                            <a
-                                href="#"
-                                className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
-                                aria-label="YouTube"
-                            >
-                                <FaYoutube size={20} className="text-white" />
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                to='https://linkedin.com/company/clubgamma'
+                                target='_blank'
                                 className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
                                 aria-label="LinkedIn"
                             >
                                 <FaLinkedin size={20} className="text-white" />
-                            </a>
-                            <a
-                                href="#"
-                                className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
-                                aria-label="Facebook"
-                            >
-                                <FaFacebook size={20} className="text-white" />
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                to='https://twitter.com/club_gamma'
+                                target='_blank'
                                 className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
                                 aria-label="Twitter"
                             >
                                 <FaTwitter size={20} className="text-white" />
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                to='https://discord.gg/CgMRHtXjrf'
+                                target='_blank'
                                 className="p-2 rounded-full bg-[#D8183A] hover:bg-gray-700"
                                 aria-label="Discord"
                             >
                                 <FaDiscord size={20} className="text-white" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
