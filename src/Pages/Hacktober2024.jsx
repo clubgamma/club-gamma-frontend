@@ -7,8 +7,10 @@ import Projects from '@/components/Projects';
 import QandA from '@/components/Q&A';
 import Stats from '@/components/Stat';
 
+
 const Hacktober2024 = () => {
     const location = useLocation();
+  
 
     useEffect(() => {
         // Check if we need to scroll to a section
@@ -22,11 +24,11 @@ const Hacktober2024 = () => {
     }, [location]);
 
     return (
-        <div className='bg-gradient-to-br overflow-x-hidden from-[#1e1e1e] to-[#4e3535]'>
+        <div className='bg-gradient-to-br overflow-x-hidden absolute from-[#1e1e1e] to-[#4e3535]'>
             <div id="hero" className='pt-4'>
                 <Hero />
             </div>
-            <div id="stats" className='pt-20'>
+            <div id="stat" className='pt-20'>
                 <Stats />
             </div>
             <div id="projects" className='pt-20'>

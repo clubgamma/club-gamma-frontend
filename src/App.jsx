@@ -5,7 +5,7 @@ import Global from '@/Global'
 import Home from '@/Pages/Home'
 import LeaderBoard from '@/Pages/LeaderBoard'
 import Profile from '@/Pages/Profile'
-import Navbar from '@/components/Navbar'
+// import Navbar from '@/components/Navbar'
 import RedirectPage from "@/Pages/Redirect"
 import Events from './Pages/Events'
 import { infinity } from "ldrs";
@@ -15,7 +15,9 @@ import Hacktober2024 from './Pages/Hacktober2024'
 import Loader from './components/Loader'
 import ContributorsPage from './Pages/Contributors'
 import { SEOLayout } from './components/SEOLayout'
-import NavbarHF from './components/NavbarHF'
+import NavbarHF from './components/Navbar'
+import Docks from './components/Dock'
+import Navbar from './components/Navbar'
 infinity.register()
 
 function App() {
@@ -56,7 +58,7 @@ function App() {
     if (!loaded && location.pathname !== '/redirect') {
         return (
             <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br overflow-hidden from-[#1e1e1e] to-[#4e3535]">
-                <Loader size='80'/>
+                <Loader size='80' />
             </div>
         )
     }
@@ -65,8 +67,8 @@ function App() {
         <SEOLayout >
             <div className="bg-gradient-to-br overflow-hidden from-[#1e1e1e] to-[#4e3535] min-h-screen">
                 <Routes>
-                    <Route path="/">
-                        <Route index element={<Home onRegisterClick={handleRegisterClick} />} />
+                    <Route path="/" element={<Navbar />}>
+                        <Route index element={<Home />} />
                         <Route path="/contributors/:repoName" element={<ContributorsPage />} />
                         <Route path="leaderboard" element={<LeaderBoard />} />
                         <Route path="events/:year" element={<Events />} />
@@ -75,16 +77,20 @@ function App() {
                         <Route path='/point-system' element={<PointSystem />} />
                     </Route>
 
-                    <Route path='/hacktoberfest2024' element={<NavbarHF/>}>
-                        <Route index element={<Hacktober2024/>}/>
-                        <Route path='leaderboard' element={<LeaderBoard/>}/>
+                    <Route path='/hacktoberfest2024' element={
+                        <>
+                            <Navbar />
+                            <Docks />
+                        </>}>
+                        <Route index element={<Hacktober2024 />} />
+                        <Route path='leaderboard' element={<LeaderBoard />} />
                         <Route path='point-system' element={<PointSystem />} />
                     </Route>
 
                     <Route path="/redirect" element={<RedirectPage />} />
                 </Routes>
             </div>
-        </SEOLayout>
+        </SEOLayout >
     )
 }
 

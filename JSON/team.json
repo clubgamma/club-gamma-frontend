@@ -40,6 +40,18 @@
         }
       },
       {
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/mit_monpara.png",
+        "position": "Web Expert",
+        "name": "Mit Monpara",
+        "tagline": "Building Future-Ready Websites with Precision",
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/mit-monpara-94ba77257/",
+          "instagram": "https://www.instagram.com/mit_monpara_/",
+          "github": "https://github.com/MitM123",
+          "twitter": "https://x.com/MitMonpara"
+        }
+      },
+      {
         "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/bhavya_prajapati.png",
         "position": "Web Expert",
         "name": "Bhavya Prajapati",
