@@ -140,8 +140,8 @@ const ProjectShowcase = () => {
                 <div className="p-6 h-full flex flex-col">
                   <div className="mb-4">
                     <div className='flex gap-1'>
-                    {project.categories.map((category) => (
-                      <span className="inline-block px-3 py-1 text-xs font-semibold text-red-400 bg-red-900/20 rounded-full mb-4">
+                    {project.categories.map((category,index) => (
+                      <span key={`${index}${category}`} className="inline-block px-3 py-1 text-xs font-semibold text-red-400 bg-red-900/20 rounded-full mb-4">
                         {category}
                       </span>
                     ))}
