@@ -17,6 +17,7 @@ import {
 import Global from '@/Global';
 import { useParams } from 'react-router-dom';
 import ProgressLevel from '@/components/ProgressLevel';
+import SyncPRs from '@/components/SyncPRs';
 
 
 
@@ -194,7 +195,6 @@ export default function GitHubProfile() {
         fetchData();
     }, [username]);
 
-
     if (error) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] flex items-center justify-center p-4">
@@ -254,6 +254,9 @@ export default function GitHubProfile() {
                                         )}
                                     </div>
                                 )}
+                                <div id="SyncPRs" className="pt-20">
+                                   <SyncPRs/> 
+                                </div>
                             </div>
                         </div>
                     </CardContent>
