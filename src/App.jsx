@@ -74,7 +74,6 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Navbar />}>
                         <Route index element={<Home />} />
-                        <Route path="/contributors/:repoName" element={<ContributorsPage />} />
                         <Route path="leaderboard" element={<LeaderBoard />} />
                         <Route path="events/:year" element={<Events />} />
                         <Route path="profile/:username" element={<Profile />} />
@@ -88,6 +87,7 @@ function App() {
                             <Docks />
                         </>}>
                         <Route index element={<Hacktober2024 />} />
+                        <Route path="contributors/:repoName" element={<ContributorsPage />} />
                         <Route path='leaderboard' element={<LeaderBoard />} />
                         <Route path='point-system' element={<PointSystem />} />
                     </Route>

@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import { ArrowUpRight, Users } from 'lucide-react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ProjectShowcase = () => {
   const navigate = useNavigate();
@@ -155,13 +155,13 @@ const ProjectShowcase = () => {
                   </div>
 
                   <div className="mt-auto flex justify-between gap-4">
-                    <button
-                      onClick={() => navigate(`/contributors/${project.repoName}`)}
+                    <Link
+                      to={`/hacktoberfest2024/contributors/${project.repoName}`}
                       className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[#3d2c2c] hover:bg-[#4e3535] text-white transition-all duration-300 flex-1"
                     >
                       <Users size={18} className={cn('block','sm:hidden', 'md:block')} />
                       <span>Contributors</span>
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleButtonClick(project.url)}
                       className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-500 hover:text-red-400 transition-all duration-300 flex-1 "
