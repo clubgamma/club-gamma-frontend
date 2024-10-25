@@ -2,7 +2,7 @@
   "teams": [
     [
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/jalay_movaliya.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/team-photos/2024-25/jalay_movaliya.png",
         "position": "Club Lead",
         "name": "Jalay Movaliya",
         "tagline": "Code With Purpose, Lead With Vision",
@@ -14,7 +14,7 @@
         }
       },
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/clubgamma.github.io/master/client/src/assets/images/team_images/jay-khatri-min.jpg",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/client/src/assets/team-photos/2024-25/jay-khatri.jpg",
         "position": "Club Founder",
         "name": "Jay Khatri",
         "tagline": "The One Who Started The Legacy",
@@ -28,7 +28,7 @@
     ],
     [
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/pooja_ramani.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/team-photos/2024-25/pooja_ramani.png",
         "position": "AI/ML Expert",
         "name": "Pooja Ramani",
         "tagline": "Data-Driven Dreams In Action",
@@ -40,7 +40,7 @@
         }
       },
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/mit_monpara.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/team-photos/2024-25/mit_monpara.png",
         "position": "Web Expert",
         "name": "Mit Monpara",
         "tagline": "Bringing Web Interfaces to Life With Precision",
@@ -52,7 +52,7 @@
         }
       },
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/bhavya_prajapati.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/team-photos/2024-25/bhavya_prajapati.png",
         "position": "Web Expert",
         "name": "Bhavya Prajapati",
         "tagline": "One Bug At A Time, Making The Web A Better Place",
@@ -66,7 +66,7 @@
     ],
     [
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/jay_rupapara.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/team-photos/2024-25/jay_rupapara.png",
         "position": "Web Expert",
         "name": "Jay Rupapara",
         "tagline": "Code By Al, Tweaked By Me",
@@ -78,7 +78,7 @@
         }
       },
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/charmi_dodiya.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/team-photos/2024-25/charmi_dodiya.png",
         "position": "Graphics Designer",
         "name": "Charmi Dodiya",
         "tagline": "Crafting Pixel By Pixel, Chaos Into Creative Gold",
@@ -90,7 +90,7 @@
         }
       },
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/satyam_charola.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/team-photos/2024-25/satyam_charola.png",
         "position": "Graphics Designer",
         "name": "Satyam Charola",
         "tagline": "Crafting Perfection: A Hundred Attempts To Make It Shine",
@@ -104,7 +104,7 @@
     ],
     [
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/dhairya_kanabar.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/team-photos/2024-25/dhairya_kanabar.png",
         "position": "Social Media Manager",
         "name": "Dhairya Kanabar",
         "tagline": "Committing Creativity, Pushing Content & Merging Ideas",
@@ -116,7 +116,7 @@
         }
       },
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/japan_kachhiya.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/team-photos/2024-25/japan_kachhiya.png",
         "position": "Mobile Expert",
         "name": "Japan Kachhiya",
         "tagline": "Redefining The Boundaries Of App Development",
@@ -128,7 +128,7 @@
         }
       },
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/profile-pics/dhiraj_bagad.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/main/src/assets/team-photos/2024-25/dhiraj_bagad.png",
         "position": "Cloud Expert",
         "name": "Dhiraj Bagad",
         "tagline": "Decoding The Cloud Mysteries & Sparking The New Ones",
@@ -142,7 +142,7 @@
     ],
     [
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/kaushal_bhanderi.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/team-photos/2024-25/kaushal_bhanderi.png",
         "position": "PR Associate",
         "name": "Kaushal Bhanderi",
         "tagline": "Al In My Code, Connections In My Neural Network",
@@ -154,7 +154,7 @@
         }
       },
       {
-        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/profile-pics/shrey_lakhtaria.png",
+        "imageUrl": "https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/src/assets/team-photos/2024-25/shrey_lakhtaria.png",
         "position": "PR Associate",
         "name": "Shrey Lakhtaria",
         "tagline": "When Innovation Meets Collaboration",
