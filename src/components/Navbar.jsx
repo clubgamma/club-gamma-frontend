@@ -36,6 +36,14 @@ const Navbar = () => {
         }
     };
 
+    const truncateName = (name) => {
+        const firstName = name.split(' ')[0]
+        if (firstName.length <= 13) {
+            return firstName
+        }
+        return `${firstName.slice(0, 10)}...`
+    }
+
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
@@ -99,8 +107,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center gap-10 font-montserrat text-[1rem]">
-                  
+                <div className="hidden lg:flex items-center gap-10 font-montserrat text-[1rem]"> 
                     {
                         NavbarItems.map((item, index) => (
                             <button key={index} onClick={() => handleClick(item)} className="text-white transition-all duration-300 cursor-pointer hover:text-red-500">
@@ -108,6 +115,7 @@ const Navbar = () => {
                             </button>
                         ))
                     }
+
                 </div>
 
 
