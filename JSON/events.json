@@ -22,7 +22,7 @@
       "start_date": "2020-10-01T00:00:00Z",
       "end_date": "2020-10-31T23:59:59Z",
       "title": "Hacktoberfest 2020",
-      "description": "Hacktoberfest is a month-long celebration of open source software run by DigitalOcean in partnership with GitHub and Twilio. We will put projects on different fields like Mobile App Development, Web Development, Python, etc. We will initialise some GitHub Repo and will make them open source.",
+      "description": "Hacktoberfest is a month-long celebration of open source software run by DigitalOcean in partnership with GitHub and Twilio.",
       "filename": "hacktoberfest_2020.md"
     }
   ],
@@ -31,8 +31,15 @@
       "start_date": "2021-10-01T00:00:00Z",
       "end_date": "2021-10-31T23:59:59Z",
       "title": "Hacktoberfest 2021",
-      "description": "Hacktoberfest is a month-long celebration of open source software run by DigitalOcean in partnership with GitHub, Intel, Appwrite & Deepsource. Hacktoberfest encourages participation in the open source community, which grows bigger every year. Complete the 2021 challenge and earn a limited edition T-shirt. We have different projects on our github, check it out!",
+      "description": "Hacktoberfest encourages participation in the open source community.",
       "filename": "hacktoberfest_2021.md"
+    },
+    {
+      "start_date": "2021-11-01T00:00:00Z",
+      "end_date": "2021-11-01T23:59:59Z",
+      "title": "Tech Symposium 2021",
+      "description": "A day of talks and workshops from industry leaders.",
+      "filename": "tech_symposium_2021.md"
     }
   ],
   "2024": [
@@ -40,8 +47,22 @@
       "start_date": "2024-10-01T00:00:00Z",
       "end_date": "2024-10-31T23:59:59Z",
       "title": "Hacktoberfest 2024",
-      "description": "Hacktoberfest 2024 is a month-long celebration of open source software, hosted by DigitalOcean and GitHub. Contribute four quality pull requests during October to earn either a limited edition eco-friendly t-shirt or have a tree planted in your name. Join developers worldwide in supporting open source projects - from beginners to experts, everyone is welcome!",
+      "description": "Hacktoberfest 2024 is a month-long celebration of open source software.",
       "filename": "hacktoberfest_2024.md"
+    },
+    {
+      "start_date": "2024-11-01T00:00:00Z",
+      "end_date": "2024-11-01T23:59:59Z",
+      "title": "New Tech Conference 2024",
+      "description": "Join us for a day of insightful talks and networking with industry leaders in tech.",
+      "filename": "new_tech_conference_2024.md"
+    },
+    {
+      "start_date": "2024-12-01T00:00:00Z",
+      "end_date": "2024-12-01T23:59:59Z",
+      "title": "Year-End Hackathon",
+      "description": "A collaborative event for developers to showcase their skills.",
+      "filename": "year_end_hackathon_2024.md"
     }
   ]
 }
