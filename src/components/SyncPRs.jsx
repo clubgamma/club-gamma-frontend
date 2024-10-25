@@ -2,6 +2,7 @@ import { toast } from 'sonner';
 import Global from '@/Global';
 import { Loader2, RefreshCw } from "lucide-react";
 import { useState } from "react";
+import { useParams } from 'react-router-dom';
 
 const SyncPRs = () => {
     const [syncState, setSyncState] = useState({
@@ -11,6 +12,8 @@ const SyncPRs = () => {
 
     const MAX_RETRIES = 3;
     const RETRY_DELAY = 1000;
+
+    const { username } = useParams();
 
     const handleSyncPRs = async () => {
         if (syncState.status === 'loading') return;
@@ -30,7 +33,7 @@ const SyncPRs = () => {
             const attemptSync = async (retryCount) => {
                 try {
                     const data = await Global.httpPost("/users/sync-prs", {
-                        githubId: Global.user.githubId
+                        githubId: username
                     });
 
                     setSyncState({ status: 'success', retryCount: 0 });
@@ -38,8 +41,7 @@ const SyncPRs = () => {
                     resolve(`Synced ${data?.prCount || 0} PRs`);
 
                     // Reload the page after successful sync
-                    if(data?.prCount > 0)
-                    {
+                    if (data?.prCount > 0) {
                         setTimeout(() => {
                             window.location.reload();
                         }, 1500);

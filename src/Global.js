@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const serverUrl = import.meta.env.VITE_API_URL + '/api'  // This should point to your backend API in production
+const serverUrl = "http://localhost:3006" + '/api'  // This should point to your backend API in production
 
 export default class Global {
     static user;
