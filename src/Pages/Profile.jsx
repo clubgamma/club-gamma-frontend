@@ -285,9 +285,10 @@ export default function GitHubProfile() {
 
                 <div className="space-y-8">
                     <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
-                        <CardContent className="p-6">
+                      <h2 className="text-xl font-semibold text-white mb-4 sticky top-0 ml-7 mt-3 z-10">Recent Pull Requests</h2>
+                        <CardContent className="p-6 max-h-[30rem] overflow-auto scrollbar-thin scrollbar-thumb-red-500 scrollbar-track-red-200">
                             <div className='flex justify-between'>
-                                <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
+{/*                                 <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2> */}
                                 {/* {Global.user && (
                                     <div id="SyncPRs">
                                         <SyncPRs />
