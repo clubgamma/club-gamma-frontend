@@ -18,6 +18,7 @@ import Docks from './components/Dock'
 import Loader from './components/Loader'
 import Navbar from './components/Navbar'
 import { SEOLayout } from './components/SEOLayout'
+import CodeOfConduct from './Pages/CodeOfConduct'
 infinity.register()
 
 function App() {
@@ -79,6 +80,7 @@ function App() {
                         <Route path="profile/:username" element={<Profile />} />
                         <Route path='/team' element={<Teams />} />
                         <Route path='/point-system' element={<PointSystem />} />
+                        <Route path='/code-of-conduct' element={<CodeOfConduct />} />
                     </Route>
 
                     <Route path='/hacktoberfest2024' element={
