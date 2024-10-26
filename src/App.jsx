@@ -85,8 +85,7 @@ function App() {
 
                     <Route path='/hacktoberfest2024' element={
                         <>
-                            <Navbar />
-                            <Docks />
+                            <Navbar dockon={true} />
                         </>}>
                         <Route index element={<Hacktober2024 />} />
                         <Route path="contributors/:repoName" element={<ContributorsPage />} />
