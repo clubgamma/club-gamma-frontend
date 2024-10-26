@@ -216,7 +216,6 @@ const Home = () => {
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
             </section>
 
-
             {/* FAQ Section */}
             <section id="faqs" className="bg-gradient-to-br from-[#1e1e1e]  to-[#4e3535] py-24 relative overflow-hidden">
                 <FAQs />
