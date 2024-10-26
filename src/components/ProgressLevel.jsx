@@ -87,26 +87,26 @@ const ProgressLevel = ({ userData }) => {
     const totalPRs = prs.filter(pr => pr.state === 'merged').length;
     const completionRate = totalPRs > 0 ? Math.round((totalPRs / prs.length) * 100) : 0;
 
-    const DifficultyItem = ({ difficulty }) => (
-                    <div className="group bg-[#1e1e1e]/50 hover:bg-[#2a2a2a]/50 border border-[#4e3535] hover:border-red-900/50 transition-all duration-300 rounded-lg p-3">
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center space-x-3">
-                                <div className={`p-2 rounded-lg ${difficulty.bgColor} sm:p-0 md:p-2`}>
-                                    <difficulty.icon className={`w-4 h-4 ${difficulty.color}`} />
-                                </div>
-                                <div>
-                                    <h3 className="text-sm font-medium text-white sm:text-xs md:text-sm">{difficulty.label}</h3>
-                                <p className={cn('block', 'sm:hidden', 'md:block', "text-xs text-zinc-400 ")}>{difficulty.description}</p>
-                                </div>
-                            </div>
-                            <div className="flex items-baseline space-x-1 sm:space-x-0 md:space-x-1">
-                                <span className={`text-lg font-bold ${difficulty.color}`}>
-                                    {difficulty.solved}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-    );
+const DifficultyItem = ({ difficulty }) => (
+    <div className="group bg-[#1e1e1e]/50 hover:bg-[#2a2a2a]/50 border border-[#4e3535] hover:border-red-900/50 transition-all duration-300 rounded-lg p-3 h-full">
+        <div className="flex items-center justify-between h-full">
+            <div className="flex items-center space-x-3">
+                <div className={`rounded-lg ${difficulty.bgColor} sm:p-0 md:p-2`}>
+                    <difficulty.icon className={`w-4 h-4 ${difficulty.color}`} />
+                </div>
+                <div>
+                    <h3 className="text-sm font-medium text-white sm:text-xs md:text-sm">{difficulty.label}</h3>
+                    <p className={cn('block', 'sm:hidden', 'md:block', "text-xs text-zinc-400")}>{difficulty.description}</p>
+                </div>
+            </div>
+            <div className="flex items-baseline space-x-1 sm:space-x-0 md:space-x-1">
+                <span className={`text-lg font-bold ${difficulty.color}`}>
+                    {difficulty.solved}
+                </span>
+            </div>
+        </div>
+    </div>
+);
 
     return (
         <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535] w-full sm:w-[500px]">

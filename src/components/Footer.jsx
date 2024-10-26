@@ -54,7 +54,14 @@ const Footer = () => {
                     <div className="flex flex-col  items-center md:items-start space-y-3 md:w-1/3 text-center md:text-left">
                         <div className="flex items-center space-x-3 text-gray-300 group">
                             <FaMapMarkerAlt className="text-red-500 group-hover:scale-110 transition-transform duration-300" />
-                            <span>Charusat University, Gujarat</span>
+                                <a 
+                                    href="https://maps.google.com/?q=CHARUSAT+University,Changa+Gujarat" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="hover:text-red-400 transition-colors duration-300"
+                                >
+                                    <span>Charusat University, Gujarat</span>
+                                </a>
                         </div>
                         <div className="flex items-center space-x-3 text-gray-300 group">
                             <FaEnvelope className="text-red-500 group-hover:scale-110 transition-transform duration-300" />
