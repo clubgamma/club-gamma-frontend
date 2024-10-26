@@ -6,6 +6,8 @@ import {
   AccordionItem,
   AccordionTrigger
 } from '@/components/ui/accordion';
+import { motion } from 'framer-motion';
+import FAQ from '../assets/FAQ.svg';
 
 const QandA = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -118,37 +120,47 @@ const QandA = () => {
   ];
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 text-white">
-      <div className="relative space-y-4 mb-12 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white">
-          Hacktoberfest{" "}
-          <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent hover:from-red-400 hover:to-red-500 transition-colors duration-300">
-            Q&A
-          </span>
-        </h1>
+    <div className="w-full  mx-auto px-4 text-white">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-8 h-8 md:w-16 md:h-16 border-2 border-red-400 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-16 left-1/4 w-12 h-12 md:w-24 md:h-24 border-2 border-red-500 rounded-full animate-bounce"></div>
+        <div className="absolute top-40 right-20 w-8 h-8 md:w-16 md:h-16 border-2 border-red-300 rounded-full animate-ping"></div>
       </div>
-
-      <Accordion type="single" collapsible className="space-y-4">
-        {qaData.map((item, index) => (
-          <AccordionItem
-            key={index}
-            value={`item-${index}`}
-            className="bg-gradient-to-br from-[#3d2828] to-[#2a2a2a] rounded-lg border border-[#4e3535]/30 overflow-hidden"
-          >
-            <AccordionTrigger className="px-6 py-4 hover:no-underline group">
-              <div className="flex items-center justify-between w-full">
-                <h2 className="text-lg md:text-xl font-semibold text-left">
-                  {item.title}
-                </h2>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="px-6 pb-4 text-gray-200">
-              {item.content}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-
+      <div className="container mx-auto px-4 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-10 md:mb-20"
+        >
+          <div className="relative space-y-4 mb-12 text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white">
+              Hacktoberfest{" "}
+              <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent hover:from-red-400 hover:to-red-500 transition-colors duration-300">
+                Q&A
+              </span>
+            </h1>
+          </div>
+          <div className="flex flex-col-reverse md:flex-row w-full">
+            <div className="font-dm-sans w-full md:w-[70%] mx-auto space-y-4 p-2 md:p-7">
+              <Accordion type="single" collapsible className="w-full">
+                {qaData.map((item, index) => (
+                  <AccordionItem key={index} value={`item-${index}`} className="border-b mb-4 border-red-800/30">
+                    <AccordionTrigger
+                      className="text-left py-4 px-4 md:px-6 bg-red-900/20 hover:bg-red-800/30 rounded-t-lg hover:no-underline transition-colors duration-200"
+                    >
+                      <span className="text-base md:text-lg font-semibold text-red-100">{item.title}</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="p-4 md:p-6 text-start bg-red-950/40 rounded-b-lg">
+                      <p className="text-red-200">{item.content}</p>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </motion.div>
+      </div>
       <div className="mt-8 text-center text-sm text-gray-400">
         <p>Click on any question to expand the answer</p>
       </div>
