@@ -7,7 +7,7 @@ const CodeOfConduct = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('./CODE_OF_CONDUCT.md')
+    fetch('https://raw.githubusercontent.com/clubgamma/club-gamma-frontend/refs/heads/main/CODE_OF_CONDUCT.md')
       .then((response) => response.text())
       .then((text) => {
         setMarkdownContent(text);
