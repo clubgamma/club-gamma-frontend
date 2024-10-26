@@ -91,7 +91,7 @@ const ProjectShowcase = () => {
     : projects;
 
   return (
-    <div className="relative">
+    <div className="relative z-10">
       <div className="relative max-w-7xl mx-auto">
         <div className="relative space-y-4 mb-12 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white">
