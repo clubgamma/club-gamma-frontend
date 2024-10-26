@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ProjectContributions from '@/components/ProjectContributions';
 
 const ContributionBox = ({ value, date }) => {
     const getBackgroundColor = (value) => {
@@ -277,6 +278,8 @@ export default function GitHubProfile() {
                     <StatCard value={userData.followers} label="Followers" icon={Users} />
                     <StatCard value={userData.following} label="Following" icon={Users} />
                 </div>
+
+                <ProjectContributions projectContributions={userData.projectContribution} />
 
                 <div className="mb-8 w-full flex flex-col gap-4 sm:flex-row justify-between">
                     <ContributionCalendar userPRs={userPRs} />
