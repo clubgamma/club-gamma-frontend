@@ -42,7 +42,7 @@ const DOCK_ITEMS = [
     },
 ];
 
-const Docks = () => {
+const Docks = ({sidebarOpen}) => {
     const navigate = useNavigate();
 
     const handleClick = (item) => {
@@ -54,7 +54,9 @@ const Docks = () => {
     };
 
     return (
-        <div className="fixed inset-0 z-50 pointer-events-none">
+        <div className={cn("fixed inset-0 z-50 pointer-events-none", {
+            "pointer-events-none" : sidebarOpen
+        })}>
             <div className="absolute inset-0" />
             <TooltipProvider>
                 <Dock

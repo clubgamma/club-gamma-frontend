@@ -11,6 +11,7 @@ import { IoMdClose } from "react-icons/io";
 import { RiMenu3Fill } from "react-icons/ri";
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { ScrollArea } from './ui/scroll-area';
+import Docks from './Dock';
 
 const HacktoberfestIcon = (props) => (
   <svg
@@ -30,7 +31,7 @@ const HacktoberfestIcon = (props) => (
   </svg>
 )
 
-const Navbar = () => {
+const Navbar = ({dockon=false}) => {
     const navigate = useNavigate();
 
     const handleGithubLogin = () => {
@@ -310,7 +311,8 @@ const Navbar = () => {
             <div className={cn({
                 "blur-sm lg:blur-none": sidebarOpen,
             })}>
-                <Outlet />
+          <Outlet />
+          {dockon && <Docks sidebarOpen={sidebarOpen}/>}
             </div>
         </>
     );
