@@ -52,7 +52,7 @@ const Team = () => {
                 keywords="Club Gamma, team, developers, open source, contributors, leadership, tech team"
             />
 
-            <section className="pt-24 min-h-screen">
+            <section className="min-h-screen">
                 <div className="container mx-auto px-4 pb-24">
                     <div className="relative py-16 text-center">
                         {/* Decorative background elements */}
@@ -60,11 +60,12 @@ const Team = () => {
                         <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-gradient-to-tr from-red-600/10 to-transparent rounded-full blur-3xl" />
 
                         <div className="relative space-y-4">
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white relative inline-block">
                                 Meet Team{" "}
                                 <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent hover:from-red-400 hover:to-red-500 transition-colors duration-300">
                                     Gamma
                                 </span>
+                                <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500/0 via-red-500/50 to-red-500/0"></div>
                             </h1>
 
                             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">

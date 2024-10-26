@@ -195,7 +195,7 @@ const LeaderBoard = () => {
 
   const navigate = useNavigate();
   const handlePointSystemClick = () => {
-    navigate("/point-system");
+    navigate("/hacktoberfest2024/point-system");
   };
 
   const renderPaginationNumbers = () => {
@@ -263,7 +263,7 @@ const LeaderBoard = () => {
         description="Track and explore Club Gamma's top contributors on our leaderboard. View rankings, points, and pull request statistics for our open-source community."
         keywords="Club Gamma, Club Gamma leaderboard, open source contributions, GitHub contributors, developer achievements, contribution metrics, pull request tracking, developer badges, Club Gamma community, contribution points, open source community"
       />
-      <div className="min-h-screen font-dm-sans text-white pt-16 md:pt-28 bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] overflow-hidden">
+      <div className="min-h-screen font-dm-sans text-white pt-16 pb-16 md:pt-28 bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] overflow-hidden">
         <main className="container px-4 py-8 mx-auto">
           {Global.user && (
             currentUser ?
