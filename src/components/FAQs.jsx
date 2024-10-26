@@ -39,7 +39,7 @@ const FAQs = () => {
                                         >
                                             <span className="text-base md:text-lg font-semibold text-red-100">{faq.question}</span>
                                         </AccordionTrigger>
-                                        <AccordionContent className="p-4 md:p-6 bg-red-950/40 rounded-b-lg">
+                                        <AccordionContent className="p-4 md:p-6 text-start bg-red-950/40 rounded-b-lg">
                                             <p className="text-red-200">{faq.answer}</p>
                                         </AccordionContent>
                                     </AccordionItem>
