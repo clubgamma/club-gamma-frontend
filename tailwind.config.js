@@ -20,6 +20,12 @@ module.exports = {
   			'dm-sans': ['DM Sans', 'sans-serif'],
   			edu: ['Edu AU VIC WA NT Guides', 'cursive']
   		},
+      scrollbar: {
+        DEFAULT: {
+          track: 'bg-opacity-20 bg-red-600',
+          thumb: 'bg-red-500 rounded',
+        },
+      },
   		keyframes: {
   			'accordion-down': {
   				from: {
@@ -91,5 +97,8 @@ module.exports = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('tailwind-scrollbar'),
+  ],
 }
