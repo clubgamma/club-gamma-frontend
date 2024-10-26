@@ -10,6 +10,7 @@ import EventsSection from "./Events";
 import Team from "./Team";
 import FAQs from '@/components/FAQs';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 
 // Card Component
 const Card = ({ title, description, buttonText }) => {
@@ -85,6 +86,8 @@ const Home = () => {
     ];
 
     return (
+        <>
+        <SEO title="Home" />
         <div className="min-h-screen text-black bg-white">
             {/* Hero Section */}
             <section id="hero" className="flex flex-col justify-center bg-[#D8183A]  text-center">
@@ -209,7 +212,7 @@ const Home = () => {
                 </div>
 
                 <div className="relative container px-6 mx-auto">
-                    <Team />
+                    <Team seo={false}/>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
             </section>
@@ -226,7 +229,8 @@ const Home = () => {
                 <Footer />
             </div>
 
-        </div>
+            </div>
+            </>
     );
 };
 

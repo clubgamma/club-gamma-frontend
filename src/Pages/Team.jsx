@@ -3,7 +3,7 @@ import TeamCard from "@/components/TeamCard";
 import Loader from "@/components/Loader";
 import SEO from "@/components/SEO";
 
-const Team = () => {
+const Team = ({ seo=true }) => {
     const [teamData, setTeamData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -47,10 +47,10 @@ const Team = () => {
 
     return (
         <>
-            <SEO title="Team" pathname="/team"
+            {seo && <SEO title="Team" pathname="/team"
                 description="Meet the talented team behind Club Gamma. Discover the people driving our mission and making things happen!"
                 keywords="Club Gamma, team, developers, open source, contributors, leadership, tech team"
-            />
+            />}
 
             <section className="min-h-screen">
                 <div className="container mx-auto px-4 pb-24">

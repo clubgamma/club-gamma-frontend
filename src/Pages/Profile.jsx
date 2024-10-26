@@ -235,13 +235,7 @@ export default function GitHubProfile() {
                                             <SquareArrowOutUpRight className="w-5 h-5 text-white opacity-75 hover:opacity-100 transition-opacity" />
                                         </a>
                                     </h1>
-                                    {/* {
-                                        Global.user && (Global.user.githubId === userData.githubId || Global.user.githubId === 'jalaym825') && (
-                                            <div id="SyncPRs">
-                                                <SyncPRs />
-                                            </div>
-                                        )
-                                    } */}
+
                                 </div>
                                 {userData.bio && (
                                     <p className="text-zinc-300 mb-2">{userData.bio}</p>
@@ -292,7 +286,14 @@ export default function GitHubProfile() {
                 <div className="space-y-8">
                     <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
                         <CardContent className="p-6">
-                            <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
+                            <div className='flex justify-between'>
+                                <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
+                                {/* {Global.user && (
+                                    <div id="SyncPRs">
+                                        <SyncPRs />
+                                    </div>
+                                )} */}
+                            </div>
                             <div className="space-y-3">
                                 {userData.prs.map((pr, index) => (
                                     <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
