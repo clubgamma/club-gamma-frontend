@@ -159,7 +159,7 @@ const Home = () => {
                                 className="group relative"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-red-400/20 to-red-500/20 rounded-xl blur-sm  "></div>
-                                <div className="relative bg-[#2a2a2a]/40 border border-red-200/10 p-8 rounded-xl ">
+                                <div className="relative bg-[#2a2a2a]/40 border border-red-200/10 p-8 rounded-xl h-full ">
                                     <div className="text-red-500 mb-4">{feature.icon}</div>
                                     <h3 className="text-2xl font-bold text-white mb-2">{feature.title}</h3>
                                     <p className="text-gray-400">{feature.description}</p>
