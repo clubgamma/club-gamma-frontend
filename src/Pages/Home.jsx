@@ -33,7 +33,6 @@ Card.propTypes = {
 };
 
 const Home = () => {
-    const [openIndex, setOpenIndex] = useState(null);
     const location = useLocation();
     useEffect(() => {
         if (location.state?.scrollTo) {
@@ -101,7 +100,7 @@ const Home = () => {
                         <div className="text-center">
                             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 relative inline-block">
                                 Welcome to Club Gamma
-                                <Sparkles className="absolute -top-6 -right-6 text-yellow-400 h-8 w-8 animate-spin" />
+                                <Sparkles className="absolute -top-6 right-2 sm:-right-6 text-yellow-400 h-8 w-8 animate-spin" />
                             </h1>
                             <p className="text-xl sm:text-2xl mb-8 max-w-2xl mx-auto text-gray-300">
                                 Empowering students to innovate, collaborate, and excel in the digital age

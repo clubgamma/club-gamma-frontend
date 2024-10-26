@@ -85,16 +85,16 @@ const Stats = () => {
             </div>
           </div>
         ) : (
-          <div className="grid font-poppins grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid  font-poppins grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] to-[#3d2828] rounded-lg p-6 shadow-xl border border-[#4e3535]/30 hover:border-red-500/50 transition-all duration-300 group mx-3"
+                className="relative  overflow-hidden bg-gradient-to-br from-[#2a2a2a] to-[#3d2828] rounded-lg p-6 shadow-xl border border-[#4e3535]/30 hover:border-red-500/50 transition-all duration-300 group mx-3"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute  inset-0 bg-gradient-to-br from-red-500/5 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative flex items-center justify-between mb-4">
                   <stat.icon className="w-12 h-12 text-red-400 group-hover:text-red-300 transition-colors duration-300" />
                   <div className="text-4xl font-bold text-white group-hover:text-red-50 transition-colors duration-300">

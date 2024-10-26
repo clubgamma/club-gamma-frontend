@@ -14,7 +14,7 @@ const TeamCard = ({ member }) => {
     const { social } = member || {};
 
     return (
-        <Card className="group relative min-h-[465px] bg-gradient-to-br from-[#1e1e1e] to-[#2d2424] text-white border-none transition-all duration-300 hover:bg-gradient-to-br overflow-hidden">
+        <Card className="group relative font-dm-sans min-h-[465px] bg-gradient-to-br from-[#1e1e1e] to-[#2d2424] text-white border-none transition-all duration-300 hover:bg-gradient-to-br overflow-hidden">
             <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-br from-red-500/10 to-transparent rounded-full blur-2xl transform translate-x-16 -translate-y-16" />
             <div className="absolute bottom-0 left-0 w-44 h-44 bg-gradient-to-tr from-red-600/10 to-transparent rounded-full blur-2xl transform -translate-x-16 translate-y-16" />
             <CardHeader className="relative z-10 text-center pt-12 pb-4">
@@ -59,7 +59,7 @@ const TeamCard = ({ member }) => {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-red-500 transition-colors duration-200"
                     >
-                        <GithubIcon className="h-5 w-5" strokeWidth={1.5} />
+                        <GithubIcon className="h-6 w-6" strokeWidth={1.5} />
                         <span className="sr-only">GitHub</span>
                     </a>
                 )}
@@ -70,7 +70,7 @@ const TeamCard = ({ member }) => {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-red-500 transition-colors duration-200"
                     >
-                        <LinkedinIcon className="h-5 w-5" strokeWidth={1.5} />
+                        <LinkedinIcon className="h-6 w-6" strokeWidth={1.5} />
                         <span className="sr-only">LinkedIn</span>
                     </a>
                 )}
@@ -81,7 +81,7 @@ const TeamCard = ({ member }) => {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-red-500 transition-colors duration-200"
                     >
-                        <TwitterIcon className="h-5 w-5" strokeWidth={1.5} />
+                        <TwitterIcon className="h-6 w-6" strokeWidth={1.5} />
                         <span className="sr-only">Twitter</span>
                     </a>
                 )}
@@ -92,7 +92,7 @@ const TeamCard = ({ member }) => {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-red-500 transition-colors duration-200"
                     >
-                        <InstagramIcon className="h-5 w-5" strokeWidth={1.5} />
+                        <InstagramIcon className="h-6 w-6" strokeWidth={1.5} />
                         <span className="sr-only">Instagram</span>
                     </a>
                 )}
