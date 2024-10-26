@@ -6,6 +6,7 @@ import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import QandA from '@/components/HFQ&A';
 import Stats from '@/components/Stat';
+import SEO from '@/components/SEO';
 
 
 const Hacktober2024 = () => {
@@ -30,6 +31,8 @@ const Hacktober2024 = () => {
     }, [location]);
 
     return (
+        <>
+        <SEO title="Hacktober 2024" />
         <div className='bg-gradient-to-br overflow-x-hidden absolute from-[#1e1e1e] to-[#4e3535]'>
             <div id="hero" className='pt-4'>
                 <Hero />
@@ -47,7 +50,8 @@ const Hacktober2024 = () => {
                 <ContactUs />
             </div>
             <Footer />
-        </div>
+            </div>
+        </>
     );
 };
 
