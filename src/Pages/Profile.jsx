@@ -2,9 +2,11 @@ import ProgressLevel from '@/components/ProgressLevel';
 import SyncPRs from '@/components/SyncPRs';
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Global from '@/Global';
+import { cn } from '@/lib/utils';
 import {
     Building2,
     GitFork,
@@ -12,6 +14,7 @@ import {
     GitPullRequest,
     Link as LinkIcon,
     MapPin,
+    Scroll,
     SquareArrowOutUpRight,
     Star,
     Users
@@ -283,22 +286,18 @@ export default function GitHubProfile() {
                     <ProgressLevel userData={userData} />
                 </div>
 
-                <div className="space-y-8">
-                    <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
-                        <CardContent className="p-6">
-                            <div className='flex justify-between'>
-                                <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
-                                {/* {Global.user && (
-                                    <div id="SyncPRs">
-                                        <SyncPRs />
-                                    </div>
-                                )} */}
-                            </div>
-                            <div className="space-y-3">
-                                {userData.prs.map((pr, index) => (
-                                    <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
-                                        <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
-                                            <CardContent className="p-4">
+                      <div className="space-y-8">
+        <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
+          <CardContent className="p-6">
+            <div className='flex justify-between'>
+              <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
+            </div>
+            <ScrollArea className="h-96 pr-4">
+              <div className="space-y-3">
+                {userData.prs.map((pr, index) => (
+                  <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
+                    <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
+                      <CardContent className="p-4">
                                                 <div className="flex items-start justify-between gap-4">
                                                     <div className="flex items-start gap-3 min-w-0">
                                                         <GitPullRequest className="h-5 w-5 text-red-400 mt-1" />
@@ -317,11 +316,18 @@ export default function GitHubProfile() {
                                         </Card>
                                     </a>
                                 ))}
-                            </div>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
+                                </div>
+                        <ScrollBar 
+                            className={cn(
+                            "bg-transparent",
+                            "w-2 rounded-full"
+                            )}
+                        />
+            </ScrollArea>
+          </CardContent>
+        </Card>
+      </div>
         </div>
+    </div>
     );
 }
