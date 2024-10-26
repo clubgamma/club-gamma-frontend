@@ -9,4 +9,4 @@ Club Gamma is excited to be part of Hacktoberfest 2024! Our community believes i
 - Enhanced GitHub profile and portfolio
 - Special recognition from Club Gamma
 
-_For detailed information, visit our website: <a href="https://clubgamma.vercel.app/" style="color: red">clubgamma.vercel.app</a>_
+_For detailed information, visit our website: <a href="https://clubgamma.vercel.app/hacktoberfest2024" style="color: red">clubgamma.vercel.app/hacktoberfest2024</a>_
