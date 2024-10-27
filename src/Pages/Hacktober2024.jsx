@@ -46,9 +46,9 @@ const Hacktober2024 = () => {
             <div id="q&a" className='pt-20'>
                 <QandA />
             </div>
-            <div id="contact" className='pt-20'>
+{/*             <div id="contact" className='pt-20'>
                 <ContactUs />
-            </div>
+            </div> */}
             <Footer />
             </div>
         </>
