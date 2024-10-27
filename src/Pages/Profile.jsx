@@ -173,6 +173,7 @@ const ProfileSkeleton = () => (
 export default function GitHubProfile() {
     const [userData, setUserData] = useState(null);
     const [userPRs, setUserPRs] = useState(null);
+    const [userContributions, setUserContributions] = useState(null);
     const [error, setError] = useState(null);
     const { username } = useParams();
 
@@ -181,10 +182,11 @@ export default function GitHubProfile() {
 
         const fetchData = async () => {
             try {
-                const { user, stats } = await Global.httpGet(`/users/stats/${username}`);
+                const { user, stats , projectContributions} = await Global.httpGet(`/users/stats/${username}`);
                 setUserData({ ...user, ...stats });
                 console.log(user, stats);
                 setUserPRs(stats);
+                setUserContributions(projectContributions);
                 document.title = `Profile | ${user.name}`;
             } catch (err) {
                 setError('Profile not found');
@@ -279,7 +281,9 @@ export default function GitHubProfile() {
                     <StatCard value={userData.following} label="Following" icon={Users} />
                 </div>
 
-                <ProjectContributions projectContributions={userData.projectContribution} />
+                <div className="pb-8">
+                    <ProjectContributions projectContributions={userData.userContributions} />
+                </div>
 
                 <div className="mb-8 w-full flex flex-col gap-4 sm:flex-row justify-between">
                     <ContributionCalendar userPRs={userPRs} />
