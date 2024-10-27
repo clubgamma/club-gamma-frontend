@@ -32,13 +32,40 @@ Card.propTypes = {
 
 const Home = () => {
     const location = useLocation();
-    useEffect(() => {
-        if (location.state?.scrollTo) {
-            const element = document.getElementById(location.state.scrollTo);
-            element?.scrollIntoView({ behavior: 'smooth' });
+    const aboutRef = useRef(null);
+    const eventsRef = useRef(null);
+    const teamRef = useRef(null);
+    const faqsRef = useRef(null);
+    const heroRef = useRef(null);
 
-            window.history.replaceState({}, document.title);
-        }
+    useEffect(() => {
+        const scrollToSection = () => {
+            if (location.state?.scrollTo) {
+                const refs = {
+                    'hero': heroRef,
+                    'about': aboutRef,
+                    'events': eventsRef,
+                    'team': teamRef,
+                    'faqs': faqsRef
+                };
+
+                const targetRef = refs[location.state.scrollTo];
+                if (targetRef?.current) {
+                    // Add a small delay to ensure all content is loaded
+                    setTimeout(() => {
+                        targetRef.current.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 50);
+                }
+
+                // Clear the scroll state
+                window.history.replaceState({}, document.title);
+            }
+        };
+
+        scrollToSection();
     }, [location]);
 
     const mainFeatures = [
@@ -84,32 +111,32 @@ const Home = () => {
 
     return (
         <>
-            <SEO title="Home" />
-            <div className="min-h-screen text-black bg-white">
-                {/* Hero Section */}
-                <section id="hero" className="flex flex-col justify-center bg-[#D8183A]  text-center">
-                    <section className="relative overflow-hidden pt-10 bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] text-white min-h-screen">
-                        <div className="absolute inset-0 opacity-10">
-                            <div className="absolute top-20 left-10 w-20 h-20 border-2 border-red-400 rounded-full animate-pulse"></div>
-                            <div className="absolute top-40 right-20 w-16 h-16 border-2 border-red-300 rounded-full animate-ping"></div>
-                            <div className="absolute bottom-20 left-1/4 w-24 h-24 border-2 border-red-500 rounded-full animate-bounce"></div>
-                        </div>
-                        <div className="container mx-auto font-dm-sans px-4 py-16 sm:py-24 relative z-10">
-                            <div className="text-center">
-                                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 relative inline-block">
-                                    Welcome to Club Gamma
-                                    <Sparkles className="absolute -top-6 right-2 sm:-right-6 text-yellow-400 h-8 w-8 animate-spin" />
-                                </h1>
-                                <p className="text-xl sm:text-2xl mb-8 max-w-2xl mx-auto text-gray-300">
-                                    Empowering students to innovate, collaborate, and excel in the digital age
-                                </p>
-                                <div className="flex flex-wrap justify-center gap-6 mb-12">
-                                    <FeatureCard icon={Rocket} title="Tech Innovations" description="Explore cutting-edge technologies" />
-                                    <FeatureCard icon={Users} title="Collaborative Networks" description="Connect with like-minded peers" />
-                                    <FeatureCard icon={Lightbulb} title="Idea Incubator" description="Nurture and develop your concepts" />
-                                </div>
-                                <div>
-                                    <Link to="/hacktoberfest2024" className="cursor-pointer font-dm-sans inline-flex  rounded-xl px-9 py-3 text-xl  font-semibold text-red-400 hover:text-white border-2 border-red-400
+        <SEO title="Home" />
+        <div className="min-h-screen text-black bg-white">
+            {/* Hero Section */}
+            <section ref={heroRef} id="hero" className="flex flex-col justify-center bg-[#D8183A]  text-center">
+                <section className="relative overflow-hidden pt-10 bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] text-white min-h-screen">
+                    <div className="absolute inset-0 opacity-10">
+                        <div className="absolute top-20 left-10 w-20 h-20 border-2 border-red-400 rounded-full animate-pulse"></div>
+                        <div className="absolute top-40 right-20 w-16 h-16 border-2 border-red-300 rounded-full animate-ping"></div>
+                        <div className="absolute bottom-20 left-1/4 w-24 h-24 border-2 border-red-500 rounded-full animate-bounce"></div>
+                    </div>
+                    <div className="container mx-auto font-dm-sans px-4 py-16 sm:py-24 relative z-10">
+                        <div className="text-center">
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 relative inline-block">
+                                Welcome to Club Gamma
+                                <Sparkles className="absolute -top-6 right-2 sm:-right-6 text-yellow-400 h-8 w-8 animate-spin" />
+                            </h1>
+                            <p className="text-xl sm:text-2xl mb-8 max-w-2xl mx-auto text-gray-300">
+                                Empowering students to innovate, collaborate, and excel in the digital age
+                            </p>
+                            <div className="flex flex-wrap justify-center gap-6 mb-12">
+                                <FeatureCard icon={Rocket} title="Tech Innovations" description="Explore cutting-edge technologies" />
+                                <FeatureCard icon={Users} title="Collaborative Networks" description="Connect with like-minded peers" />
+                                <FeatureCard icon={Lightbulb} title="Idea Incubator" description="Nurture and develop your concepts" />
+                            </div>
+                            <div>
+                                <Link to="/hacktoberfest2024" className="cursor-pointer font-dm-sans inline-flex  rounded-xl px-9 py-3 text-xl  font-semibold text-red-400 hover:text-white border-2 border-red-400
                                         hover:bg-rose-600 items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-75  duration-300  focus:bg-transparent">
                                         Hacktoberfest <ArrowRight className="w-6 h-6 ml-2 mt-1" />
                                     </Link>
@@ -121,15 +148,15 @@ const Home = () => {
                         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
                     </section>
                 </section>
+            </section>
 
-                {/* About Section */}
-                <section id="about" className=" bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] py-24 relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-10">
-                        <div className="absolute top-20 left-10 w-16 h-16 border-2 border-red-400 rounded-full animate-pulse"></div>
-                        <div className="absolute top-40 right-20 w-16 h-16 border-2 border-red-300 rounded-full animate-ping"></div>
-                        <div className="absolute bottom-16 left-1/4 w-24 h-24 border-2 border-red-500 rounded-full animate-bounce"></div>
-                    </div>
-
+            {/* About Section */}
+            <section ref={aboutRef} id="about" className=" bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] py-24 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-20 left-10 w-16 h-16 border-2 border-red-400 rounded-full animate-pulse"></div>
+                    <div className="absolute top-40 right-20 w-16 h-16 border-2 border-red-300 rounded-full animate-ping"></div>
+                    <div className="absolute bottom-16 left-1/4 w-24 h-24 border-2 border-red-500 rounded-full animate-bounce"></div>
+                </div>
                     <div className="container mx-auto px-4 relative">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -165,6 +192,26 @@ const Home = () => {
                                 </motion.div>
                             ))}
                         </div>
+                    </motion.div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
+            </section>
+
+
+            {/* Events Section */}
+            {/* Events Section */}
+            <section ref={eventsRef} id="events" className='relative min-h-screen  overflow-hidden bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]'>
+                <EventsSection />
+            </section>
+
+            {/* Team Section */}
+            <section ref={teamRef} id="team" className="relative min-h-screen py-20 overflow-hidden bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]">
+                {/* Animated background elements */}
+                <div className="absolute inset-0">
+                    <div className="absolute w-96 h-96 bg-red-600/10 rounded-full -top-20 -left-20 blur-3xl animate-pulse" />
+                    <div className="absolute w-96 h-96 bg-red-800/5 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-2xl animate-pulse delay-700" />
+                    <div className="absolute w-96 h-96 bg-gray-800/20 rounded-full -bottom-20 -right-20 blur-3xl animate-pulse delay-1000" />
+                </div>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -215,10 +262,11 @@ const Home = () => {
                 </section>
 
 
-                {/* FAQ Section */}
-                <section id="faqs" className="bg-gradient-to-br from-[#1e1e1e]  to-[#4e3535] py-24 relative overflow-hidden">
-                    <FAQs />
-                </section>
+
+            {/* FAQ Section */}
+            <section ref={faqsRef} id="faqs" className="bg-gradient-to-br from-[#1e1e1e]  to-[#4e3535] py-24 relative overflow-hidden">
+                <FAQs />
+            </section>
 
 
                 {/* Footer Section */}
