@@ -21,7 +21,7 @@ const ProjectShowcase = () => {
 
   const projects = [
     {
-      title: "Club Gamma Website",
+      title: "Club Gamma Frontend",
       description: "A modern and responsive website built using Vite and React, showcasing advanced web development skills and design aesthetics.",
       repoName: "club-gamma-frontend",
       buttonText: "Github",
@@ -29,7 +29,7 @@ const ProjectShowcase = () => {
       categories: ["Web Dev","React"]
     },
     {
-      title: "Club Gamma Website",
+      title: "Club Gamma Backend",
       description: "A robust backend for the Club Gamma website, developed using Node.js to handle complex data processing and ensure smooth operation.",
       repoName: "club-gamma-backend",
       buttonText: "Github",
