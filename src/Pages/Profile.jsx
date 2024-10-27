@@ -300,7 +300,7 @@ export default function GitHubProfile() {
                       <CardContent className="p-4">
                                                 <div className="flex items-start justify-between gap-4">
                                                     <div className="flex items-start gap-3 min-w-0">
-                                                        <GitPullRequest className="h-5 w-5 text-red-400 mt-1" />
+                                                        <GitPullRequest className="h-5 w-5 text-red-400 mt-1 hidden sm:block" />
                                                         <div className="min-w-0">
                                                             <div className="font-medium text-white truncate">
                                                                 {pr.title}
@@ -320,7 +320,7 @@ export default function GitHubProfile() {
                         <ScrollBar 
                             className={cn(
                                 "bg-transparent,rounded-full,w-2",
-                                "sm:block hidden overflow-y-auto"
+                                "sm:block hidden"
                             )}
                         />
             </ScrollArea>
