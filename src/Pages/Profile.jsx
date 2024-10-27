@@ -292,7 +292,7 @@ export default function GitHubProfile() {
             <div className='flex justify-between'>
               <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
             </div>
-            <ScrollArea className="h-96 pr-4">
+            <ScrollArea className="h-96 pr-0 sm:pr-4">
               <div className="space-y-3">
                 {userData.prs.map((pr, index) => (
                   <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
@@ -319,8 +319,8 @@ export default function GitHubProfile() {
                                 </div>
                         <ScrollBar 
                             className={cn(
-                            "bg-transparent",
-                            "w-2 rounded-full"
+                                "bg-transparent,rounded-full,w-2",
+                                "sm:block hidden overflow-y-auto"
                             )}
                         />
             </ScrollArea>
