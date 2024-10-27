@@ -69,6 +69,10 @@ const Footer = () => {
                                 info.clubgamma@gmail.com
                             </a>
                         </div>
+                        {/* <div className="flex items-center space-x-3 text-gray-300 group">
+                            <FaPhone className="text-red-500 group-hover:scale-110 transition-transform duration-300" />
+                            <span>+91 1234567890</span>
+                        </div> */}
                     </div>
 
                     {/* Right Section - Social Links */}

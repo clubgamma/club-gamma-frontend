@@ -12,11 +12,12 @@ const pointSystem = [
   { type: "Level 1 contribution ", points: 3 },
   { type: "Level 2 contribution ", points: 5 },
   { type: "Level 3 contribution ", points: 8 },
+  { type: "Level 4 contribution ", points: 15 },
 ]
 
 // badge levels 
 const badgeLevels = [
-  { level: "Newcomer", points: 0, nextLevel: 1, color: "bg-gray-500" },
+  // { level: "Newcomer", points: 0, nextLevel: 1, color: "bg-gray-500" },
   { level: "Contributor", points: 1, nextLevel: 10, color: "bg-green-500" },
   { level: "Regular", points: 10, nextLevel: 20, color: "bg-blue-500" },
   { level: "Expert", points: 20, nextLevel: 40, color: "bg-purple-500" },
