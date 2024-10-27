@@ -300,7 +300,7 @@ export default function GitHubProfile() {
                                 <div className="space-y-3">
                                     {userData.prs.map((pr, index) => (
                                         <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
-                                            <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
+                                            <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300 mb-2">
                                                 <CardContent className="p-4">
                                                     <div className="flex items-start justify-between gap-4">
                                                         <div className="flex items-start gap-3 min-w-0">
