@@ -2,7 +2,7 @@ import logo from '@/assets/logo.jpeg';
 import { motion } from 'framer-motion';
 import { ArrowRight, BrainCog, Code, Cpu, Lightbulb, Rocket, Sparkles, Star, Target, Terminal, Users } from 'lucide-react';
 import PropTypes from "prop-types";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FaDiscord, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "../components/ui/button";
@@ -34,13 +34,40 @@ Card.propTypes = {
 
 const Home = () => {
     const location = useLocation();
-    useEffect(() => {
-        if (location.state?.scrollTo) {
-            const element = document.getElementById(location.state.scrollTo);
-            element?.scrollIntoView({ behavior: 'smooth' });
+    const aboutRef = useRef(null);
+    const eventsRef = useRef(null);
+    const teamRef = useRef(null);
+    const faqsRef = useRef(null);
+    const heroRef = useRef(null);
 
-            window.history.replaceState({}, document.title);
-        }
+    useEffect(() => {
+        const scrollToSection = () => {
+            if (location.state?.scrollTo) {
+                const refs = {
+                    'hero': heroRef,
+                    'about': aboutRef,
+                    'events': eventsRef,
+                    'team': teamRef,
+                    'faqs': faqsRef
+                };
+
+                const targetRef = refs[location.state.scrollTo];
+                if (targetRef?.current) {
+                    // Add a small delay to ensure all content is loaded
+                    setTimeout(() => {
+                        targetRef.current.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 50);
+                }
+
+                // Clear the scroll state
+                window.history.replaceState({}, document.title);
+            }
+        };
+
+        scrollToSection();
     }, [location]);
 
     const mainFeatures = [
@@ -89,7 +116,7 @@ const Home = () => {
         <SEO title="Home" />
         <div className="min-h-screen text-black bg-white">
             {/* Hero Section */}
-            <section id="hero" className="flex flex-col justify-center bg-[#D8183A]  text-center">
+            <section ref={heroRef} id="hero" className="flex flex-col justify-center bg-[#D8183A]  text-center">
                 <section className="relative overflow-hidden pt-10 bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] text-white min-h-screen">
                     <div className="absolute inset-0 opacity-10">
                         <div className="absolute top-20 left-10 w-20 h-20 border-2 border-red-400 rounded-full animate-pulse"></div>
@@ -125,7 +152,7 @@ const Home = () => {
             </section>
 
             {/* About Section */}
-            <section id="about" className=" bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] py-24 relative overflow-hidden">
+            <section ref={aboutRef} id="about" className=" bg-gradient-to-br from-[#1e1e1e] to-[#4e3535] py-24 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                     <div className="absolute top-20 left-10 w-16 h-16 border-2 border-red-400 rounded-full animate-pulse"></div>
                     <div className="absolute top-40 right-20 w-16 h-16 border-2 border-red-300 rounded-full animate-ping"></div>
@@ -197,12 +224,12 @@ const Home = () => {
 
             {/* Events Section */}
             {/* Events Section */}
-            <section id="events" className='relative min-h-screen  overflow-hidden bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]'>
+            <section ref={eventsRef} id="events" className='relative min-h-screen  overflow-hidden bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]'>
                 <EventsSection />
             </section>
 
             {/* Team Section */}
-            <section id="team" className="relative min-h-screen py-20 overflow-hidden bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]">
+            <section ref={teamRef} id="team" className="relative min-h-screen py-20 overflow-hidden bg-gradient-to-br from-[#1e1e1e] to-[#4e3535]">
                 {/* Animated background elements */}
                 <div className="absolute inset-0">
                     <div className="absolute w-96 h-96 bg-red-600/10 rounded-full -top-20 -left-20 blur-3xl animate-pulse" />
@@ -218,7 +245,7 @@ const Home = () => {
 
 
             {/* FAQ Section */}
-            <section id="faqs" className="bg-gradient-to-br from-[#1e1e1e]  to-[#4e3535] py-24 relative overflow-hidden">
+            <section ref={faqsRef} id="faqs" className="bg-gradient-to-br from-[#1e1e1e]  to-[#4e3535] py-24 relative overflow-hidden">
                 <FAQs />
             </section>
 
