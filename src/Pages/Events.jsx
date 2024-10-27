@@ -31,7 +31,6 @@ const EventsSection = () => {
     fetchEvents();
   }, []);
 
-  // Intersection Observer for fade-in animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -87,27 +86,30 @@ const EventsSection = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 max-w-4xl mx-auto">
+        <div className="relative max-w-5xl mx-auto">
+          {/* Timeline for desktop */}
+          <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-red-500 to-red-500/0"></div>
+          
           {events.map((event, index) => (
             <div
               key={`${event.title}-${index}`}
               data-event-index={index}
-              className={`event-card transform transition-all duration-700 ${visibleEvents.has(index.toString())
+              className={`event-card transform transition-all duration-700 mb-16 ${
+                visibleEvents.has(index.toString())
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-8'
-                }`}
+              }`}
             >
-              <Card className="group relative bg-[#2a2a2a]/40 border border-red-200/10 hover:border-red-500/30 hover:bg-[#2a2a2a]/60 transition-all duration-300 overflow-hidden">
-                {/* Animated gradient overlay */}
+              <Card className="group relative bg-[#2a2a2a]/40 border border-red-200/10 hover:border-red-500/30 hover:bg-[#2a2a2a]/60 transition-all duration-300 overflow-hidden lg:ml-8">
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                   <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/5 to-red-500/0 animate-gradient"></div>
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,0,0,0.1)_0%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
 
-                <div className="p-6 md:p-8 relative">
+                <div className="p-8 md:p-10 relative">
                   <div className="flex flex-col gap-6">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                      <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-red-400 transition-colors duration-300">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                      <h3 className="text-3xl lg:text-4xl font-bold text-white group-hover:text-red-400 transition-colors duration-300">
                         {event.title}
                       </h3>
                       <div className="flex flex-wrap gap-4 text-sm">
@@ -126,7 +128,7 @@ const EventsSection = () => {
                       </div>
                     </div>
 
-                    <p className="text-gray-400 text-lg leading-relaxed">
+                    <p className="text-gray-300 text-lg leading-relaxed">
                       {event.description}
                     </p>
 
@@ -144,19 +146,23 @@ const EventsSection = () => {
                   </div>
                 </div>
               </Card>
+              {/* Improved timeline node for desktop */}
+              <div className="hidden lg:flex absolute top-10 left-0 w-8 h-8 bg-red-500 rounded-full items-center justify-center -translate-x-1/2">
+                <div className="w-3 h-3 bg-white rounded-full"></div>
+              </div>
+              {/* Connecting line */}
+              <div className="hidden lg:block absolute top-14 left-0 w-8 h-0.5 bg-red-500/30"></div>
             </div>
           ))}
         </div>
       </div>
-      {
-        selectedEvent && (
-          <EventModal
-            event={selectedEvent}
-            open={selectedEvent}
-            onClose={() => setSelectedEvent(null)}
-          />
-        )
-      }
+      {selectedEvent && (
+        <EventModal
+          event={selectedEvent}
+          open={selectedEvent}
+          onClose={() => setSelectedEvent(null)}
+        />
+      )}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
     </div>
   );
