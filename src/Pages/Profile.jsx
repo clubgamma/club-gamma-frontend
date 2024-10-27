@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ProjectContributions from '@/components/ProjectContributions';
 
 const ContributionBox = ({ value, date }) => {
     const getBackgroundColor = (value) => {
@@ -183,9 +184,8 @@ export default function GitHubProfile() {
 
         const fetchData = async () => {
             try {
-                const { user, stats } = await Global.httpGet(`/users/stats/${username}`);
-                setUserData({ ...user, ...stats });
-                console.log(user, stats);
+                const { user, stats, projectContributions } = await Global.httpGet(`/users/stats/${username}`);
+                setUserData({ ...user, ...stats, projectContributions });
                 setUserPRs(stats);
                 document.title = `Profile | ${user.name}`;
             } catch (err) {
@@ -281,53 +281,57 @@ export default function GitHubProfile() {
                     <StatCard value={userData.following} label="Following" icon={Users} />
                 </div>
 
+                <div className="pb-8">
+                    <ProjectContributions projectContributions={userData.projectContributions} />
+                </div>
+
                 <div className="mb-8 w-full flex flex-col gap-4 sm:flex-row justify-between">
                     <ContributionCalendar userPRs={userPRs} />
                     <ProgressLevel userData={userData} />
                 </div>
 
-                      <div className="space-y-8">
-        <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
-          <CardContent className="p-6">
-            <div className='flex justify-between'>
-              <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
-            </div>
-            <ScrollArea className="h-96 pr-0 sm:pr-4">
-              <div className="space-y-3">
-                {userData.prs.map((pr, index) => (
-                  <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
-                    <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
-                      <CardContent className="p-4">
-                                                <div className="flex items-start justify-between gap-4">
-                                                    <div className="flex items-start gap-3 min-w-0">
-                                                        <GitPullRequest className="h-5 w-5 text-red-400 mt-1" />
-                                                        <div className="min-w-0">
-                                                            <div className="font-medium text-white truncate">
-                                                                {pr.title}
-                                                            </div>
-                                                            <div className="text-sm text-zinc-400 truncate">
-                                                                {`https://github.com/${pr.repository}/pull/${pr.prNumber}`}
+                <div className="space-y-8">
+                    <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
+                        <CardContent className="p-6">
+                            <div className='flex justify-between'>
+                                <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
+                            </div>
+                            <ScrollArea className="h-96 pr-0 sm:pr-4">
+                                <div className="space-y-3">
+                                    {userData.prs.map((pr, index) => (
+                                        <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
+                                            <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300 mb-2">
+                                                <CardContent className="p-4">
+                                                    <div className="flex items-start justify-between gap-4">
+                                                        <div className="flex items-start gap-3 min-w-0">
+                                                            <GitPullRequest className="h-5 w-5 text-red-400 mt-1 hidden sm:block" />
+                                                            <div className="min-w-0">
+                                                                <div className="font-medium text-white truncate">
+                                                                    {pr.title}
+                                                                </div>
+                                                                <div className="text-sm text-zinc-400 truncate">
+                                                                    {`https://github.com/${pr.repository}/pull/${pr.prNumber}`}
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <StatusBadge state={pr.state} />
                                                     </div>
-                                                    <StatusBadge state={pr.state} />
-                                                </div>
-                                            </CardContent>
-                                        </Card>
-                                    </a>
-                                ))}
+                                                </CardContent>
+                                            </Card>
+                                        </a>
+                                    ))}
                                 </div>
-                        <ScrollBar 
-                            className={cn(
-                                "bg-transparent,rounded-full,w-2",
-                                "sm:block hidden overflow-y-auto"
-                            )}
-                        />
-            </ScrollArea>
-          </CardContent>
-        </Card>
-      </div>
+                                <ScrollBar
+                                    className={cn(
+                                        "bg-transparent,rounded-full,w-2",
+                                        "sm:block hidden"
+                                    )}
+                                />
+                            </ScrollArea>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
         </div>
-    </div>
     );
 }
