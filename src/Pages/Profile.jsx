@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ProjectContributions from '@/components/ProjectContributions';
 
 const ContributionBox = ({ value, date }) => {
     const getBackgroundColor = (value) => {
@@ -183,9 +184,8 @@ export default function GitHubProfile() {
 
         const fetchData = async () => {
             try {
-                const { user, stats } = await Global.httpGet(`/users/stats/${username}`);
-                setUserData({ ...user, ...stats });
-                console.log(user, stats);
+                const { user, stats , projectContributions} = await Global.httpGet(`/users/stats/${username}`);
+                setUserData({ ...user, ...stats , ...projectContributions});
                 setUserPRs(stats);
                 document.title = `Profile | ${user.name}`;
             } catch (err) {
@@ -279,6 +279,10 @@ export default function GitHubProfile() {
                     <StatCard value={userData.repositories} label="Repositories" icon={GitFork} />
                     <StatCard value={userData.followers} label="Followers" icon={Users} />
                     <StatCard value={userData.following} label="Following" icon={Users} />
+                </div>
+
+                <div className="pb-8">
+                    <ProjectContributions projectContributions={userData.projectContributions} />
                 </div>
 
                 <div className="mb-8 w-full flex flex-col gap-4 sm:flex-row justify-between">
