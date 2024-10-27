@@ -108,11 +108,11 @@ const EventsSection = () => {
 
                 <div className="p-8 md:p-10 relative">
                   <div className="flex flex-col gap-6">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                      <h3 className="text-3xl lg:text-4xl font-bold text-white group-hover:text-red-400 transition-colors duration-300">
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                      <h3 className="text-3xl lg:text-4xl font-bold text-white group-hover:text-red-400 transition-colors duration-300 lg:max-w-[70%]">
                         {event.title}
                       </h3>
-                      <div className="flex flex-wrap gap-4 text-sm">
+                      <div className="flex flex-wrap gap-4 text-sm lg:flex-nowrap">
                         <div className="flex items-center gap-2 text-red-400 bg-red-400/10 px-3 py-1.5 rounded-full">
                           <Calendar size={16} className="flex-shrink-0" />
                           <span className="font-medium">
@@ -127,6 +127,7 @@ const EventsSection = () => {
                         </div>
                       </div>
                     </div>
+
 
                     <p className="text-gray-300 text-lg leading-relaxed">
                       {event.description}
