@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Project, Star } from "lucide-react";
+import { Folder, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const ProjectContributions = ({ projectContributions }) => {
@@ -19,7 +19,7 @@ const ProjectContributions = ({ projectContributions }) => {
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-3 min-w-0">
-                    <Project className="h-5 w-5 text-red-400 mt-1" />
+                    <Folder className="h-5 w-5 text-red-400 mt-1" />
                       <div className="min-w-0">
                         <div className="font-medium text-white truncate">
                           {project.projectName}
