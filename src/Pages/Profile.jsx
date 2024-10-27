@@ -173,7 +173,6 @@ const ProfileSkeleton = () => (
 export default function GitHubProfile() {
     const [userData, setUserData] = useState(null);
     const [userPRs, setUserPRs] = useState(null);
-    const [userContributions, setUserContributions] = useState(null);
     const [error, setError] = useState(null);
     const { username } = useParams();
 
@@ -183,10 +182,9 @@ export default function GitHubProfile() {
         const fetchData = async () => {
             try {
                 const { user, stats , projectContributions} = await Global.httpGet(`/users/stats/${username}`);
-                setUserData({ ...user, ...stats });
-                console.log(user, stats);
+                setUserData({ ...user, ...stats , ...projectContributions});
+                console.log(user, stats, projectContributions);
                 setUserPRs(stats);
-                setUserContributions(projectContributions);
                 document.title = `Profile | ${user.name}`;
             } catch (err) {
                 setError('Profile not found');
@@ -282,7 +280,7 @@ export default function GitHubProfile() {
                 </div>
 
                 <div className="pb-8">
-                    <ProjectContributions projectContributions={userData.userContributions} />
+                    <ProjectContributions projectContributions={userData.projectContributions} />
                 </div>
 
                 <div className="mb-8 w-full flex flex-col gap-4 sm:flex-row justify-between">
