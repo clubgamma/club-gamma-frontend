@@ -120,7 +120,7 @@ const QandA = () => {
   ];
 
   return (
-    <div className="w-full  mx-auto px-4 text-white">
+    <div className="w-full mx-auto px-4 text-white">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-8 h-8 md:w-16 md:h-16 border-2 border-red-400 rounded-full animate-pulse"></div>
         <div className="absolute bottom-16 left-1/4 w-12 h-12 md:w-24 md:h-24 border-2 border-red-500 rounded-full animate-bounce"></div>
@@ -161,7 +161,7 @@ const QandA = () => {
           </div>
         </motion.div>
       </div>
-      <div className="mt-8 text-center text-sm text-gray-400">
+      <div className="mb-8 text-center text-sm text-gray-400">
         <p>Click on any question to expand the answer</p>
       </div>
     </div>
