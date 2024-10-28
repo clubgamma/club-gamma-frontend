@@ -8,11 +8,11 @@ const PRStatusLine = ({ project }) => {
       <div className="flex items-center">
         <span>{project.opened} Opened</span>
       </div>
-      <div className="inline ">|</div>
+      <div className="inline">|</div>
       <div className="flex items-center">
         <span>{project.merged} Merged</span>
       </div>
-      <div className="inline ">|</div>
+      <div className="inline">|</div>
       <div className="flex items-center">
         <span>{project.closed} Closed</span>
       </div>
@@ -36,7 +36,7 @@ const ProjectContributions = ({ projectContributions }) => {
             >
               <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300">
                 <CardContent className="p-3 sm:p-4">
-                  <div className="flex  sm:flex-row sm:items-start justify-between gap-2 sm:gap-4">
+                  <div className="flex items-start justify-between gap-2 sm:gap-4">
                     <div className="flex items-start gap-2 sm:gap-3 min-w-0">
                       <Folder className="h-4 w-4 sm:h-5 sm:w-5 text-red-400 mt-1 flex-shrink-0" />
                       <div className="min-w-0 flex-1">
@@ -46,9 +46,11 @@ const ProjectContributions = ({ projectContributions }) => {
                         <PRStatusLine project={project} />
                       </div>
                     </div>
-                    <div className="flex items-center gap-1 text-red-400 text-sm sm:text-base mt-1 sm:mt-0">
-                      <Star className="h-3 w-3" />
-                      <span>{project.totalPoints} points</span>
+                    <div className="flex items-center gap-1 text-red-400 text-xs sm:text-sm whitespace-nowrap">
+                      <Star className="h-3 w-3 flex-shrink-0" />
+                      <span>{project.totalPoints}</span>
+                      <span className="hidden sm:inline">points</span>
+                      <span className="sm:hidden">pts</span>
                     </div>
                   </div>
                 </CardContent>
