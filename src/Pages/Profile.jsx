@@ -22,7 +22,6 @@ import {
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ProjectContributions from '@/components/ProjectContributions';
-
 const ContributionBox = ({ value, date }) => {
     const getBackgroundColor = (value) => {
         if (!value) return 'bg-gray-700';
@@ -52,6 +51,7 @@ const ContributionBox = ({ value, date }) => {
         </div>
     );
 };
+
 const ContributionCalendar = ({ userPRs }) => {
     const prData = userPRs.prCountPerDay;
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -120,7 +120,7 @@ const ContributionCalendar = ({ userPRs }) => {
 
 const StatusBadge = ({ state }) => {
     const variants = {
-        merged: "bg-purple-900/20 text-purple-400 border-purple-900/50",
+        merged: "bg-purple-900/20 text-purple-400 border-purple-900/50 hidden md:block",
         open: "bg-green-900/20 text-green-400 border-green-900/50",
         closed: "bg-red-900/20 text-red-400 border-red-900/50"
     };
@@ -128,6 +128,38 @@ const StatusBadge = ({ state }) => {
     return (
         <Badge variant="outline" className={`${variants[state]} border`}>
             {state.charAt(0).toUpperCase() + state.slice(1)}
+        </Badge>
+    );
+};
+
+const ContributionBadge = ({ label }) => {
+    const variants = {
+        'level 1': "bg-blue-900/20 text-blue-400 border-blue-900/50",
+        'level 2': "bg-green-900/20 text-green-400 border-green-900/50",
+        'level 3': "bg-yellow-900/20 text-yellow-400 border-yellow-900/50",
+        'level 4': "bg-red-900/20 text-red-400 border-red-900/50",
+        'documentation': "bg-indigo-900/20 text-indigo-400 border-indigo-900/50",
+        'bug': "bg-orange-900/20 text-orange-400 border-orange-900/50"
+    };
+
+    const text = {
+        'level 1': 'lvl 1',
+        'level 2': 'lvl 2',
+        'level 3': 'lvl 3',
+        'level 4': 'lvl 4',
+        'documentation': 'docs',
+        'bug': 'bug'
+    };
+
+    return (
+        <Badge variant="outline" className={`${variants[label] || "bg-gray-900/20 text-gray-400 border-gray-900/50"} border`}>
+            <span className='sm:block hidden'>
+                {label!="documentation" ? label : "docs"}
+            </span>
+            <span className='block sm:hidden'>
+                {text[label]}
+            </span>
+
         </Badge>
     );
 };
@@ -187,6 +219,7 @@ export default function GitHubProfile() {
                 const { user, stats, projectContributions } = await Global.httpGet(`/users/stats/${username}`);
                 setUserData({ ...user, ...stats, projectContributions });
                 setUserPRs(stats);
+                console.log(user, stats, projectContributions);
                 document.title = `Profile | ${user.name}`;
             } catch (err) {
                 setError('Profile not found');
@@ -216,7 +249,7 @@ export default function GitHubProfile() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br font-dm-sans from-[#1e1e1e] to-[#4e3535] p-4 sm:p-8 pt-24 sm:pt-32">
-            <div className="max-w-5xl mx-auto"> {/* Increased from max-w-4xl to max-w-6xl */}
+            <div className="max-w-5xl mx-auto">
                 <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535] mb-8">
                     <CardContent className="p-6">
                         <div className="flex items-center space-x-4">
@@ -238,7 +271,6 @@ export default function GitHubProfile() {
                                             <SquareArrowOutUpRight className="w-5 h-5 text-white opacity-75 hover:opacity-100 transition-opacity" />
                                         </a>
                                     </h1>
-
                                 </div>
                                 {userData.bio && (
                                     <p className="text-zinc-300 mb-2">{userData.bio}</p>
@@ -273,7 +305,7 @@ export default function GitHubProfile() {
                     </CardContent>
                 </Card>
 
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
+                <div className="grid grid-cols-2  sm:grid-cols-5 gap-4 mb-8">
                     <StatCard value={userData.points} label="Points" icon={Star} />
                     <StatCard value={userData.mergedPRs} label="Merged PRs" icon={GitPullRequest} />
                     <StatCard value={userData.repositories} label="Repositories" icon={GitFork} />
@@ -296,25 +328,33 @@ export default function GitHubProfile() {
                             <div className='flex justify-between'>
                                 <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
                             </div>
-                            <ScrollArea className="h-96 pr-0 sm:pr-4">
+                            <ScrollArea className="h-[400px] pr-0 sm:pr-4">
                                 <div className="space-y-3">
                                     {userData.prs.map((pr, index) => (
                                         <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
-                                            <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300 mb-2">
+                                            <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300 mb-1">
                                                 <CardContent className="p-4">
                                                     <div className="flex items-start justify-between gap-4">
                                                         <div className="flex items-start gap-3 min-w-0">
                                                             <GitPullRequest className="h-5 w-5 text-red-400 mt-1 hidden sm:block" />
                                                             <div className="min-w-0">
                                                                 <div className="font-medium text-white truncate">
-                                                                    {pr.title}
+                                                                    <span className='sm:block hidden'>
+                                                                        {pr.title}
+                                                                    </span>
+                                                                    <span className='block sm:hidden'>
+                                                                        {pr.title.length > 20 ? pr.title.slice(0, 20) + '...' : pr.title}
+                                                                    </span>
                                                                 </div>
-                                                                <div className="text-sm text-zinc-400 truncate">
-                                                                    {`https://github.com/${pr.repository}/pull/${pr.prNumber}`}
+                                                                <div className="sm:text-sm text-xs text-zinc-400 truncate">
+                                                                    {pr.repository}
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <StatusBadge state={pr.state} />
+                                                        <div className="flex items-center gap-2">
+                                                            <ContributionBadge label={pr.label} />
+                                                            <StatusBadge state={pr.state} />
+                                                        </div>
                                                     </div>
                                                 </CardContent>
                                             </Card>
