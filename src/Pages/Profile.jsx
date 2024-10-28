@@ -136,7 +136,7 @@ const ContributionBadge = ({ label }) => {
     if (!label) return null;
     const variants = {
         'level 1': "bg-blue-900/20 text-blue-400 border-blue-900/50",
-        'level 2': "bg-green-900/20 text-green-400 border-green-900/50",
+        'level 2': "bg-teal-900/20 text-teal-400 border-teal-900/50",
         'level 3': "bg-yellow-900/20 text-yellow-400 border-yellow-900/50",
         'level 4': "bg-red-900/20 text-red-400 border-red-900/50",
         'documentation': "bg-indigo-900/20 text-indigo-400 border-indigo-900/50",
@@ -153,12 +153,12 @@ const ContributionBadge = ({ label }) => {
     };
 
     return (
-        <Badge variant="outline" className={`${variants[label] || "bg-gray-900/20 text-gray-400 border-gray-900/50"} border`}>
+        <Badge variant="outline" className={`${variants[label.toLowerCase()] || "bg-gray-900/20 text-gray-400 border-gray-900/50"} border`}>
             <span className='sm:block hidden'>
-                {label!="documentation" ? label : "docs"}
+                {label.toLowerCase()!="documentation" ? label : "docs"}
             </span>
             <span className='block sm:hidden'>
-                {text[label]}
+                {text[label.toLowerCase()]}
             </span>
 
         </Badge>
