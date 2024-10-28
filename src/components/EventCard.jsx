@@ -52,9 +52,22 @@ const EventModal = ({ event, onClose, open }) => {
 
     const getEventStatus = () => {
         const now = new Date()
+        
+        // For single-day events
+        if (event?.date) {
+            const eventDate = new Date(event.date)
+            const endOfDay = new Date(event.date)
+            endOfDay.setHours(23, 59, 59, 999)
+            
+            if (now < eventDate) return 'Upcoming'
+            if (now > endOfDay) return 'Completed'
+            return 'Ongoing'
+        }
+        
+        // For multi-day events
         const start = new Date(event?.start_date)
         const end = new Date(event?.end_date)
-
+        
         if (now < start) return 'Upcoming'
         if (now > end) return 'Completed'
         return 'Ongoing'
@@ -85,7 +98,7 @@ const EventModal = ({ event, onClose, open }) => {
             >
                 <DialogHeader className="flex-none rounded-t-lg bg-[#4e3535] p-6 flex flex-col gap-4 border-b border-red-500/30">
                     <div className="flex justify-between items-start">
-                        <DialogTitle className="text-3xl font-bold text-white">
+                        <DialogTitle className="text-3xl font-bold text-white text-left">
                             {event?.title}
                         </DialogTitle>
                         <button
