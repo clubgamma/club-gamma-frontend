@@ -120,7 +120,7 @@ const ContributionCalendar = ({ userPRs }) => {
 
 const StatusBadge = ({ state }) => {
     const variants = {
-        merged: "bg-purple-900/20 text-purple-400 border-purple-900/50 hidden md:block",
+        merged: "bg-purple-900/20 text-purple-400 border-purple-900/50 hidden sm:block",
         open: "bg-green-900/20 text-green-400 border-green-900/50",
         closed: "bg-red-900/20 text-red-400 border-red-900/50"
     };
@@ -133,6 +133,7 @@ const StatusBadge = ({ state }) => {
 };
 
 const ContributionBadge = ({ label }) => {
+    if (!label) return null;
     const variants = {
         'level 1': "bg-blue-900/20 text-blue-400 border-blue-900/50",
         'level 2': "bg-green-900/20 text-green-400 border-green-900/50",
@@ -339,19 +340,14 @@ export default function GitHubProfile() {
                                                             <GitPullRequest className="h-5 w-5 text-red-400 mt-1 hidden sm:block" />
                                                             <div className="min-w-0">
                                                                 <div className="font-medium text-white truncate">
-                                                                    <span className='sm:block hidden'>
                                                                         {pr.title}
-                                                                    </span>
-                                                                    <span className='block sm:hidden'>
-                                                                        {pr.title.length > 20 ? pr.title.slice(0, 20) + '...' : pr.title}
-                                                                    </span>
                                                                 </div>
                                                                 <div className="sm:text-sm text-xs text-zinc-400 truncate">
                                                                     {pr.repository}
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="flex items-center gap-2">
+                                                        <div className="flex items-center gap-2 flex-shrink-0">
                                                             <ContributionBadge label={pr.label} />
                                                             <StatusBadge state={pr.state} />
                                                         </div>
