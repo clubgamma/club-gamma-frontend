@@ -339,9 +339,14 @@ export default function GitHubProfile() {
                                                             <GitPullRequest className="h-5 w-5 text-red-400 mt-1 hidden sm:block" />
                                                             <div className="min-w-0">
                                                                 <div className="font-medium text-white truncate">
-                                                                    {pr.title}
+                                                                    <span className='sm:block hidden'>
+                                                                        {pr.title}
+                                                                    </span>
+                                                                    <span className='block sm:hidden'>
+                                                                        {pr.title.length > 20 ? pr.title.slice(0, 20) + '...' : pr.title}
+                                                                    </span>
                                                                 </div>
-                                                                <div className="text-sm text-zinc-400 truncate">
+                                                                <div className="sm:text-sm text-xs text-zinc-400 truncate">
                                                                     {pr.repository}
                                                                 </div>
                                                             </div>
