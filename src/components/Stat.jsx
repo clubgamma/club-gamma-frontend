@@ -59,8 +59,8 @@ const Stats = () => {
   }, []);
 
   return (
-    <div className="min-h-[45vh] flex justify-center relative z-10">
-      <div className="max-w-4xl w-full">
+    <div className="min-h-[45vh] flex justify-center">
+      <div className="max-w-5xl w-full">
         <div className="relative space-y-4 mb-12 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white">
             Club Gamma{" "}
@@ -85,7 +85,7 @@ const Stats = () => {
             </div>
           </div>
         ) : (
-          <div className="grid  font-poppins grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid font-poppins grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
