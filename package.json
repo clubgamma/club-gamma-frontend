@@ -33,6 +33,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.9",
     "gh-pages": "^6.1.1",
+    "html2canvas": "^1.4.1",
     "ldrs": "^1.0.2",
     "lenis": "^1.1.14",
     "lottie-react": "^2.4.0",
