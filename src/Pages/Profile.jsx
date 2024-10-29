@@ -411,7 +411,7 @@ export default function GitHubProfile() {
                   ))}
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center h-full text-center">
+                <div className="flex flex-col items-center justify-center text-center h-[400px]">
                   <NoPRsIllustration />
                   <p className="text-zinc-400 mt-4">No PRs found for the selected filter.</p>
                   <p className="text-zinc-500 text-sm mt-2">Try adjusting your filter or contribute to see PRs here!</p>
