@@ -362,11 +362,11 @@ export default function GitHubProfile() {
                 <h2 className="text-xl font-semibold text-white hidden sm:block">Recent Pull Requests</h2>
                 <h2 className='text-xl font-semibold text-white block sm:hidden'>Pull Requests</h2>
               <Select value={prFilter} onValueChange={setPrFilter}>
-                <SelectTrigger className="w-[140px] sm:w-[180px] bg-[#1e1e1e] text-white border-[#4e3535] sm:mr-4">
+                <SelectTrigger className="w-[140px] sm:w-[180px] bg-[#1e1e1e] text-white border-[#4e3535]">
                   <SelectValue placeholder="Filter PRs" />
                 </SelectTrigger>
-                  <SelectContent className="bg-[#2a2a2a] text-white border-[#4e3535]">
-                  <ScrollArea className="h-[200px] pr-0 sm:pr-4">                      
+                  <SelectContent className="bg-[#2a2a2a] text-white border-[#4e3535] h-[180px] overflow-y-auto">
+                  {/* <ScrollArea className="h-[200px] pr-0 sm:pr-4">                       */}
                     <SelectItem value="all">All PRs</SelectItem>
                     <SelectItem value="open">Open</SelectItem>
                     <SelectItem value="closed">Closed</SelectItem>
@@ -377,13 +377,13 @@ export default function GitHubProfile() {
                     <SelectItem value="level 4">Level 4</SelectItem>
                     <SelectItem value="documentation">Docs</SelectItem>
                     <SelectItem value="bug">Bug</SelectItem>
-                  </ScrollArea>
+                  {/* </ScrollArea> */}
                 </SelectContent>
               </Select>
             </div>
-            <ScrollArea className="h-[400px] pr-0 sm:pr-4">
+            {/* <ScrollArea className="h-[400px] pr-0 sm:pr-4"> */}
               {filteredPRs.length > 0 ? (
-                <div className="space-y-3">
+                <div className="space-y-3 overflow-y-auto h-[400px]">
                   {filteredPRs.map((pr, index) => (
                     <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
                       <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300 mb-1">
@@ -417,13 +417,13 @@ export default function GitHubProfile() {
                   <p className="text-zinc-500 text-sm mt-2">Try adjusting your filter or contribute to see PRs here!</p>
                 </div>
               )}
-              <ScrollBar
+              {/* <ScrollBar
                 className={cn(
                   "bg-transparent,rounded-full,w-2",
                   "sm:block hidden"
                 )}
               />
-            </ScrollArea>
+            </ScrollArea> */}
           </CardContent>
         </Card>
       </div>
