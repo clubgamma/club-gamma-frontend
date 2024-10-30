@@ -40,13 +40,9 @@ function FeatureCard({ icon: Icon, title, description }) {
             className="bg-gradient-to-br font-dm-sans from-[#2a2a2a] to-[#3a2a2a] rounded-lg p-6 flex flex-col items-center w-72 relative group overflow-hidden"
         >
             <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 via-red-500/5 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className="relative z-10"
-            >
+            <div className="relative z-10">
                 <Icon className="h-12 w-12 mb-4 text-red-400" />
-            </motion.div>
+            </div>
             <h3 className="text-lg font-semibold mb-2 text-white relative z-10 group-hover:text-red-400 transition-colors">
                 {title}
             </h3>
@@ -253,35 +249,30 @@ const Home = () => {
                         </motion.div>
 
                         <div className="grid md:grid-cols-3 font-dm-sans gap-8 mb-20">
-                            {mainFeatures.map((feature, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    whileHover={{ y: -5 }}
-                                    className="group relative"
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-br from-red-400/20 to-red-500/20 rounded-xl blur-sm transform group-hover:scale-105 transition-transform duration-300" />
-                                    <div className="relative bg-[#2a2a2a]/40 border border-red-200/10 p-8 rounded-xl h-full hover:border-red-500/30 transition-colors">
-                                        <motion.div
-                                            whileHover={{ scale: 1.1 }}
-                                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                                            className="text-red-500 mb-4"
-                                        >
-                                            {feature.icon}
-                                        </motion.div>
-                                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">
-                                            {feature.title}
-                                        </h3>
-                                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                                            {feature.description}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            ))}
+                        {mainFeatures.map((feature, index) => (
+                            <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            whileHover={{ y: -5 }}
+                            className="group relative"
+                            >
+                            <div className="absolute inset-0 bg-gradient-to-br from-red-400/20 to-red-500/20 rounded-xl blur-sm transform group-hover:scale-105 transition-transform duration-300" />
+                            <div className="relative bg-[#2a2a2a]/40 border border-red-200/10 p-8 rounded-xl h-full hover:border-red-500/30 transition-colors">
+                                <div className="text-red-500 mb-4">
+                                {feature.icon}
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">
+                                {feature.title}
+                                </h3>
+                                <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                                {feature.description}
+                                </p>
+                            </div>
+                            </motion.div>
+                        ))}
                         </div>
-
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
