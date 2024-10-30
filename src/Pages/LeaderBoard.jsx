@@ -113,7 +113,6 @@ const LeaderBoard = () => {
         const res = await Global.httpGet(
           `/users/stats/${Global.user.githubId}`
         );
-        console.log(res.user);
         setCurrentUser({ ...res.stats, ...res.user });
       }
     } catch (error) {

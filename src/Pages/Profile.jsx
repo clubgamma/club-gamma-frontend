@@ -252,7 +252,6 @@ export default function GitHubProfile() {
                 const { user, stats, projectContributions } = await Global.httpGet(`/users/stats/${username}`);
                 setUserData({ ...user, ...stats, projectContributions });
                 setUserPRs(stats);
-                console.log(user, stats, projectContributions);
                 document.title = `Profile | ${user.name}`;
             } catch (err) {
                 setError('Profile not found');

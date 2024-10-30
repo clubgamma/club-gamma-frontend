@@ -33,7 +33,6 @@ export default class Global {
     static async httpGet(endPoint, params = {}) {
         try {
             const token = localStorage.getItem('token');  // Get token from localStorage
-            console.log(this.axios.defaults.baseURL)
             const res = await this.axios.get(endPoint, {
                 params,
                 headers: {
