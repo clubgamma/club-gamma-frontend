@@ -19,9 +19,30 @@ import {
     Star,
     Users
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ProjectContributions from '@/components/ProjectContributions';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
+const NoPRsIllustration = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="200"
+    height="200"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-zinc-600"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" y1="8" x2="12" y2="12" />
+    <line x1="12" y1="16" x2="12.01" y2="16" />
+  </svg>
+);
+
 const ContributionBox = ({ value, date }) => {
     const getBackgroundColor = (value) => {
         if (!value) return 'bg-gray-700';
@@ -211,6 +232,17 @@ export default function GitHubProfile() {
     const [userPRs, setUserPRs] = useState(null);
     const [error, setError] = useState(null);
     const { username } = useParams();
+      const [prFilter, setPrFilter] = useState('all');
+
+  const filteredPRs = useMemo(() => {
+    if (!userData) return [];
+    return userData.prs.filter(pr => {
+      if (prFilter === 'all') return true;
+      if (['open', 'closed', 'merged'].includes(prFilter)) return pr.state === prFilter;
+      return pr.label && pr.label.toLowerCase() === prFilter;
+    });
+  }, [userData, prFilter]);
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -324,50 +356,78 @@ export default function GitHubProfile() {
                 </div>
 
                 <div className="space-y-8">
-                    <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
-                        <CardContent className="p-6">
-                            <div className='flex justify-between'>
-                                <h2 className="text-xl font-semibold text-white mb-4">Recent Pull Requests</h2>
-                            </div>
-                            <ScrollArea className="h-[400px] pr-0 sm:pr-4">
-                                <div className="space-y-3">
-                                    {userData.prs.map((pr, index) => (
-                                        <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
-                                            <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300 mb-1">
-                                                <CardContent className="p-4">
-                                                    <div className="flex items-start justify-between gap-4">
-                                                        <div className="flex items-start gap-3 min-w-0">
-                                                            <GitPullRequest className="h-5 w-5 text-red-400 mt-1 hidden sm:block" />
-                                                            <div className="min-w-0">
-                                                                <div className="font-medium text-white truncate">
-                                                                        {pr.title}
-                                                                </div>
-                                                                <div className="sm:text-sm text-xs text-zinc-400 truncate">
-                                                                    {pr.repository}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="flex items-center gap-2 flex-shrink-0">
-                                                            <ContributionBadge label={pr.label} />
-                                                            <StatusBadge state={pr.state} />
-                                                        </div>
-                                                    </div>
-                                                </CardContent>
-                                            </Card>
-                                        </a>
-                                    ))}
+        <Card className="bg-gradient-to-br from-[#2a2a2a] to-[#3d2929] border-[#4e3535]">
+          <CardContent className="p-6">
+            <div className='flex justify-between items-center mb-4 flex-wrap gap-2'>
+                <h2 className="text-xl font-semibold text-white hidden sm:block">Recent Pull Requests</h2>
+                <h2 className='text-xl font-semibold text-white block sm:hidden'>Pull Requests</h2>
+              <Select value={prFilter} onValueChange={setPrFilter}>
+                <SelectTrigger className="w-[140px] sm:w-[180px] bg-[#1e1e1e] text-white border-[#4e3535]">
+                  <SelectValue placeholder="Filter PRs" />
+                </SelectTrigger>
+                  <SelectContent className="bg-[#2a2a2a] text-white border-[#4e3535] h-[180px] overflow-y-auto">
+                  {/* <ScrollArea className="h-[200px] pr-0 sm:pr-4">                       */}
+                    <SelectItem value="all">All PRs</SelectItem>
+                    <SelectItem value="open">Open</SelectItem>
+                    <SelectItem value="closed">Closed</SelectItem>
+                    <SelectItem value="merged">Merged</SelectItem>
+                    <SelectItem value="level 1">Level 1</SelectItem>
+                    <SelectItem value="level 2">Level 2</SelectItem>
+                    <SelectItem value="level 3">Level 3</SelectItem>
+                    <SelectItem value="level 4">Level 4</SelectItem>
+                    <SelectItem value="documentation">Docs</SelectItem>
+                    <SelectItem value="bug">Bug</SelectItem>
+                  {/* </ScrollArea> */}
+                </SelectContent>
+              </Select>
+            </div>
+            {/* <ScrollArea className="h-[400px] pr-0 sm:pr-4"> */}
+              {filteredPRs.length > 0 ? (
+                <div className="space-y-3 overflow-y-auto h-[400px]">
+                  {filteredPRs.map((pr, index) => (
+                    <a href={`https://github.com/${pr.repository}/pull/${pr.prNumber}`} key={index} target="_blank" rel="noopener noreferrer">
+                      <Card className="bg-[#1e1e1e]/50 border-[#4e3535] hover:border-red-900 transition-all duration-300 mb-1">
+                        <CardContent className="p-4">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex items-start gap-3 min-w-0">
+                              <GitPullRequest className="h-5 w-5 text-red-400 mt-1 hidden sm:block" />
+                              <div className="min-w-0">
+                                <div className="font-medium text-white truncate">
+                                  {pr.title}
                                 </div>
-                                <ScrollBar
-                                    className={cn(
-                                        "bg-transparent,rounded-full,w-2",
-                                        "sm:block hidden"
-                                    )}
-                                />
-                            </ScrollArea>
+                                <div className="sm:text-sm text-xs text-zinc-400 truncate">
+                                  {pr.repository}
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              <ContributionBadge label={pr.label} />
+                              <StatusBadge state={pr.state} />
+                            </div>
+                          </div>
                         </CardContent>
-                    </Card>
+                      </Card>
+                    </a>
+                  ))}
                 </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center text-center h-[400px]">
+                  <NoPRsIllustration />
+                  <p className="text-zinc-400 mt-4">No PRs found for the selected filter.</p>
+                  <p className="text-zinc-500 text-sm mt-2">Try adjusting your filter or contribute to see PRs here!</p>
+                </div>
+              )}
+              {/* <ScrollBar
+                className={cn(
+                  "bg-transparent,rounded-full,w-2",
+                  "sm:block hidden"
+                )}
+              />
+            </ScrollArea> */}
+          </CardContent>
+        </Card>
+      </div>
             </div>
         </div>
-    );
+  );
 }
