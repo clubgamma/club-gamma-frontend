@@ -11,7 +11,6 @@ import FAQs from '@/components/FAQs';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 
-// Enhanced Card Component with animations
 const Card = ({ title, description, buttonText }) => {
     return (
         <motion.div 
@@ -33,7 +32,6 @@ Card.propTypes = {
     buttonText: PropTypes.string.isRequired,
 };
 
-// Enhanced FeatureCard with animations
 function FeatureCard({ icon: Icon, title, description }) {
     return (
         <motion.div
