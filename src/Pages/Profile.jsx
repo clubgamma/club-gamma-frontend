@@ -234,6 +234,58 @@ export default function GitHubProfile() {
     const { username } = useParams();
       const [prFilter, setPrFilter] = useState('all');
 
+    const [filterCounts, setFilterCounts] = useState({
+        all: 0,
+        open: 0,
+        closed: 0,
+        merged: 0,
+        'level 1': 0,
+        'level 2': 0,
+        'level 3': 0,
+        'level 4': 0,
+        documentation: 0,
+        bug: 0
+    });
+
+   useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const { user, stats, projectContributions } = await Global.httpGet(`/users/stats/${username}`);
+            setUserData({ ...user, ...stats, projectContributions });
+            setUserPRs(stats);
+
+            // Initialize counts
+            const counts = {
+                all: stats.prs.length,
+                open: 0,
+                closed: 0,
+                merged: 0,
+                'level 1': 0,
+                'level 2': 0,
+                'level 3': 0,
+                'level 4': 0,
+                documentation: 0,
+                bug: 0
+            };
+            stats.prs.forEach(pr => {
+                if (pr.state === 'open') counts.open++;
+                if (pr.state === 'closed') counts.closed++;
+                if (pr.state === 'merged') counts.merged++;
+                
+                const labelKey = pr.label ? pr.label.toLowerCase() : null;
+                if (labelKey && counts[labelKey] !== undefined) counts[labelKey]++;
+            });
+
+            setFilterCounts(counts);
+            document.title = `Profile | ${user.name}`;
+        } catch (err) {
+            setError('Profile not found');
+        }
+    };
+
+    fetchData();
+}, [username]);
+
   const filteredPRs = useMemo(() => {
     if (!userData) return [];
     return userData.prs.filter(pr => {
@@ -361,21 +413,21 @@ export default function GitHubProfile() {
                 <h2 className="text-xl font-semibold text-white hidden sm:block">Recent Pull Requests</h2>
                 <h2 className='text-xl font-semibold text-white block sm:hidden'>Pull Requests</h2>
               <Select value={prFilter} onValueChange={setPrFilter}>
-                <SelectTrigger className="w-[140px] sm:w-[180px] bg-[#1e1e1e] text-white border-[#4e3535]">
+                <SelectTrigger className="w-[8rem] bg-[#1e1e1e] text-white border-[#4e3535]">
                   <SelectValue placeholder="Filter PRs" />
                 </SelectTrigger>
                   <SelectContent className="bg-[#2a2a2a] text-white border-[#4e3535] h-[180px] overflow-y-auto">
                   {/* <ScrollArea className="h-[200px] pr-0 sm:pr-4">                       */}
-                    <SelectItem value="all">All PRs</SelectItem>
-                    <SelectItem value="open">Open</SelectItem>
-                    <SelectItem value="closed">Closed</SelectItem>
-                    <SelectItem value="merged">Merged</SelectItem>
-                    <SelectItem value="level 1">Level 1</SelectItem>
-                    <SelectItem value="level 2">Level 2</SelectItem>
-                    <SelectItem value="level 3">Level 3</SelectItem>
-                    <SelectItem value="level 4">Level 4</SelectItem>
-                    <SelectItem value="documentation">Docs</SelectItem>
-                    <SelectItem value="bug">Bug</SelectItem>
+                    <SelectItem value="all">All PRs ({filterCounts.all})</SelectItem>
+                    <SelectItem value="open">Open ({filterCounts.open})</SelectItem>
+                    <SelectItem value="closed">Closed ({filterCounts.closed})</SelectItem>
+                    <SelectItem value="merged">Merged ({filterCounts.merged})</SelectItem>
+                    <SelectItem value="level 1">Level 1 ({filterCounts['level 1']})</SelectItem>
+                    <SelectItem value="level 2">Level 2 ({filterCounts['level 2']})</SelectItem>
+                    <SelectItem value="level 3">Level 3 ({filterCounts['level 3']})</SelectItem>
+                    <SelectItem value="level 4">Level 4 ({filterCounts['level 4']})</SelectItem>
+                    <SelectItem value="documentation">Docs ({filterCounts.documentation})</SelectItem>
+                    <SelectItem value="bug">Bug ({filterCounts.bug})</SelectItem>
                   {/* </ScrollArea> */}
                 </SelectContent>
               </Select>
