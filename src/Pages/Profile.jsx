@@ -251,8 +251,8 @@ export default function GitHubProfile() {
     const fetchData = async () => {
         try {
             const { user, stats, projectContributions } = await Global.httpGet(`/users/stats/${username}`);
-            setUser Data({ ...user, ...stats, projectContributions });
-            setUser PRs(stats);
+            setUserData({ ...user, ...stats, projectContributions });
+            setUserPRs(stats);
 
             // Initialize counts
             const counts = {
