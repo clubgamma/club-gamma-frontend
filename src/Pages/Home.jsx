@@ -1,9 +1,11 @@
-import logo from '@/assets/logo.jpeg';
+// import logo from '@/assets/logo.jpeg';
 import { motion } from 'framer-motion';
 import { ArrowRight, BrainCog, Code, Cpu, Lightbulb, Rocket, Sparkles, Star, Target, Terminal, Users } from 'lucide-react';
 import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from 'react';
-import { FaDiscord, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
+// import { FaDiscord, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
+// import { TbArrowUp } from "react-icons/tb";
+import BackToTop from '@/components/backToTop';
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import EventsSection from "./Events";
@@ -246,6 +248,9 @@ const Home = () => {
                 <section ref={faqsRef} id="faqs" className="bg-gradient-to-br from-[#1e1e1e]  to-[#4e3535] py-24 relative overflow-hidden">
                     <FAQs />
                 </section>
+
+                {/* scroll to the top  */}
+                <BackToTop id={"hero"} />
 
 
                 {/* Footer Section */}
