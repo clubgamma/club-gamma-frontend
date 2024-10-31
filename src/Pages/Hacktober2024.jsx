@@ -1,17 +1,18 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import ContactUs from '@/components/ContactUs';
+// import ContactUs from '@/components/ContactUs';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import QandA from '@/components/HFQ&A';
 import Stats from '@/components/Stat';
 import SEO from '@/components/SEO';
+import BackToTop from '@/components/backToTop';
 
 
 const Hacktober2024 = () => {
     const location = useLocation();
-  
+
 
     useEffect(() => {
         window.scrollTo({
@@ -32,24 +33,26 @@ const Hacktober2024 = () => {
 
     return (
         <>
-        <SEO title="Hacktober 2024" />
-        <div className='bg-gradient-to-br overflow-x-hidden absolute from-[#1e1e1e] to-[#4e3535]'>
-            <div id="hero" className='pt-4'>
-                <Hero />
-            </div>
-            <div id="stat" className='pt-20'>
-                <Stats />
-            </div>
-            <div id="projects" className='pt-20'>
-                <Projects />
-            </div>
-            <div id="q&a" className='pt-20'>
-                <QandA />
-            </div>
-{/*             <div id="contact" className='pt-20'>
+            <SEO title="Hacktober 2024" />
+            <div className='bg-gradient-to-br overflow-x-hidden absolute from-[#1e1e1e] to-[#4e3535]'>
+                <div id="hero" className='pt-4'>
+                    <Hero />
+                </div>
+                <div id="stat" className='pt-20'>
+                    <Stats />
+                </div>
+                <div id="projects" className='pt-20'>
+                    <Projects />
+                </div>
+                <div id="q&a" className='pt-20'>
+                    <QandA />
+                </div>
+                {/* back to top */}
+                <BackToTop id={"hero"} />
+                {/*             <div id="contact" className='pt-20'>
                 <ContactUs />
             </div> */}
-            <Footer />
+                <Footer />
             </div>
         </>
     );
