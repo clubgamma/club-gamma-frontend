@@ -413,7 +413,7 @@ export default function GitHubProfile() {
                 <h2 className="text-xl font-semibold text-white hidden sm:block">Recent Pull Requests</h2>
                 <h2 className='text-xl font-semibold text-white block sm:hidden'>Pull Requests</h2>
               <Select value={prFilter} onValueChange={setPrFilter}>
-                <SelectTrigger className="w-[140px] sm:w-[180px] bg-[#1e1e1e] text-white border-[#4e3535]">
+                <SelectTrigger className="w-[8rem] bg-[#1e1e1e] text-white border-[#4e3535]">
                   <SelectValue placeholder="Filter PRs" />
                 </SelectTrigger>
                   <SelectContent className="bg-[#2a2a2a] text-white border-[#4e3535] h-[180px] overflow-y-auto">
